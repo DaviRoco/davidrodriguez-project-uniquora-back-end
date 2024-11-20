@@ -13,7 +13,7 @@ Uniquora is an e-commerce application specializing in clothing, designed to prov
 ## Technologies Used
 
 - **Backend Framework**: [Spring Boot](https://spring.io/projects/spring-boot)
-- **Database**: [PostgreSQL]([https://www.mysql.com/](https://www.postgresql.org/))
+- **Database**: [PostgreSQL](https://www.postgresql.org/)
 - **Authentication**: [Spring Security](https://spring.io/projects/spring-security)
 - **Payment Processing**: [Stripe API](https://stripe.com/docs/api)
 
