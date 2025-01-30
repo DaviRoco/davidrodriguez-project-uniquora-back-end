@@ -1,4 +1,4 @@
-package davidrodriguez.com.uniquora.core.domain;
+package davidrodriguez.com.uniquora.features.security.domain;
 
 public class PasswordHash {
     private Long passwordHashId;

@@ -1,6 +1,10 @@
-package davidrodriguez.com.uniquora.core.domain;
+package davidrodriguez.com.uniquora.features.user.domain;
 
 import java.util.Date;
+
+import davidrodriguez.com.uniquora.features.profilePhoto.domain.ProfilePhoto;
+import davidrodriguez.com.uniquora.features.role.domain.Role;
+import davidrodriguez.com.uniquora.features.security.domain.PasswordHash;
 
 public class User {
     private Long userId;
