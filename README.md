@@ -30,3 +30,8 @@ Make sure you **request the .env File**
 2. **Build the project and begin Application in Docker:**
    ```bash
    docker-compose up --build
+
+3. **Log in to the Application**
+   ```bash
+   Username: User
+   Password: Auto Generated inside the logs
