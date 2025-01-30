@@ -1,12 +1,14 @@
-package davidrodriguez.com.uniquora.features.user.domain;
+package davidrodriguez.com.uniquora.features.users.dtos;
+
+import davidrodriguez.com.uniquora.features.profilePhoto.domain.ProfilePhoto;
+import davidrodriguez.com.uniquora.features.security.domain.PasswordHash;
+import davidrodriguez.com.uniquora.features.users.domain.Role;
+import lombok.Data;
 
 import java.util.Date;
 
-import davidrodriguez.com.uniquora.features.profilePhoto.domain.ProfilePhoto;
-import davidrodriguez.com.uniquora.features.role.domain.Role;
-import davidrodriguez.com.uniquora.features.security.domain.PasswordHash;
-
-public class User {
+@Data
+public class UserDTO {
     private Long userId;
     private String name;
     private String lastName;
@@ -18,7 +20,4 @@ public class User {
     private Date updatedAt;
     private ProfilePhoto profilePhoto;
     private PasswordHash passwordHash;
-
-    public User() {}
-    
 }

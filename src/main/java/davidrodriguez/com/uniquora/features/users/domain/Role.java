@@ -1,4 +1,4 @@
-package davidrodriguez.com.uniquora.features.role.domain;
+package davidrodriguez.com.uniquora.features.users.domain;
 
 public class Role {
     private Long roleId;

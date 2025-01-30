@@ -1,6 +1,6 @@
 package davidrodriguez.com.uniquora.features.profilePhoto.domain;
 
-import davidrodriguez.com.uniquora.features.user.domain.User;
+import davidrodriguez.com.uniquora.features.users.domain.User;
 
 public class ProfilePhoto {
     private Long profilePhotoId;
