@@ -27,7 +27,7 @@ public class UserController {
 
     @GetMapping("/{email}")
     public ResponseEntity<UserDTO> getUserByEmail(@PathVariable String email) {
-        Optional<UserDTO> user = userService.getUserByEmail(email);
+        Optional<UserDTO> user = Optional.ofNullable(userService.getUserByEmail(email));
         return user.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
