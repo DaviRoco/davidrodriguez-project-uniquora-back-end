@@ -35,3 +35,4 @@ Make sure you **request the .env File**
    ```bash
    Username: User
    Password: Auto Generated inside the logs
+
