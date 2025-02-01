@@ -60,6 +60,12 @@ public class User {
         this.password = password;
     }
 
+    public User(long id, String name, String mail) {
+        this.id = id;
+        this.name = name;
+        this.email = mail;
+    }
+
     public Long getId() {
         return id;
     }
