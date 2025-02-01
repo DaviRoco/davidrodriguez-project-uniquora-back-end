@@ -18,10 +18,6 @@ public class Password {
     public Password() {
     }
 
-    public Password(String plainPassword) {
-        this.password = hashPassword(plainPassword);
-    }
-
     public Password(long id, String password) {
         this.id = id;
         this.password = hashPassword(password);
@@ -29,6 +25,10 @@ public class Password {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getPassword() {
