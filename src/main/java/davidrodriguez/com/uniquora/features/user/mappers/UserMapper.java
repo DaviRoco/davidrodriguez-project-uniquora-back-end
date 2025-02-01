@@ -1,7 +1,7 @@
-package davidrodriguez.com.uniquora.features.users.mappers;
+package davidrodriguez.com.uniquora.features.user.mappers;
 
-import davidrodriguez.com.uniquora.features.users.domain.User;
-import davidrodriguez.com.uniquora.features.users.dtos.UserDTO;
+import davidrodriguez.com.uniquora.features.user.domain.User;
+import davidrodriguez.com.uniquora.features.user.dtos.UserDTO;
 import org.springframework.stereotype.Component;
 @SuppressWarnings("unused")
 @Component

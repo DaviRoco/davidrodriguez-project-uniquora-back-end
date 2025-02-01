@@ -1,7 +1,7 @@
-package davidrodriguez.com.uniquora.features.users.dtos;
+package davidrodriguez.com.uniquora.features.user.dtos;
 
 import davidrodriguez.com.uniquora.features.security.domain.Password;
-import davidrodriguez.com.uniquora.features.users.domain.Role;
+import davidrodriguez.com.uniquora.features.user.domain.Role;
 import lombok.Data;
 
 import java.util.Date;

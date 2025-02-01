@@ -1,8 +1,8 @@
-package davidrodriguez.com.uniquora.features.users.services;
+package davidrodriguez.com.uniquora.features.user.services;
 
-import davidrodriguez.com.uniquora.features.users.dtos.UserDTO;
-import davidrodriguez.com.uniquora.features.users.domain.User;
-import davidrodriguez.com.uniquora.features.users.repositories.UserRepository;
+import davidrodriguez.com.uniquora.features.user.domain.User;
+import davidrodriguez.com.uniquora.features.user.dtos.UserDTO;
+import davidrodriguez.com.uniquora.features.user.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

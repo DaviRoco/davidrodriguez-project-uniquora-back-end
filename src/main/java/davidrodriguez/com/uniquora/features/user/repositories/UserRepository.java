@@ -1,6 +1,6 @@
-package davidrodriguez.com.uniquora.features.users.repositories;
+package davidrodriguez.com.uniquora.features.user.repositories;
 
-import davidrodriguez.com.uniquora.features.users.domain.User;
+import davidrodriguez.com.uniquora.features.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

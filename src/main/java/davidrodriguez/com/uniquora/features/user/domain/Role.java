@@ -1,4 +1,4 @@
-package davidrodriguez.com.uniquora.features.users.domain;
+package davidrodriguez.com.uniquora.features.user.domain;
 
 public enum Role {
     ADMIN,

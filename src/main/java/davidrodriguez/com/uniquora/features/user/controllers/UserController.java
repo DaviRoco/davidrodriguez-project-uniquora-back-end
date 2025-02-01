@@ -1,7 +1,7 @@
-package davidrodriguez.com.uniquora.features.users.controllers;
+package davidrodriguez.com.uniquora.features.user.controllers;
 
-import davidrodriguez.com.uniquora.features.users.dtos.UserDTO;
-import davidrodriguez.com.uniquora.features.users.services.UserService;
+import davidrodriguez.com.uniquora.features.user.dtos.UserDTO;
+import davidrodriguez.com.uniquora.features.user.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
