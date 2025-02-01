@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
-@Table(name = "password", schema = "public")
+@Table(name = "passwords", schema = "public")
 public class Password {
 
     @Id
@@ -20,6 +20,11 @@ public class Password {
 
     public Password(String plainPassword) {
         this.password = hashPassword(plainPassword);
+    }
+
+    public Password(long id, String password) {
+        this.id = id;
+        this.password = hashPassword(password);
     }
 
     public Long getId() {
