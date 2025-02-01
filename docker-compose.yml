@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: uniquora-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_APPLICATION_NAME: "uniquora"
+      SPRING_DATASOURCE_URL: "${DEV_SPRING_DATASOURCE_URL}"
+      SPRING_DATASOURCE_USERNAME: "${DEV_SPRING_DATASOURCE_USERNAME}"
+      SPRING_DATASOURCE_PASSWORD: "${DEV_SPRING_DATASOURCE_PASSWORD}"
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: "org.postgresql.Driver"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: "update"
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: "org.hibernate.dialect.PostgreSQLDialect"
+    env_file:
+      - .env
+    restart: always
