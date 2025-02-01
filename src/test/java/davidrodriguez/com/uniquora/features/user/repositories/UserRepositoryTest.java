@@ -39,6 +39,5 @@ public class UserRepositoryTest {
         assertThat(userRepository.findAll().get(0).getLocation()).isEqualTo(mockUser.getLocation());
         assertThat(userRepository.findAll().get(0).getRole()).isEqualTo(mockUser.getRole());
         assertThat(userRepository.findAll().get(0).getPasswordHash().getClass()).isEqualTo(mockUser.getPasswordHash().getClass());
-
     }
 }

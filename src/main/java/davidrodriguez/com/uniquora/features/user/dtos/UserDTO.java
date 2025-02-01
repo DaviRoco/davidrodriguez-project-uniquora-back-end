@@ -37,6 +37,19 @@ public class UserDTO {
         this.email = email;
     }
 
+    public UserDTO(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, Date createdAt, Date updatedAt, Password password) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.location = location;
+        this.role = role;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.password = password;
+    }
+
     public Long getId() {
         return id;
     }
