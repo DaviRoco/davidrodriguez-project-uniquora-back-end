@@ -13,7 +13,7 @@ Uniquora is an e-commerce application specializing in clothing, designed to prov
 ## Technologies Used
 
 - **Backend Framework**: [Spring Boot](https://spring.io/projects/spring-boot)
-- **Database**: [PostgreSQL](https://www.postgresql.org/)
+- **Database**: [PostgresSQL](https://www.postgresql.org/)
 - **Authentication**: [Spring Security](https://spring.io/projects/spring-security)
 
 
@@ -26,13 +26,23 @@ Make sure you **request the .env File**
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/DaviRoco/davidrodriguez-project-uniquora-back-end.git
-
+   ```
 2. **Build the project and begin Application in Docker:**
+   
+ - To create Docker Container: 
    ```bash
    docker-compose up --build
-
+   ```
+- To Delete Docker Container: 
+   ```bash
+   docker-compose down -v  
+   ```
 3. **Log in to the Application**
    ```bash
    Username: User
    Password: Auto Generated inside the logs
 
+4. **To run Application Tests**
+   ```bash
+   ./gradlew test jacocoTestReport 
+- After you run this Test Report, got to build/reports/jacoco/test/html/index.html and check the report in your browser.
