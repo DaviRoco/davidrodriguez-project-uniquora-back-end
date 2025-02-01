@@ -1,10 +1,9 @@
 package davidrodriguez.com.uniquora.features.user.domain;
 
-import java.util.Date;
-
 import davidrodriguez.com.uniquora.features.security.domain.Password;
-
 import jakarta.persistence.*;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "user", schema = "public")
@@ -45,7 +44,8 @@ public class User {
     @JoinColumn(name = "password_id", nullable = false)
     private Password password;
 
-    public User() {}
+    public User() {
+    }
 
     public User(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, Date createdAt, Date updatedAt, Password password) {
         this.id = id;

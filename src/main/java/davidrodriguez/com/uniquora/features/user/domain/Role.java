@@ -5,5 +5,5 @@ public enum Role {
     USER,
     MANAGER,
     DEMO_ADMIN,
-    DEMO_USER;
+    DEMO_USER
 }

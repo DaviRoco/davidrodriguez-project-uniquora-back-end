@@ -15,7 +15,8 @@ public class Password {
     @Column(name = "password", nullable = false)
     private String password;
 
-    public Password() {}
+    public Password() {
+    }
 
     public Password(String plainPassword) {
         this.password = hashPassword(plainPassword);

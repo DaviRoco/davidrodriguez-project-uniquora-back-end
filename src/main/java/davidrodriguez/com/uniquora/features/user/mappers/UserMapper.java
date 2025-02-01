@@ -3,6 +3,7 @@ package davidrodriguez.com.uniquora.features.user.mappers;
 import davidrodriguez.com.uniquora.features.user.domain.User;
 import davidrodriguez.com.uniquora.features.user.dtos.UserDTO;
 import org.springframework.stereotype.Component;
+
 @SuppressWarnings("unused")
 @Component
 public class UserMapper {
