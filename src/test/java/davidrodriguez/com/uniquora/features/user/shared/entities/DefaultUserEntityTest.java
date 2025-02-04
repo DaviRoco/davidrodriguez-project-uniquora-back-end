@@ -20,7 +20,7 @@ public class DefaultUserEntityTest {
         mockPassword = new Password("test");
         createdAt = new Date();
         updatedAt = new Date();
-        mockDefaultUserEntity = new DefaultUserEntity(1L, "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, createdAt, updatedAt, mockPassword);
+        mockDefaultUserEntity = new DefaultUserEntity(1L, "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, updatedAt, createdAt);
     }
 
     @Test

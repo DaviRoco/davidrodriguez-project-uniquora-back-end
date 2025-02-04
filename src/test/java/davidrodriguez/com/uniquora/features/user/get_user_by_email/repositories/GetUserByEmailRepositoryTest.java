@@ -31,7 +31,7 @@ public class GetUserByEmailRepositoryTest {
         passwordRepository.save(mockPassword);
         passwordRepository.flush();
 
-        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, new Date(), new Date(), mockPassword);
+        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, new Date(), new Date());
         defaultUserRepository.save(mockDefaultUserEntity);
         defaultUserRepository.flush();
 

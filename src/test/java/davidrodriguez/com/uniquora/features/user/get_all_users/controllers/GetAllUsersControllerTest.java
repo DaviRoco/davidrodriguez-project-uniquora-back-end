@@ -38,7 +38,7 @@ public class GetAllUsersControllerTest {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(getAllUsersController).build();
         Password mockPassword = new Password(1L, "test");
-        mockDefaultUserDTO = new DefaultUserDTO(1L, "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, new Date(), new Date(), mockPassword);
+        mockDefaultUserDTO = new DefaultUserDTO(1L, "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, new Date(), new Date());
     }
 
     @Test

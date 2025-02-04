@@ -20,7 +20,7 @@ public class DefaultUserDTOTest {
         mockPassword = new Password("test");
         createdAt = new Date();
         updatedAt = new Date();
-        mockDefaultUserDTO = new DefaultUserDTO(1L, "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, createdAt, updatedAt, mockPassword);
+        mockDefaultUserDTO = new DefaultUserDTO(1L, "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, updatedAt, createdAt);
     }
 
     @Test

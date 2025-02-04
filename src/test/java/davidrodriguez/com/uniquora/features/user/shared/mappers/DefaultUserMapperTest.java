@@ -23,7 +23,7 @@ public class DefaultUserMapperTest {
 
     @Test
     void shouldMapUserToUserDTO() {
-        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity( "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, new Date(), new Date(), mockPassword);
+        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity( "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, new Date(), new Date());
 
         DefaultUserDTO mockDefaultUserDTOMapped = defaultUserMapper.toUserDTO(mockDefaultUserEntity);
 
@@ -46,7 +46,7 @@ public class DefaultUserMapperTest {
 
     @Test
     void shouldMapUserDTOToUser() {
-        DefaultUserDTO mockDefaultUserDTO = new DefaultUserDTO("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, new Date(), new Date(), mockPassword);
+        DefaultUserDTO mockDefaultUserDTO = new DefaultUserDTO("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, new Date(), new Date());
 
         DefaultUserEntity mockDefaultUserEntityMapped = defaultUserMapper.toUser(mockDefaultUserDTO);
 

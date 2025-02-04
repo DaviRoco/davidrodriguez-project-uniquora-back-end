@@ -29,7 +29,7 @@ public class GetAllUsersRepositoryTest {
         Password mockPassword = new Password("test");
         passwordRepository.save(mockPassword);
 
-        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, new Date(), new Date(), mockPassword);
+        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, new Date(), new Date());
         defaultUserRepository.save(mockDefaultUserEntity);
 
         assertThat(defaultUserRepository.findAll()).hasSize(1);
