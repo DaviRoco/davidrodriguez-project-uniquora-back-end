@@ -33,6 +33,11 @@ public class DefaultUserEntity {
     @Column(name = "role", nullable = false)
     private Role role;
 
+    @OneToOne
+    @JoinColumn(name = "password_id", nullable = false)
+    private Password password;
+
+
     @Column(name = "created_at", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -41,14 +46,10 @@ public class DefaultUserEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
-    @OneToOne
-    @JoinColumn(name = "password_id", nullable = false)
-    private Password password;
-
     public DefaultUserEntity() {
     }
 
-    public DefaultUserEntity(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, Date createdAt, Date updatedAt, Password password) {
+    public DefaultUserEntity(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, Password password, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -56,21 +57,22 @@ public class DefaultUserEntity {
         this.phoneNumber = phoneNumber;
         this.location = location;
         this.role = role;
+        this.password = password;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.password = password;
     }
 
-    public DefaultUserEntity(String name, String lastName, String email, String phoneNumber, String location, Role role, Date createdAt, Date updatedAt, Password password) {
+    public DefaultUserEntity(String name, String lastName, String email, String phoneNumber, String location, Role role, Password password, Date createdAt, Date updatedAt) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.location = location;
         this.role = role;
+        this.password = password;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.password = password;
+
     }
 
     public DefaultUserEntity(long id, String name, String mail) {
@@ -135,6 +137,14 @@ public class DefaultUserEntity {
         this.role = role;
     }
 
+    public Password getPasswordHash() {
+        return password;
+    }
+
+    public void setPasswordHash(Password password) {
+        this.password = password;
+    }
+
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -149,14 +159,6 @@ public class DefaultUserEntity {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public Password getPasswordHash() {
-        return password;
-    }
-
-    public void setPasswordHash(Password password) {
-        this.password = password;
     }
 }
 
