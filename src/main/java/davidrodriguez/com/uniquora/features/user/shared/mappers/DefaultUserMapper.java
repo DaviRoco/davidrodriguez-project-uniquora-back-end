@@ -20,9 +20,9 @@ public class DefaultUserMapper {
                 defaultUserEntity.getPhoneNumber(),
                 defaultUserEntity.getLocation(),
                 defaultUserEntity.getRole(),
+                defaultUserEntity.getPasswordHash(),
                 defaultUserEntity.getCreatedAt(),
-                defaultUserEntity.getUpdatedAt(),
-                defaultUserEntity.getPasswordHash()
+                defaultUserEntity.getUpdatedAt()
         );
     }
 
@@ -38,9 +38,9 @@ public class DefaultUserMapper {
         defaultUserEntity.setPhoneNumber(defaultUserDTO.getPhoneNumber());
         defaultUserEntity.setLocation(defaultUserDTO.getLocation());
         defaultUserEntity.setRole(defaultUserDTO.getRole());
+        defaultUserEntity.setPasswordHash(defaultUserDTO.getPassword());
         defaultUserEntity.setCreatedAt(defaultUserDTO.getCreatedAt());
         defaultUserEntity.setUpdatedAt(defaultUserDTO.getUpdatedAt());
-        defaultUserEntity.setPasswordHash(defaultUserDTO.getPassword());
 
         return defaultUserEntity;
     }
