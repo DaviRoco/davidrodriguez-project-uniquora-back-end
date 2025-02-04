@@ -30,18 +30,17 @@ public class DefaultUserMapper {
         if (defaultUserDTO == null) {
             return null;
         }
-        DefaultUserEntity defaultUserEntity = new DefaultUserEntity();
-        defaultUserEntity.setId(defaultUserDTO.getId());
-        defaultUserEntity.setName(defaultUserDTO.getName());
-        defaultUserEntity.setLastName(defaultUserDTO.getLastName());
-        defaultUserEntity.setEmail(defaultUserDTO.getEmail());
-        defaultUserEntity.setPhoneNumber(defaultUserDTO.getPhoneNumber());
-        defaultUserEntity.setLocation(defaultUserDTO.getLocation());
-        defaultUserEntity.setRole(defaultUserDTO.getRole());
-        defaultUserEntity.setPasswordHash(defaultUserDTO.getPassword());
-        defaultUserEntity.setCreatedAt(defaultUserDTO.getCreatedAt());
-        defaultUserEntity.setUpdatedAt(defaultUserDTO.getUpdatedAt());
-
-        return defaultUserEntity;
+        return new DefaultUserEntity(
+                defaultUserDTO.getId(),
+                defaultUserDTO.getName(),
+                defaultUserDTO.getLastName(),
+                defaultUserDTO.getEmail(),
+                defaultUserDTO.getPhoneNumber(),
+                defaultUserDTO.getLocation(),
+                defaultUserDTO.getRole(),
+                defaultUserDTO.getPassword(),
+                defaultUserDTO.getCreatedAt(),
+                defaultUserDTO.getUpdatedAt()
+        );
     }
 }
