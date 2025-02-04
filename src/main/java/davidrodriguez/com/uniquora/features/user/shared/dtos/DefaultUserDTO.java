@@ -15,23 +15,23 @@ public class DefaultUserDTO {
     private String phoneNumber;
     private String location;
     private Role role;
+    private Password password;
     private Date createdAt;
     private Date updatedAt;
-    private Password password;
 
     public DefaultUserDTO() {
     }
 
-    public DefaultUserDTO(String name, String lastName, String email, String phoneNumber, String location, Role role, Date createdAt, Date updatedAt, Password password) {
+    public DefaultUserDTO(String name, String lastName, String email, String phoneNumber, String location, Role role, Password password, Date createdAt, Date updatedAt) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.location = location;
         this.role = role;
+        this.password = password;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.password = password;
     }
 
     public DefaultUserDTO(Long id, String name, String email) {
@@ -40,7 +40,7 @@ public class DefaultUserDTO {
         this.email = email;
     }
 
-    public DefaultUserDTO(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, Date createdAt, Date updatedAt, Password password) {
+    public DefaultUserDTO(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, Password password, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -48,9 +48,9 @@ public class DefaultUserDTO {
         this.phoneNumber = phoneNumber;
         this.location = location;
         this.role = role;
+        this.password = password;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.password = password;
     }
 
     public Long getId() {
@@ -109,6 +109,14 @@ public class DefaultUserDTO {
         this.role = role;
     }
 
+    public Password getPassword() {
+        return password;
+    }
+
+    public void setPassword(Password password) {
+        this.password = password;
+    }
+
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -123,13 +131,5 @@ public class DefaultUserDTO {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public Password getPassword() {
-        return password;
-    }
-
-    public void setPassword(Password password) {
-        this.password = password;
     }
 }
