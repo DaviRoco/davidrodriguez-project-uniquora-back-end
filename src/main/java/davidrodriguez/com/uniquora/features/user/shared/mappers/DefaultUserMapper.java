@@ -1,6 +1,6 @@
 package davidrodriguez.com.uniquora.features.user.shared.mappers;
 
-import davidrodriguez.com.uniquora.features.user.shared.entity.DefaultUserEntity;
+import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
 import org.springframework.stereotype.Component;
 

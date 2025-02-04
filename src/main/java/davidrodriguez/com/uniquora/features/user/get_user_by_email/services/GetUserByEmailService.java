@@ -2,7 +2,7 @@ package davidrodriguez.com.uniquora.features.user.get_user_by_email.services;
 
 import davidrodriguez.com.uniquora.features.user.get_user_by_email.repositories.GetUserByEmailRepository;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
-import davidrodriguez.com.uniquora.features.user.shared.entity.DefaultUserEntity;
+import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

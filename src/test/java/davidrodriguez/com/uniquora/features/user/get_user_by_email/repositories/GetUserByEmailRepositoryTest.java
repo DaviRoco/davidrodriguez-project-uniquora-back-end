@@ -3,7 +3,7 @@ package davidrodriguez.com.uniquora.features.user.get_user_by_email.repositories
 import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.features.security.entity.Password;
 import davidrodriguez.com.uniquora.features.security.repositories.PasswordRepository;
-import davidrodriguez.com.uniquora.features.user.shared.entity.DefaultUserEntity;
+import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.features.user.shared.repositories.DefaultUserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

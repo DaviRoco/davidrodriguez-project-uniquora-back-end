@@ -2,8 +2,7 @@ package davidrodriguez.com.uniquora.features.user.get_user_by_email.services;
 
 import davidrodriguez.com.uniquora.features.user.get_user_by_email.repositories.GetUserByEmailRepository;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
-import davidrodriguez.com.uniquora.features.user.shared.entity.DefaultUserEntity;
-import davidrodriguez.com.uniquora.features.user.shared.repositories.DefaultUserRepository;
+import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

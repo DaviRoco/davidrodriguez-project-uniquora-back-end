@@ -2,7 +2,7 @@ package davidrodriguez.com.uniquora.features.user.shared.mappers;
 
 import davidrodriguez.com.uniquora.features.security.entity.Password;
 import davidrodriguez.com.uniquora.enumeration.Role;
-import davidrodriguez.com.uniquora.features.user.shared.entity.DefaultUserEntity;
+import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

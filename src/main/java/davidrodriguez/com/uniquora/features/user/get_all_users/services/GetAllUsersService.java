@@ -1,6 +1,6 @@
 package davidrodriguez.com.uniquora.features.user.get_all_users.services;
 
-import davidrodriguez.com.uniquora.features.user.shared.entity.DefaultUserEntity;
+import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
 import davidrodriguez.com.uniquora.features.user.shared.repositories.DefaultUserRepository;
 import org.modelmapper.ModelMapper;

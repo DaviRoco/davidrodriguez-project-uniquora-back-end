@@ -1,4 +1,4 @@
-package davidrodriguez.com.uniquora.features.user.shared.entity;
+package davidrodriguez.com.uniquora.features.user.shared.entities;
 
 import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.features.security.entity.Password;
