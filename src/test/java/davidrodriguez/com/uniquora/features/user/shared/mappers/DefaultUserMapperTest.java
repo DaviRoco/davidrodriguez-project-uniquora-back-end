@@ -13,19 +13,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultUserMapperTest {
     private Password mockPassword;
-    private DefaultUserMapper defaultUserMapper;
+    private DefaultUserMapper mockDefaultUserMapper;
 
     @BeforeEach
     void setUp() {
         mockPassword = new Password("test");
-        defaultUserMapper = new DefaultUserMapper();
+        mockDefaultUserMapper = new DefaultUserMapper();
     }
 
     @Test
     void shouldMapUserToUserDTO() {
         DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity( "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, new Date(), new Date());
 
-        DefaultUserDTO mockDefaultUserDTOMapped = defaultUserMapper.toUserDTO(mockDefaultUserEntity);
+        DefaultUserDTO mockDefaultUserDTOMapped = mockDefaultUserMapper.toUserDTO(mockDefaultUserEntity);
 
         assertThat(mockDefaultUserDTOMapped).isNotNull()
                 .extracting(DefaultUserDTO::getId)
@@ -39,7 +39,7 @@ public class DefaultUserMapperTest {
 
     @Test
     void shouldNotMapUserToUserDTOWhenUserIsNull() {
-        DefaultUserDTO mockDefaultUserDTOMapped = defaultUserMapper.toUserDTO(null);
+        DefaultUserDTO mockDefaultUserDTOMapped = mockDefaultUserMapper.toUserDTO(null);
 
         assertThat(mockDefaultUserDTOMapped).isNull();
     }
@@ -48,7 +48,7 @@ public class DefaultUserMapperTest {
     void shouldMapUserDTOToUser() {
         DefaultUserDTO mockDefaultUserDTO = new DefaultUserDTO("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, new Date(), new Date());
 
-        DefaultUserEntity mockDefaultUserEntityMapped = defaultUserMapper.toUser(mockDefaultUserDTO);
+        DefaultUserEntity mockDefaultUserEntityMapped = mockDefaultUserMapper.toUser(mockDefaultUserDTO);
 
         assertThat(mockDefaultUserEntityMapped).isNotNull()
                 .extracting(DefaultUserEntity::getId)
@@ -62,7 +62,7 @@ public class DefaultUserMapperTest {
 
     @Test
     void shouldNotMapUserDTOToUserWhenUserIsNull() {
-        DefaultUserEntity mockDefaultUserEntityMapped = defaultUserMapper.toUser(null);
+        DefaultUserEntity mockDefaultUserEntityMapped = mockDefaultUserMapper.toUser(null);
 
         assertThat(mockDefaultUserEntityMapped).isNull();
     }

@@ -12,15 +12,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DefaultUserEntityTest {
     private DefaultUserEntity mockDefaultUserEntity;
     private Password mockPassword;
-    private Date createdAt;
-    private Date updatedAt;
+    private Date mockCreatedAt;
+    private Date mockUpdatedAt;
 
     @BeforeEach
     public void setUp() {
         mockPassword = new Password("test");
-        createdAt = new Date();
-        updatedAt = new Date();
-        mockDefaultUserEntity = new DefaultUserEntity(1L, "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, updatedAt, createdAt);
+        mockCreatedAt = new Date();
+        mockUpdatedAt = new Date();
+        mockDefaultUserEntity = new DefaultUserEntity(
+                1L,
+                "John",
+                "Doe",
+                "test@email.com",
+                "+506123456",
+                "Costa Rica",
+                Role.ADMIN,
+                mockPassword,
+                mockUpdatedAt,
+                mockCreatedAt
+        );
     }
 
     @Test
@@ -33,8 +44,8 @@ public class DefaultUserEntityTest {
         assertThat(mockDefaultUserEntity.getLocation()).isEqualTo("Costa Rica");
         assertThat(mockDefaultUserEntity.getRole()).isEqualTo(Role.ADMIN);
         assertThat(mockDefaultUserEntity.getPasswordHash()).isEqualTo(mockPassword);
-        assertThat(mockDefaultUserEntity.getCreatedAt()).isEqualTo(createdAt);
-        assertThat(mockDefaultUserEntity.getUpdatedAt()).isEqualTo(updatedAt);
+        assertThat(mockDefaultUserEntity.getCreatedAt()).isEqualTo(mockCreatedAt);
+        assertThat(mockDefaultUserEntity.getUpdatedAt()).isEqualTo(mockUpdatedAt);
     }
 
     @Test
@@ -49,8 +60,8 @@ public class DefaultUserEntityTest {
         assertThat(newDefaultUserEntity.getLocation()).isEqualTo("USA");
         assertThat(newDefaultUserEntity.getRole()).isEqualTo(Role.USER);
         assertThat(newDefaultUserEntity.getPasswordHash()).isEqualTo(mockPassword);
-        assertThat(newDefaultUserEntity.getCreatedAt()).isEqualTo(createdAt);
-        assertThat(newDefaultUserEntity.getUpdatedAt()).isEqualTo(updatedAt);
+        assertThat(newDefaultUserEntity.getCreatedAt()).isEqualTo(mockCreatedAt);
+        assertThat(newDefaultUserEntity.getUpdatedAt()).isEqualTo(mockUpdatedAt);
     }
 
     private DefaultUserEntity getDefaultUserEntity() {
@@ -63,8 +74,8 @@ public class DefaultUserEntityTest {
         newDefaultUserEntity.setLocation("USA");
         newDefaultUserEntity.setRole(Role.USER);
         newDefaultUserEntity.setPasswordHash(mockPassword);
-        newDefaultUserEntity.setCreatedAt(createdAt);
-        newDefaultUserEntity.setUpdatedAt(updatedAt);
+        newDefaultUserEntity.setCreatedAt(mockCreatedAt);
+        newDefaultUserEntity.setUpdatedAt(mockUpdatedAt);
 
         return newDefaultUserEntity;
     }

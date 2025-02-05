@@ -12,14 +12,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DefaultUserDTOTest {
     private DefaultUserDTO mockDefaultUserDTO;
     private Password mockPassword;
-    private Date createdAt;
-    private Date updatedAt;
+    private Date mockCreatedAt;
+    private Date mockUpdatedAt;
 
     @BeforeEach
     public void setUp() {
         mockPassword = new Password("test");
-        createdAt = new Date();
-        updatedAt = new Date();
+        mockCreatedAt = new Date();
+        mockUpdatedAt = new Date();
         mockDefaultUserDTO = new DefaultUserDTO(
                 1L,
                 "John",
@@ -29,8 +29,8 @@ public class DefaultUserDTOTest {
                 "Costa Rica",
                 Role.ADMIN,
                 mockPassword,
-                updatedAt,
-                createdAt
+                mockUpdatedAt,
+                mockCreatedAt
         );
     }
 
@@ -44,8 +44,8 @@ public class DefaultUserDTOTest {
         assertThat(mockDefaultUserDTO.getLocation()).isEqualTo("Costa Rica");
         assertThat(mockDefaultUserDTO.getRole()).isEqualTo(Role.ADMIN);
         assertThat(mockDefaultUserDTO.getPassword()).isEqualTo(mockPassword);
-        assertThat(mockDefaultUserDTO.getCreatedAt()).isEqualTo(createdAt);
-        assertThat(mockDefaultUserDTO.getUpdatedAt()).isEqualTo(updatedAt);
+        assertThat(mockDefaultUserDTO.getCreatedAt()).isEqualTo(mockCreatedAt);
+        assertThat(mockDefaultUserDTO.getUpdatedAt()).isEqualTo(mockUpdatedAt);
     }
 
     @Test
@@ -60,8 +60,8 @@ public class DefaultUserDTOTest {
         assertThat(newDefaultUserDTO.getLocation()).isEqualTo("USA");
         assertThat(newDefaultUserDTO.getRole()).isEqualTo(Role.USER);
         assertThat(newDefaultUserDTO.getPassword()).isEqualTo(mockPassword);
-        assertThat(newDefaultUserDTO.getCreatedAt()).isEqualTo(createdAt);
-        assertThat(newDefaultUserDTO.getUpdatedAt()).isEqualTo(updatedAt);
+        assertThat(newDefaultUserDTO.getCreatedAt()).isEqualTo(mockCreatedAt);
+        assertThat(newDefaultUserDTO.getUpdatedAt()).isEqualTo(mockUpdatedAt);
     }
 
     private DefaultUserDTO getNewDefaultUserDTO() {
@@ -74,8 +74,8 @@ public class DefaultUserDTOTest {
         newDefaultUserDTO.setLocation("USA");
         newDefaultUserDTO.setRole(Role.USER);
         newDefaultUserDTO.setPassword(mockPassword);
-        newDefaultUserDTO.setCreatedAt(createdAt);
-        newDefaultUserDTO.setUpdatedAt(updatedAt);
+        newDefaultUserDTO.setCreatedAt(mockCreatedAt);
+        newDefaultUserDTO.setUpdatedAt(mockUpdatedAt);
 
         return newDefaultUserDTO;
     }
