@@ -32,9 +32,9 @@ public class DefaultUserEntityTest {
         assertThat(mockDefaultUserEntity.getPhoneNumber()).isEqualTo("+506123456");
         assertThat(mockDefaultUserEntity.getLocation()).isEqualTo("Costa Rica");
         assertThat(mockDefaultUserEntity.getRole()).isEqualTo(Role.ADMIN);
+        assertThat(mockDefaultUserEntity.getPasswordHash()).isEqualTo(mockPassword);
         assertThat(mockDefaultUserEntity.getCreatedAt()).isEqualTo(createdAt);
         assertThat(mockDefaultUserEntity.getUpdatedAt()).isEqualTo(updatedAt);
-        assertThat(mockDefaultUserEntity.getPasswordHash()).isEqualTo(mockPassword);
     }
 
     @Test
@@ -48,9 +48,9 @@ public class DefaultUserEntityTest {
         assertThat(newDefaultUserEntity.getPhoneNumber()).isEqualTo("+123456789");
         assertThat(newDefaultUserEntity.getLocation()).isEqualTo("USA");
         assertThat(newDefaultUserEntity.getRole()).isEqualTo(Role.USER);
+        assertThat(newDefaultUserEntity.getPasswordHash()).isEqualTo(mockPassword);
         assertThat(newDefaultUserEntity.getCreatedAt()).isEqualTo(createdAt);
         assertThat(newDefaultUserEntity.getUpdatedAt()).isEqualTo(updatedAt);
-        assertThat(newDefaultUserEntity.getPasswordHash()).isEqualTo(mockPassword);
     }
 
     private DefaultUserEntity getDefaultUserEntity() {
@@ -62,9 +62,10 @@ public class DefaultUserEntityTest {
         newDefaultUserEntity.setPhoneNumber("+123456789");
         newDefaultUserEntity.setLocation("USA");
         newDefaultUserEntity.setRole(Role.USER);
+        newDefaultUserEntity.setPasswordHash(mockPassword);
         newDefaultUserEntity.setCreatedAt(createdAt);
         newDefaultUserEntity.setUpdatedAt(updatedAt);
-        newDefaultUserEntity.setPasswordHash(mockPassword);
+
         return newDefaultUserEntity;
     }
 }
