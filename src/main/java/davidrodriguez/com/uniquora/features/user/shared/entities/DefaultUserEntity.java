@@ -1,7 +1,7 @@
 package davidrodriguez.com.uniquora.features.user.shared.entities;
 
 import davidrodriguez.com.uniquora.enumeration.Role;
-import davidrodriguez.com.uniquora.features.security.entity.Password;
+import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -35,7 +35,7 @@ public class DefaultUserEntity {
 
     @OneToOne
     @JoinColumn(name = "password_id", nullable = false)
-    private Password password;
+    private DefaultPasswordEntity password;
 
 
     @Column(name = "created_at", updatable = false)
@@ -49,7 +49,7 @@ public class DefaultUserEntity {
     public DefaultUserEntity() {
     }
 
-    public DefaultUserEntity(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, Password password, Date createdAt, Date updatedAt) {
+    public DefaultUserEntity(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, DefaultPasswordEntity password, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -62,7 +62,7 @@ public class DefaultUserEntity {
         this.updatedAt = updatedAt;
     }
 
-    public DefaultUserEntity(String name, String lastName, String email, String phoneNumber, String location, Role role, Password password, Date createdAt, Date updatedAt) {
+    public DefaultUserEntity(String name, String lastName, String email, String phoneNumber, String location, Role role, DefaultPasswordEntity password, Date createdAt, Date updatedAt) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
@@ -72,7 +72,6 @@ public class DefaultUserEntity {
         this.password = password;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-
     }
 
     public DefaultUserEntity(long id, String name, String mail) {
@@ -137,11 +136,11 @@ public class DefaultUserEntity {
         this.role = role;
     }
 
-    public Password getPasswordHash() {
+    public DefaultPasswordEntity getPassword() {
         return password;
     }
 
-    public void setPasswordHash(Password password) {
+    public void setPassword(DefaultPasswordEntity password) {
         this.password = password;
     }
 

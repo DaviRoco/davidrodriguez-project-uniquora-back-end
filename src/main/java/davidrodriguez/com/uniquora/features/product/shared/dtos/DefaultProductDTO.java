@@ -1,6 +1,8 @@
 package davidrodriguez.com.uniquora.features.product.shared.dtos;
 
+import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
 import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEntity;
+import davidrodriguez.com.uniquora.features.product_image.shared.dtos.DefaultProductImageDTO;
 import davidrodriguez.com.uniquora.features.product_image.shared.entities.DefaultProductImageEntity;
 
 import java.util.ArrayList;
@@ -12,15 +14,15 @@ public class DefaultProductDTO {
     private String description;
     private Double price;
     private Integer stockQuantity;
-    private DefaultBrandEntity brand;
-    private ArrayList<DefaultProductImageEntity> productImages;
+    private DefaultBrandDTO brand;
+    private ArrayList<DefaultProductImageDTO> productImages;
     private Date createdAt;
     private Date updatedAt;
 
     public DefaultProductDTO() {
     }
 
-    public DefaultProductDTO(String name, String description, Double price, Integer stockQuantity, DefaultBrandEntity brand, ArrayList<DefaultProductImageEntity> productImages, Date createdAt, Date updatedAt) {
+    public DefaultProductDTO(String name, String description, Double price, Integer stockQuantity, DefaultBrandDTO brand, ArrayList<DefaultProductImageDTO> productImages, Date createdAt, Date updatedAt) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -37,7 +39,7 @@ public class DefaultProductDTO {
         this.description = description;
     }
 
-    public DefaultProductDTO(Long id, String name, String description, Double price, Integer stockQuantity, DefaultBrandEntity brand, ArrayList<DefaultProductImageEntity> productImages, Date createdAt, Date updatedAt) {
+    public DefaultProductDTO(Long id, String name, String description, Double price, Integer stockQuantity, DefaultBrandDTO brand, ArrayList<DefaultProductImageDTO> productImages, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -89,19 +91,19 @@ public class DefaultProductDTO {
         this.stockQuantity = stockQuantity;
     }
 
-    public DefaultBrandEntity getBrand() {
+    public DefaultBrandDTO getBrand() {
         return brand;
     }
 
-    public void setBrand(DefaultBrandEntity brand) {
+    public void setBrand(DefaultBrandDTO brand) {
         this.brand = brand;
     }
 
-    public ArrayList<DefaultProductImageEntity> getProductImages() {
+    public ArrayList<DefaultProductImageDTO> getProductImages() {
         return productImages;
     }
 
-    public void setProductImages(ArrayList<DefaultProductImageEntity> productImages) {
+    public void setProductImages(ArrayList<DefaultProductImageDTO> productImages) {
         this.productImages = productImages;
     }
 

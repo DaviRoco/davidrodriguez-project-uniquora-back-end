@@ -1,6 +1,6 @@
 package davidrodriguez.com.uniquora.features.user.shared.dtos;
 
-import davidrodriguez.com.uniquora.features.security.entity.Password;
+import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
 import davidrodriguez.com.uniquora.enumeration.Role;
 import lombok.Data;
 
@@ -15,14 +15,14 @@ public class DefaultUserDTO {
     private String phoneNumber;
     private String location;
     private Role role;
-    private Password password;
+    private DefaultPasswordDTO password;
     private Date createdAt;
     private Date updatedAt;
 
     public DefaultUserDTO() {
     }
 
-    public DefaultUserDTO(String name, String lastName, String email, String phoneNumber, String location, Role role, Password password, Date createdAt, Date updatedAt) {
+    public DefaultUserDTO(String name, String lastName, String email, String phoneNumber, String location, Role role, DefaultPasswordDTO password, Date createdAt, Date updatedAt) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
@@ -40,7 +40,7 @@ public class DefaultUserDTO {
         this.email = email;
     }
 
-    public DefaultUserDTO(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, Password password, Date createdAt, Date updatedAt) {
+    public DefaultUserDTO(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, DefaultPasswordDTO password, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -109,11 +109,11 @@ public class DefaultUserDTO {
         this.role = role;
     }
 
-    public Password getPassword() {
+    public DefaultPasswordDTO getPassword() {
         return password;
     }
 
-    public void setPassword(Password password) {
+    public void setPassword(DefaultPasswordDTO password) {
         this.password = password;
     }
 

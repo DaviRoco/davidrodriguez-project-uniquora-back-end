@@ -1,6 +1,6 @@
 package davidrodriguez.com.uniquora.features.user.shared.entities;
 
-import davidrodriguez.com.uniquora.features.security.entity.Password;
+import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
 import davidrodriguez.com.uniquora.enumeration.Role;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,13 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultUserEntityTest {
     private DefaultUserEntity mockDefaultUserEntity;
-    private Password mockPassword;
+    private DefaultPasswordEntity mockDefaultPasswordEntity;
     private Date mockCreatedAt;
     private Date mockUpdatedAt;
 
     @BeforeEach
     public void setUp() {
-        mockPassword = new Password("test");
+        mockDefaultPasswordEntity = new DefaultPasswordEntity("test");
         mockCreatedAt = new Date();
         mockUpdatedAt = new Date();
         mockDefaultUserEntity = new DefaultUserEntity(
@@ -28,7 +28,7 @@ public class DefaultUserEntityTest {
                 "+506123456",
                 "Costa Rica",
                 Role.ADMIN,
-                mockPassword,
+                mockDefaultPasswordEntity,
                 mockUpdatedAt,
                 mockCreatedAt
         );
@@ -43,7 +43,7 @@ public class DefaultUserEntityTest {
         assertThat(mockDefaultUserEntity.getPhoneNumber()).isEqualTo("+506123456");
         assertThat(mockDefaultUserEntity.getLocation()).isEqualTo("Costa Rica");
         assertThat(mockDefaultUserEntity.getRole()).isEqualTo(Role.ADMIN);
-        assertThat(mockDefaultUserEntity.getPasswordHash()).isEqualTo(mockPassword);
+        assertThat(mockDefaultUserEntity.getPassword()).isEqualTo(mockDefaultPasswordEntity);
         assertThat(mockDefaultUserEntity.getCreatedAt()).isEqualTo(mockCreatedAt);
         assertThat(mockDefaultUserEntity.getUpdatedAt()).isEqualTo(mockUpdatedAt);
     }
@@ -59,7 +59,7 @@ public class DefaultUserEntityTest {
         assertThat(newDefaultUserEntity.getPhoneNumber()).isEqualTo("+123456789");
         assertThat(newDefaultUserEntity.getLocation()).isEqualTo("USA");
         assertThat(newDefaultUserEntity.getRole()).isEqualTo(Role.USER);
-        assertThat(newDefaultUserEntity.getPasswordHash()).isEqualTo(mockPassword);
+        assertThat(newDefaultUserEntity.getPassword()).isEqualTo(mockDefaultPasswordEntity);
         assertThat(newDefaultUserEntity.getCreatedAt()).isEqualTo(mockCreatedAt);
         assertThat(newDefaultUserEntity.getUpdatedAt()).isEqualTo(mockUpdatedAt);
     }
@@ -73,7 +73,7 @@ public class DefaultUserEntityTest {
         newDefaultUserEntity.setPhoneNumber("+123456789");
         newDefaultUserEntity.setLocation("USA");
         newDefaultUserEntity.setRole(Role.USER);
-        newDefaultUserEntity.setPasswordHash(mockPassword);
+        newDefaultUserEntity.setPassword(mockDefaultPasswordEntity);
         newDefaultUserEntity.setCreatedAt(mockCreatedAt);
         newDefaultUserEntity.setUpdatedAt(mockUpdatedAt);
 

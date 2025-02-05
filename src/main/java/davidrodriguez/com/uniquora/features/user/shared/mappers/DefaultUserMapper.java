@@ -1,17 +1,27 @@
 package davidrodriguez.com.uniquora.features.user.shared.mappers;
 
+import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
+import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
+import davidrodriguez.com.uniquora.features.security.shared.mappers.DefaultPasswordMapper;
 import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
 import org.springframework.stereotype.Component;
 
-@SuppressWarnings("unused")
 @Component
 public class DefaultUserMapper {
+    private final DefaultPasswordMapper defaultPasswordMapper;
+
+    public DefaultUserMapper(DefaultPasswordMapper defaultPasswordMapper) {
+        this.defaultPasswordMapper = defaultPasswordMapper;
+    }
 
     public DefaultUserDTO toUserDTO(DefaultUserEntity defaultUserEntity) {
         if (defaultUserEntity == null) {
             return null;
         }
+
+        DefaultPasswordDTO mappedPasswordDTO = defaultPasswordMapper.toPasswordDTO(defaultUserEntity.getPassword());
+
         return new DefaultUserDTO(
                 defaultUserEntity.getId(),
                 defaultUserEntity.getName(),
@@ -20,7 +30,7 @@ public class DefaultUserMapper {
                 defaultUserEntity.getPhoneNumber(),
                 defaultUserEntity.getLocation(),
                 defaultUserEntity.getRole(),
-                defaultUserEntity.getPasswordHash(),
+                mappedPasswordDTO,
                 defaultUserEntity.getCreatedAt(),
                 defaultUserEntity.getUpdatedAt()
         );
@@ -30,6 +40,9 @@ public class DefaultUserMapper {
         if (defaultUserDTO == null) {
             return null;
         }
+
+        DefaultPasswordEntity mappedPasswordEntity = defaultPasswordMapper.toPasswordEntity(defaultUserDTO.getPassword());
+
         return new DefaultUserEntity(
                 defaultUserDTO.getId(),
                 defaultUserDTO.getName(),
@@ -38,7 +51,7 @@ public class DefaultUserMapper {
                 defaultUserDTO.getPhoneNumber(),
                 defaultUserDTO.getLocation(),
                 defaultUserDTO.getRole(),
-                defaultUserDTO.getPassword(),
+                mappedPasswordEntity,
                 defaultUserDTO.getCreatedAt(),
                 defaultUserDTO.getUpdatedAt()
         );

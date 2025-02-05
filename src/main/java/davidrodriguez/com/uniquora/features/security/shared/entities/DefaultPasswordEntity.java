@@ -1,11 +1,11 @@
-package davidrodriguez.com.uniquora.features.security.entity;
+package davidrodriguez.com.uniquora.features.security.shared.entities;
 
 import jakarta.persistence.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table(name = "passwords", schema = "public")
-public class Password {
+public class DefaultPasswordEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,15 +15,15 @@ public class Password {
     @Column(name = "password", nullable = false)
     private String password;
 
-    public Password() {
+    public DefaultPasswordEntity() {
     }
 
-    public Password(long id, String password) {
+    public DefaultPasswordEntity(long id, String password) {
         this.id = id;
         this.password = hashPassword(password);
     }
 
-    public Password(String password) {
+    public DefaultPasswordEntity(String password) {
         this.password = password;
     }
 

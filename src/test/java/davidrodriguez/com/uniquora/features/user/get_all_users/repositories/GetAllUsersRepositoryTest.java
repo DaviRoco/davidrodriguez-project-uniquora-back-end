@@ -1,8 +1,8 @@
 package davidrodriguez.com.uniquora.features.user.get_all_users.repositories;
 
 import davidrodriguez.com.uniquora.enumeration.Role;
-import davidrodriguez.com.uniquora.features.security.entity.Password;
-import davidrodriguez.com.uniquora.features.security.repositories.PasswordRepository;
+import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
+import davidrodriguez.com.uniquora.features.security.shared.repositories.DefaultPasswordRepository;
 import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.features.user.shared.repositories.DefaultUserRepository;
 import org.junit.jupiter.api.Test;
@@ -22,14 +22,14 @@ public class GetAllUsersRepositoryTest {
     private DefaultUserRepository defaultUserRepository;
 
     @Autowired
-    private PasswordRepository passwordRepository;
+    private DefaultPasswordRepository defaultPasswordRepository;
 
     @Test
     void shouldFindAllUsers() {
-        Password mockPassword = new Password("test");
-        passwordRepository.save(mockPassword);
+        DefaultPasswordEntity mockDefaultPasswordEntity = new DefaultPasswordEntity("test");
+        defaultPasswordRepository.save(mockDefaultPasswordEntity);
 
-        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockPassword, new Date(), new Date());
+        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockDefaultPasswordEntity, new Date(), new Date());
         defaultUserRepository.save(mockDefaultUserEntity);
 
         assertThat(defaultUserRepository.findAll()).hasSize(1);
@@ -40,6 +40,6 @@ public class GetAllUsersRepositoryTest {
         assertThat(defaultUserRepository.findAll().get(0).getPhoneNumber()).isEqualTo(mockDefaultUserEntity.getPhoneNumber());
         assertThat(defaultUserRepository.findAll().get(0).getLocation()).isEqualTo(mockDefaultUserEntity.getLocation());
         assertThat(defaultUserRepository.findAll().get(0).getRole()).isEqualTo(mockDefaultUserEntity.getRole());
-        assertThat(defaultUserRepository.findAll().get(0).getPasswordHash().getClass()).isEqualTo(mockDefaultUserEntity.getPasswordHash().getClass());
+        assertThat(defaultUserRepository.findAll().get(0).getPassword().getClass()).isEqualTo(mockDefaultUserEntity.getPassword().getClass());
     }
 }
