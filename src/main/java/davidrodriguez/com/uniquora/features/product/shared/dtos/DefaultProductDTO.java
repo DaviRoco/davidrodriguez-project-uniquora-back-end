@@ -1,9 +1,7 @@
 package davidrodriguez.com.uniquora.features.product.shared.dtos;
 
 import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
-import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEntity;
 import davidrodriguez.com.uniquora.features.product_image.shared.dtos.DefaultProductImageDTO;
-import davidrodriguez.com.uniquora.features.product_image.shared.entities.DefaultProductImageEntity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,23 +18,6 @@ public class DefaultProductDTO {
     private Date updatedAt;
 
     public DefaultProductDTO() {
-    }
-
-    public DefaultProductDTO(String name, String description, Double price, Integer stockQuantity, DefaultBrandDTO brand, ArrayList<DefaultProductImageDTO> productImages, Date createdAt, Date updatedAt) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.stockQuantity = stockQuantity;
-        this.brand = brand;
-        this.productImages = productImages;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    public DefaultProductDTO(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
     }
 
     public DefaultProductDTO(Long id, String name, String description, Double price, Integer stockQuantity, DefaultBrandDTO brand, ArrayList<DefaultProductImageDTO> productImages, Date createdAt, Date updatedAt) {

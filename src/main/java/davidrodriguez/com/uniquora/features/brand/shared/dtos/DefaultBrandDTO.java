@@ -20,13 +20,6 @@ public class DefaultBrandDTO {
         this.updatedAt = updatedAt;
     }
 
-    public DefaultBrandDTO(String name, String logo, Date createdAt, Date updatedAt) {
-        this.name = name;
-        this.logo = logo;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
     public Long getId() {
         return id;
     }

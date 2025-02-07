@@ -20,6 +20,12 @@ public class DefaultBrandMapperTest {
         mockUpdatedAt = new Date();
         mockDefaultBrandMapper = new DefaultBrandMapper();
     }
+    @Test
+    void shouldNotMapBrandDTOToBrandWhenBrandIsNull() {
+        DefaultBrandEntity mockDefaultBrandEntityMapped = mockDefaultBrandMapper.toBrandEntity(null);
+
+        assertThat(mockDefaultBrandEntityMapped).isNull();
+    }
 
     @Test
     void shouldMapBrandToBrandDTO() {
@@ -43,7 +49,7 @@ public class DefaultBrandMapperTest {
     }
 
     @Test
-    void shouldNotMapBrandToBrandDTOWhenBrandIsNull() {
+    void shouldNotMapBrandToBrandDTOWhenBrandDTOIsNull() {
         DefaultBrandDTO mockDefaultBrandDTOMapped = mockDefaultBrandMapper.toBrandDTO(null);
 
         assertThat(mockDefaultBrandDTOMapped).isNull();

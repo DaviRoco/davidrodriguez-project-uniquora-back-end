@@ -74,12 +74,6 @@ public class DefaultUserEntity {
         this.updatedAt = updatedAt;
     }
 
-    public DefaultUserEntity(long id, String name, String mail) {
-        this.id = id;
-        this.name = name;
-        this.email = mail;
-    }
-
     public Long getId() {
         return id;
     }

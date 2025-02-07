@@ -6,36 +6,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
+import java.util.List;
 
+import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockPasswordDTO;
+import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTO;
+import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTOList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultUserDTOTest {
     private DefaultPasswordDTO mockPassword;
-    private Date mockCreatedAt;
-    private Date mockUpdatedAt;
 
     @BeforeEach
     public void setUp() {
-        mockCreatedAt = new Date();
-        mockUpdatedAt = new Date();
-        mockPassword = new DefaultPasswordDTO("test");
+        mockPassword = createMockPasswordDTO();
     }
 
     @Test
     void shouldGetAllAttributes() {
-
-        DefaultUserDTO mockDefaultUserDTO = new DefaultUserDTO(
-                1L,
-                "John",
-                "Doe",
-                "test@email.com",
-                "+506123456",
-                "Costa Rica",
-                Role.ADMIN,
-                mockPassword,
-                mockUpdatedAt,
-                mockCreatedAt
-        );
+        DefaultUserDTO mockDefaultUserDTO = createMockDefaultUserDTO();
 
         assertThat(mockDefaultUserDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultUserDTO.getName()).isEqualTo("John");
@@ -44,40 +32,34 @@ public class DefaultUserDTOTest {
         assertThat(mockDefaultUserDTO.getPhoneNumber()).isEqualTo("+506123456");
         assertThat(mockDefaultUserDTO.getLocation()).isEqualTo("Costa Rica");
         assertThat(mockDefaultUserDTO.getRole()).isEqualTo(Role.ADMIN);
-        assertThat(mockDefaultUserDTO.getPassword()).isEqualTo(mockPassword);
-        assertThat(mockDefaultUserDTO.getCreatedAt()).isEqualTo(mockCreatedAt);
-        assertThat(mockDefaultUserDTO.getUpdatedAt()).isEqualTo(mockUpdatedAt);
+        assertThat(mockDefaultUserDTO.getPassword().getId()).isEqualTo(mockPassword.getId());
     }
 
     @Test
     void shouldSetAllAttributes() {
-        DefaultUserDTO newDefaultUserDTO = getNewDefaultUserDTO();
+        List<DefaultUserDTO> newDefaultUserDTOList = createMockDefaultUserDTOList(1);
 
-        assertThat(newDefaultUserDTO.getId()).isEqualTo(2L);
-        assertThat(newDefaultUserDTO.getName()).isEqualTo("Jane");
-        assertThat(newDefaultUserDTO.getLastName()).isEqualTo("Smith");
-        assertThat(newDefaultUserDTO.getEmail()).isEqualTo("jane@email.com");
-        assertThat(newDefaultUserDTO.getPhoneNumber()).isEqualTo("+123456789");
-        assertThat(newDefaultUserDTO.getLocation()).isEqualTo("USA");
-        assertThat(newDefaultUserDTO.getRole()).isEqualTo(Role.USER);
-        assertThat(newDefaultUserDTO.getPassword()).isEqualTo(mockPassword);
-        assertThat(newDefaultUserDTO.getCreatedAt()).isEqualTo(mockCreatedAt);
-        assertThat(newDefaultUserDTO.getUpdatedAt()).isEqualTo(mockUpdatedAt);
+        DefaultUserDTO mockDefaultUserDTOSet = new DefaultUserDTO();
+        mockDefaultUserDTOSet.setId(1L);
+        mockDefaultUserDTOSet.setName("Jane");
+        mockDefaultUserDTOSet.setLastName("Smith");
+        mockDefaultUserDTOSet.setEmail("jane1@email.com");
+        mockDefaultUserDTOSet.setPhoneNumber("+123456789");
+        mockDefaultUserDTOSet.setLocation("USA");
+        mockDefaultUserDTOSet.setRole(Role.USER);
+        mockDefaultUserDTOSet.setPassword(mockPassword);
+        mockDefaultUserDTOSet.setCreatedAt(new Date());
+        mockDefaultUserDTOSet.setUpdatedAt(new Date());
+
+        assertThat(newDefaultUserDTOList.get(0).getId()).isEqualTo(mockDefaultUserDTOSet.getId());
+        assertThat(newDefaultUserDTOList.get(0).getName()).isEqualTo(mockDefaultUserDTOSet.getName());
+        assertThat(newDefaultUserDTOList.get(0).getLastName()).isEqualTo(mockDefaultUserDTOSet.getLastName());
+        assertThat(newDefaultUserDTOList.get(0).getEmail()).isEqualTo(mockDefaultUserDTOSet.getEmail());
+        assertThat(newDefaultUserDTOList.get(0).getPhoneNumber()).isEqualTo(mockDefaultUserDTOSet.getPhoneNumber());
+        assertThat(newDefaultUserDTOList.get(0).getLocation()).isEqualTo(mockDefaultUserDTOSet.getLocation());
+        assertThat(newDefaultUserDTOList.get(0).getRole()).isEqualTo(mockDefaultUserDTOSet.getRole());
+        assertThat(newDefaultUserDTOList.get(0).getPassword().getId()).isEqualTo(mockPassword.getId());
     }
 
-    private DefaultUserDTO getNewDefaultUserDTO() {
-        DefaultUserDTO newDefaultUserDTO = new DefaultUserDTO();
-        newDefaultUserDTO.setId(2L);
-        newDefaultUserDTO.setName("Jane");
-        newDefaultUserDTO.setLastName("Smith");
-        newDefaultUserDTO.setEmail("jane@email.com");
-        newDefaultUserDTO.setPhoneNumber("+123456789");
-        newDefaultUserDTO.setLocation("USA");
-        newDefaultUserDTO.setRole(Role.USER);
-        newDefaultUserDTO.setPassword(mockPassword);
-        newDefaultUserDTO.setCreatedAt(mockCreatedAt);
-        newDefaultUserDTO.setUpdatedAt(mockUpdatedAt);
 
-        return newDefaultUserDTO;
-    }
 }

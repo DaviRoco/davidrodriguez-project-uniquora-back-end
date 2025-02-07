@@ -22,24 +22,6 @@ public class DefaultUserDTO {
     public DefaultUserDTO() {
     }
 
-    public DefaultUserDTO(String name, String lastName, String email, String phoneNumber, String location, Role role, DefaultPasswordDTO password, Date createdAt, Date updatedAt) {
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.location = location;
-        this.role = role;
-        this.password = password;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    public DefaultUserDTO(Long id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
-
     public DefaultUserDTO(Long id, String name, String lastName, String email, String phoneNumber, String location, Role role, DefaultPasswordDTO password, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;

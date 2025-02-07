@@ -14,6 +14,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockPasswordDTO;
+import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockPasswordEntity;
+import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTO;
+
+import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.createMockDefaultUserEntityList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -39,21 +44,31 @@ public class GetAllUsersServiceTest {
 
     @Test
     void shouldReturnAllUsers() {
-        List<DefaultUserEntity> mockDefaultUserEntities = new ArrayList<>();
-        mockDefaultUserEntities.add(new DefaultUserEntity(1L, "John Doe", "john@example.com"));
-        mockDefaultUserEntities.add(new DefaultUserEntity(2L, "Jane Doe", "jane@example.com"));
-        mockDefaultUserEntities.add(new DefaultUserEntity(3L, "Jack Doe", "jack@example.com"));
+        List<DefaultUserEntity> mockDefaultUserEntities = createMockDefaultUserEntityList(3);
 
-        when(modelMapper.map(any(DefaultUserEntity.class), eq(DefaultUserDTO.class))).thenAnswer(invocation -> {
-            DefaultUserEntity defaultUserEntity = invocation.getArgument(0);
-            return new DefaultUserDTO(defaultUserEntity.getId(), defaultUserEntity.getName(), defaultUserEntity.getEmail());
-        });
         when(defaultUserRepository.findAll()).thenReturn(mockDefaultUserEntities);
+        when(modelMapper.map(any(DefaultUserEntity.class), eq(DefaultUserDTO.class)))
+                .thenAnswer(invocation -> {
+                    DefaultUserEntity entity = invocation.getArgument(0);
+                    return new DefaultUserDTO(
+                            entity.getId(),
+                            entity.getName(),
+                            entity.getLastName(),
+                            entity.getEmail(),
+                            entity.getPhoneNumber(),
+                            entity.getLocation(),
+                            entity.getRole(),
+                            createMockPasswordDTO(),
+                            entity.getUpdatedAt(),
+                            entity.getCreatedAt()
+                    );
+                });
+
         List<DefaultUserDTO> defaultUserDTOList = getAllUsersService.getAllUsers();
 
         assertEquals(mockDefaultUserEntities.size(), defaultUserDTOList.size());
-        assertThat(defaultUserDTOList).isNotEmpty();
-        assertThat(defaultUserDTOList).isNotNull()
+        assertThat(defaultUserDTOList)
+                .isNotEmpty()
                 .extracting(DefaultUserDTO::getId)
                 .containsExactly(1L, 2L, 3L);
     }

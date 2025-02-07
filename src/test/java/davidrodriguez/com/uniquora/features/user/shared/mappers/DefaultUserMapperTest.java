@@ -1,6 +1,5 @@
 package davidrodriguez.com.uniquora.features.user.shared.mappers;
 
-import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
 import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
 import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.features.security.shared.mappers.DefaultPasswordMapper;
@@ -11,25 +10,23 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
+import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTO;
+import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.createMockDefaultUserEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultUserMapperTest {
     private DefaultUserMapper mockDefaultUserMapper;
-    private Date mockCreatedAt;
-    private Date mockUpdatedAt;
 
     @BeforeEach
     void setUp() {
-        mockCreatedAt = new Date();
-        mockUpdatedAt = new Date();
         DefaultPasswordMapper mockDefaultPasswordMapper = new DefaultPasswordMapper();
         mockDefaultUserMapper = new DefaultUserMapper(mockDefaultPasswordMapper);
     }
 
     @Test
     void shouldMapUserToUserDTO() {
-        DefaultPasswordEntity mockDefaultPasswordEntity = new DefaultPasswordEntity(1L, "test");
-        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity( "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockDefaultPasswordEntity, mockCreatedAt, mockUpdatedAt);
+
+        DefaultUserEntity mockDefaultUserEntity = createMockDefaultUserEntity();
 
         DefaultUserDTO mockDefaultUserDTOMapped = mockDefaultUserMapper.toUserDTO(mockDefaultUserEntity);
 
@@ -41,6 +38,7 @@ public class DefaultUserMapperTest {
         assertThat(mockDefaultUserDTOMapped.getEmail()).isEqualTo(mockDefaultUserEntity.getEmail());
         assertThat(mockDefaultUserDTOMapped.getPhoneNumber()).isEqualTo(mockDefaultUserEntity.getPhoneNumber());
         assertThat(mockDefaultUserDTOMapped.getLocation()).isEqualTo(mockDefaultUserEntity.getLocation());
+        assertThat(mockDefaultUserDTOMapped.getPassword().getPassword()).isEqualTo(mockDefaultUserEntity.getPassword().getPassword());
     }
 
     @Test
@@ -52,8 +50,7 @@ public class DefaultUserMapperTest {
 
     @Test
     void shouldMapUserDTOToUser() {
-        DefaultPasswordDTO mockDefaultPasswordDTO = new DefaultPasswordDTO(1L, "test");
-        DefaultUserDTO mockDefaultUserDTO = new DefaultUserDTO("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockDefaultPasswordDTO, mockCreatedAt, mockUpdatedAt);
+        DefaultUserDTO mockDefaultUserDTO = createMockDefaultUserDTO();
 
         DefaultUserEntity mockDefaultUserEntityMapped = mockDefaultUserMapper.toUser(mockDefaultUserDTO);
 

@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTO;
+import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.createMockDefaultUserEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -38,12 +40,9 @@ public class GetUserByEmailServiceTest {
 
     @Test
     void shouldReturnUserByEmailWhenUserExists() {
-        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity(1L, "John Doe", "john@example.com");
+        DefaultUserEntity mockDefaultUserEntity = createMockDefaultUserEntity();
 
-        when(modelMapper.map(any(DefaultUserEntity.class), eq(DefaultUserDTO.class))).thenAnswer(invocation -> {
-            DefaultUserEntity defaultUserEntity = invocation.getArgument(0);
-            return new DefaultUserDTO(defaultUserEntity.getId(), defaultUserEntity.getName(), defaultUserEntity.getEmail());
-        });
+        when(modelMapper.map(any(DefaultUserEntity.class), eq(DefaultUserDTO.class))).thenAnswer(invocation -> createMockDefaultUserDTO());
         when(getUserByEmailRepository.findByEmail(mockDefaultUserEntity.getEmail())).thenReturn(Optional.of(mockDefaultUserEntity));
         DefaultUserDTO defaultUserDTO = getUserByEmailService.getUserByEmail(mockDefaultUserEntity.getEmail());
 
