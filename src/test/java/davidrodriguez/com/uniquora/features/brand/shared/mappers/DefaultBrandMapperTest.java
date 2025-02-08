@@ -4,6 +4,7 @@ import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
 import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEntity;
 import davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO;
 import davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandEntity;
+import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,8 +36,8 @@ public class DefaultBrandMapperTest {
                 .isEqualTo(mockDefaultBrandEntity.getId());
         assertThat(mockDefaultBrandDTOMapped.getName()).isEqualTo(mockDefaultBrandEntity.getName());
         assertThat(mockDefaultBrandDTOMapped.getLogo()).isEqualTo(mockDefaultBrandEntity.getLogo());
-        assertThat(mockDefaultBrandDTOMapped.getCreatedAt()).isEqualTo(mockDefaultBrandEntity.getCreatedAt());
-        assertThat(mockDefaultBrandDTOMapped.getUpdatedAt()).isEqualTo(mockDefaultBrandEntity.getUpdatedAt());
+        assertThat(mockDefaultBrandDTOMapped.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(mockDefaultBrandDTOMapped.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
     @Test
@@ -57,7 +58,7 @@ public class DefaultBrandMapperTest {
                 .isEqualTo(mockDefaultBrandDTO.getId());
         assertThat(mockDefaultBrandEntityMapped.getName()).isEqualTo(mockDefaultBrandDTO.getName());
         assertThat(mockDefaultBrandEntityMapped.getLogo()).isEqualTo(mockDefaultBrandDTO.getLogo());
-        assertThat(mockDefaultBrandEntityMapped.getCreatedAt()).isEqualTo(mockDefaultBrandDTO.getCreatedAt());
-        assertThat(mockDefaultBrandEntityMapped.getUpdatedAt()).isEqualTo(mockDefaultBrandDTO.getUpdatedAt());
+        assertThat(mockDefaultBrandEntityMapped.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(mockDefaultBrandEntityMapped.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 }

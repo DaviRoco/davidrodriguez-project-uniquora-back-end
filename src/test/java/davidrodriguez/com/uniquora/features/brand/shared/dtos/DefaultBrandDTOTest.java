@@ -1,21 +1,19 @@
 package davidrodriguez.com.uniquora.features.brand.shared.dtos;
 
+import davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTOList;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
+import static davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO.getMockDefaultBrandDTO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultBrandDTOTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultBrandDTO mockDefaultBrandDTO = new DefaultBrandDTO(
-                1L,
-                "Test Brand",
-                "testLogoURL.com",
-                MockDates.getCreatedAt(),
-                MockDates.getUpdatedAt()
-        );
+        DefaultBrandDTO mockDefaultBrandDTO = getMockDefaultBrandDTO();
 
         assertThat(mockDefaultBrandDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultBrandDTO.getName()).isEqualTo("Test Brand");
@@ -26,23 +24,20 @@ public class DefaultBrandDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        DefaultBrandDTO newDefaultBrandDTO = getNewDefaultBrandDTO();
+        List<DefaultBrandDTO> newDefaultBrandDTO = new MockBrandDTOList().createMockDefaultBrandDTOList(1);
 
-        assertThat(newDefaultBrandDTO.getId()).isEqualTo(2L);
-        assertThat(newDefaultBrandDTO.getName()).isEqualTo("Test Brand 2");
-        assertThat(newDefaultBrandDTO.getLogo()).isEqualTo("testLogoURL.com");
-        assertThat(newDefaultBrandDTO.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
-        assertThat(newDefaultBrandDTO.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
+        DefaultBrandDTO mockDefaultBrandDTOSet = new DefaultBrandDTO();
+        mockDefaultBrandDTOSet.setId(1L);
+        mockDefaultBrandDTOSet.setName("Test Brand");
+        mockDefaultBrandDTOSet.setLogo("testLogoURL.com");
+        mockDefaultBrandDTOSet.setCreatedAt(MockDates.getCreatedAt());
+        mockDefaultBrandDTOSet.setUpdatedAt(MockDates.getUpdatedAt());
+
+        assertThat(newDefaultBrandDTO.get(0).getId()).isEqualTo(mockDefaultBrandDTOSet.getId());
+        assertThat(newDefaultBrandDTO.get(0).getName()).isEqualTo(mockDefaultBrandDTOSet.getName());
+        assertThat(newDefaultBrandDTO.get(0).getLogo()).isEqualTo(mockDefaultBrandDTOSet.getLogo());
+        assertThat(newDefaultBrandDTO.get(0).getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(newDefaultBrandDTO.get(0).getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
-    private DefaultBrandDTO getNewDefaultBrandDTO() {
-        DefaultBrandDTO newDefaultBrandDTO = new DefaultBrandDTO();
-        newDefaultBrandDTO.setId(2L);
-        newDefaultBrandDTO.setName("Test Brand 2");
-        newDefaultBrandDTO.setLogo("testLogoURL.com");
-        newDefaultBrandDTO.setCreatedAt(MockDates.getCreatedAt());
-        newDefaultBrandDTO.setUpdatedAt(MockDates.getUpdatedAt());
-
-        return newDefaultBrandDTO;
-    }
 }

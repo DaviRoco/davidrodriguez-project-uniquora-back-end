@@ -1,14 +1,13 @@
 package davidrodriguez.com.uniquora.features.security.entities;
 
 import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
-import davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity;
 import davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntityList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockDefaultPasswordEntity;
+import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.getMockDefaultPasswordEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultPasswordEntityTest {
@@ -19,7 +18,7 @@ public class DefaultPasswordEntityTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultPasswordEntity mockDefaultPasswordEntity = createMockDefaultPasswordEntity();
+        DefaultPasswordEntity mockDefaultPasswordEntity = getMockDefaultPasswordEntity();
 
         assertThat(mockDefaultPasswordEntity.getId()).isEqualTo(1L);
         assertThat(mockDefaultPasswordEntity.getPassword()).isEqualTo("Test Password");

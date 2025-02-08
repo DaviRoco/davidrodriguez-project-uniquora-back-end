@@ -12,10 +12,6 @@ public class DefaultProductImageDTO {
         this.imageUrl = imageUrl;
     }
 
-    public DefaultProductImageDTO(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public Long getId() {
         return id;
     }

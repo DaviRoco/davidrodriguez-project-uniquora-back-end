@@ -4,7 +4,7 @@ import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockDefaultPasswordEntity;
+import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.getMockDefaultPasswordEntity;
 
 public class MockUserEntity {
     private static DefaultUserEntity instance;
@@ -23,7 +23,7 @@ public class MockUserEntity {
                     "+506123456",
                     "Costa Rica",
                     Role.ADMIN,
-                    createMockDefaultPasswordEntity(),
+                    getMockDefaultPasswordEntity(),
                     MockDates.getCreatedAt(),
                     MockDates.getUpdatedAt()
             );

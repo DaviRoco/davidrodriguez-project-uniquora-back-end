@@ -7,7 +7,7 @@ import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import java.util.ArrayList;
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockDefaultPasswordEntity;
+import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.getMockDefaultPasswordEntity;
 
 public class MockUserEntityList {
 
@@ -23,7 +23,7 @@ public class MockUserEntityList {
                     "+123456789",
                     "USA",
                     Role.USER,
-                    createMockDefaultPasswordEntity(),
+                    getMockDefaultPasswordEntity(),
                     MockDates.getCreatedAt(),
                     MockDates.getUpdatedAt()
             ));

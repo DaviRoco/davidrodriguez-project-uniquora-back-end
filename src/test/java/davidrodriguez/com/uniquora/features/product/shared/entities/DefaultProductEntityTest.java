@@ -2,9 +2,12 @@ package davidrodriguez.com.uniquora.features.product.shared.entities;
 
 import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEntity;
 import davidrodriguez.com.uniquora.features.product_image.shared.entities.DefaultProductImageEntity;
+import davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandEntity;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.product.entities.MockProductEntity;
 import davidrodriguez.com.uniquora.mockEntities.product.entities.MockProductEntityList;
+import davidrodriguez.com.uniquora.mockEntities.product_image.entities.MockProductImageEntity;
+import davidrodriguez.com.uniquora.mockEntities.product_image.entities.MockProductImageEntityList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +17,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultProductEntityTest {
+    //TODO: FIX
     private DefaultProductEntity mockDefaultProductEntity;
     private DefaultBrandEntity mockBrand;
     private DefaultProductImageEntity mockProductImage;
@@ -21,18 +25,11 @@ public class DefaultProductEntityTest {
 
     @BeforeEach
     public void setUp() {
-        mockBrand  = new DefaultBrandEntity(
-                1L,
-                "Test Brand",
-                "testLogoURL.com",
-                MockDates.getCreatedAt(),
-                MockDates.getUpdatedAt()
-        );
+        mockBrand  = MockBrandEntity.getMockDefaultBrandEntity();
 
-        mockProductImage = new DefaultProductImageEntity(1L, "testImageURL");
+        mockProductImage = MockProductImageEntity.getMockDefaultProductImageEntity();
 
-        mockProductImages = new ArrayList<>();
-        mockProductImages.add(mockProductImage);
+        mockProductImages = new MockProductImageEntityList().createMockDefaultProductImageEntityList(1);
 
         mockDefaultProductEntity = new DefaultProductEntity(
                 1L,

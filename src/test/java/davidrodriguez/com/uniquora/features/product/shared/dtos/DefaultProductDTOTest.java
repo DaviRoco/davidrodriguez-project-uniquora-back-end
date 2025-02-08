@@ -5,12 +5,14 @@ import davidrodriguez.com.uniquora.features.product_image.shared.dtos.DefaultPro
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTO;
 import davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTOList;
+import davidrodriguez.com.uniquora.mockEntities.product_image.dtos.MockProductImageDTOList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO.getMockDefaultBrandDTO;
 import static davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTO.getMockDefaultProductDTO;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,16 +22,8 @@ public class DefaultProductDTOTest {
 
     @BeforeEach
     public void setUp() {
-        mockBrand = new DefaultBrandDTO(
-                1L,
-                "Test Brand",
-                "testLogoURL.com",
-                MockDates.getCreatedAt(),
-                MockDates.getUpdatedAt()
-        );
-        mockProductImages = new ArrayList<>();
-        mockProductImages.add(new DefaultProductImageDTO(1L, "testImageURL.com"));
-        mockProductImages.add(new DefaultProductImageDTO(2L, "testImageURL.com"));
+        mockBrand = getMockDefaultBrandDTO();
+        mockProductImages = new MockProductImageDTOList().createMockDefaultProductImageDTOList(2);
     }
 
     @Test

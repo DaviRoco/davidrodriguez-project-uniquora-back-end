@@ -3,7 +3,6 @@ package davidrodriguez.com.uniquora.features.user.shared.entities;
 import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
 import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
-import davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity;
 import davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntityList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Date;
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockDefaultPasswordEntity;
+import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.getMockDefaultPasswordEntity;
 import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.getMockDefaultUserEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,7 +19,7 @@ public class DefaultUserEntityTest {
 
     @BeforeEach
     public void setUp() {
-        mockPassword = createMockDefaultPasswordEntity();
+        mockPassword = getMockDefaultPasswordEntity();
     }
 
     @Test
