@@ -3,6 +3,7 @@ package davidrodriguez.com.uniquora.features.user.get_all_users.services;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
 import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.features.user.shared.repositories.DefaultUserRepository;
+import davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,14 +12,10 @@ import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockPasswordDTO;
-import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockPasswordEntity;
-import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTO;
+import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockDefaultPasswordDTO;
 
-import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.createMockDefaultUserEntityList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -44,7 +41,7 @@ public class GetAllUsersServiceTest {
 
     @Test
     void shouldReturnAllUsers() {
-        List<DefaultUserEntity> mockDefaultUserEntities = createMockDefaultUserEntityList(3);
+        List<DefaultUserEntity> mockDefaultUserEntities = new MockUserEntity().createMockDefaultUserEntityList(3);
 
         when(defaultUserRepository.findAll()).thenReturn(mockDefaultUserEntities);
         when(modelMapper.map(any(DefaultUserEntity.class), eq(DefaultUserDTO.class)))
@@ -58,7 +55,7 @@ public class GetAllUsersServiceTest {
                             entity.getPhoneNumber(),
                             entity.getLocation(),
                             entity.getRole(),
-                            createMockPasswordDTO(),
+                            createMockDefaultPasswordDTO(),
                             entity.getUpdatedAt(),
                             entity.getCreatedAt()
                     );

@@ -1,5 +1,6 @@
 package davidrodriguez.com.uniquora.features.brand.shared.dtos;
 
+import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,15 +24,15 @@ public class DefaultBrandDTOTest {
                 1L,
                 "Test Brand",
                 "testLogoURL.com",
-                mockCreatedAt,
-                mockUpdatedAt
+                MockDates.getCreatedAt(),
+                MockDates.getUpdatedAt()
         );
 
         assertThat(mockDefaultBrandDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultBrandDTO.getName()).isEqualTo("Test Brand");
         assertThat(mockDefaultBrandDTO.getLogo()).isEqualTo("testLogoURL.com");
-        assertThat(mockDefaultBrandDTO.getCreatedAt()).isEqualTo(mockCreatedAt);
-        assertThat(mockDefaultBrandDTO.getUpdatedAt()).isEqualTo(mockUpdatedAt);
+        assertThat(mockDefaultBrandDTO.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(mockDefaultBrandDTO.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
     @Test
@@ -41,8 +42,8 @@ public class DefaultBrandDTOTest {
         assertThat(newDefaultBrandDTO.getId()).isEqualTo(2L);
         assertThat(newDefaultBrandDTO.getName()).isEqualTo("Test Brand 2");
         assertThat(newDefaultBrandDTO.getLogo()).isEqualTo("testLogoURL.com");
-        assertThat(newDefaultBrandDTO.getCreatedAt()).isEqualTo(mockCreatedAt);
-        assertThat(newDefaultBrandDTO.getUpdatedAt()).isEqualTo(mockUpdatedAt);
+        assertThat(newDefaultBrandDTO.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(newDefaultBrandDTO.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
     private DefaultBrandDTO getNewDefaultBrandDTO() {
@@ -50,8 +51,8 @@ public class DefaultBrandDTOTest {
         newDefaultBrandDTO.setId(2L);
         newDefaultBrandDTO.setName("Test Brand 2");
         newDefaultBrandDTO.setLogo("testLogoURL.com");
-        newDefaultBrandDTO.setCreatedAt(mockCreatedAt);
-        newDefaultBrandDTO.setUpdatedAt(mockUpdatedAt);
+        newDefaultBrandDTO.setCreatedAt(MockDates.getCreatedAt());
+        newDefaultBrandDTO.setUpdatedAt(MockDates.getUpdatedAt());
 
         return newDefaultBrandDTO;
     }

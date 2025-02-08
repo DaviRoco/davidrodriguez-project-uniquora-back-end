@@ -2,16 +2,16 @@ package davidrodriguez.com.uniquora.features.user.shared.entities;
 
 import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
 import davidrodriguez.com.uniquora.enumeration.Role;
-import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
+import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
+import davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockPasswordEntity;
+import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockDefaultPasswordEntity;
 import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.createMockDefaultUserEntity;
-import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.createMockDefaultUserEntityList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultUserEntityTest {
@@ -19,7 +19,7 @@ public class DefaultUserEntityTest {
 
     @BeforeEach
     public void setUp() {
-        mockPassword = createMockPasswordEntity();
+        mockPassword = createMockDefaultPasswordEntity();
     }
 
     @Test
@@ -34,11 +34,13 @@ public class DefaultUserEntityTest {
         assertThat(defaultUserEntity.getLocation()).isEqualTo("Costa Rica");
         assertThat(defaultUserEntity.getRole()).isEqualTo(Role.ADMIN);
         assertThat(defaultUserEntity.getPassword().getId()).isEqualTo(mockPassword.getId());
+        assertThat(defaultUserEntity.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(defaultUserEntity.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultUserEntity> newDefaultUserEntityList = createMockDefaultUserEntityList(1);
+        List<DefaultUserEntity> newDefaultUserEntityList = new MockUserEntity().createMockDefaultUserEntityList(1);
 
         DefaultUserEntity mockDefaultUserEntitySet = new DefaultUserEntity();
         mockDefaultUserEntitySet.setId(1L);
@@ -60,5 +62,7 @@ public class DefaultUserEntityTest {
         assertThat(newDefaultUserEntityList.get(0).getLocation()).isEqualTo("USA");
         assertThat(newDefaultUserEntityList.get(0).getRole()).isEqualTo(Role.USER);
         assertThat(newDefaultUserEntityList.get(0).getPassword().getId()).isEqualTo(mockPassword.getId());
+        assertThat(newDefaultUserEntityList.get(0).getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(newDefaultUserEntityList.get(0).getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 }

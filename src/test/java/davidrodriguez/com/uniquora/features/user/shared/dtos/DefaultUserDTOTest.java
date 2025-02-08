@@ -2,15 +2,17 @@ package davidrodriguez.com.uniquora.features.user.shared.dtos;
 
 import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
+import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
+import davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockPasswordDTO;
+import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockDefaultPasswordDTO;
 import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTO;
-import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTOList;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultUserDTOTest {
@@ -18,7 +20,7 @@ public class DefaultUserDTOTest {
 
     @BeforeEach
     public void setUp() {
-        mockPassword = createMockPasswordDTO();
+        mockPassword = createMockDefaultPasswordDTO();
     }
 
     @Test
@@ -33,11 +35,13 @@ public class DefaultUserDTOTest {
         assertThat(mockDefaultUserDTO.getLocation()).isEqualTo("Costa Rica");
         assertThat(mockDefaultUserDTO.getRole()).isEqualTo(Role.ADMIN);
         assertThat(mockDefaultUserDTO.getPassword().getId()).isEqualTo(mockPassword.getId());
+        assertThat(mockDefaultUserDTO.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(mockDefaultUserDTO.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultUserDTO> newDefaultUserDTOList = createMockDefaultUserDTOList(1);
+        List<DefaultUserDTO> newDefaultUserDTOList = new MockUserDTO().createMockDefaultUserDTOList(1);
 
         DefaultUserDTO mockDefaultUserDTOSet = new DefaultUserDTO();
         mockDefaultUserDTOSet.setId(1L);
@@ -59,6 +63,8 @@ public class DefaultUserDTOTest {
         assertThat(newDefaultUserDTOList.get(0).getLocation()).isEqualTo(mockDefaultUserDTOSet.getLocation());
         assertThat(newDefaultUserDTOList.get(0).getRole()).isEqualTo(mockDefaultUserDTOSet.getRole());
         assertThat(newDefaultUserDTOList.get(0).getPassword().getId()).isEqualTo(mockPassword.getId());
+        assertThat(newDefaultUserDTOList.get(0).getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(newDefaultUserDTOList.get(0).getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
 

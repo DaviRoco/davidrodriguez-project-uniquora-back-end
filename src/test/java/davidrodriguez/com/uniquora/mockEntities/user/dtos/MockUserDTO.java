@@ -2,12 +2,13 @@ package davidrodriguez.com.uniquora.mockEntities.user.dtos;
 
 import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
+import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockPasswordDTO;
+import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockDefaultPasswordDTO;
 
 public class MockUserDTO {
 
@@ -20,13 +21,13 @@ public class MockUserDTO {
                 "+506123456",
                 "Costa Rica",
                 Role.ADMIN,
-                createMockPasswordDTO(),
-                new Date(),
-                new Date()
+                createMockDefaultPasswordDTO(),
+                MockDates.getCreatedAt(),
+                MockDates.getUpdatedAt()
         );
     }
 
-    public static List<DefaultUserDTO> createMockDefaultUserDTOList(int count) {
+    public List<DefaultUserDTO> createMockDefaultUserDTOList(int count) {
         List<DefaultUserDTO> userList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
@@ -38,9 +39,9 @@ public class MockUserDTO {
                     "+123456789",
                     "USA",
                     Role.USER,
-                    createMockPasswordDTO(),
-                    new Date(),
-                    new Date()
+                    createMockDefaultPasswordDTO(),
+                    MockDates.getCreatedAt(),
+                    MockDates.getUpdatedAt()
             ));
         }
 

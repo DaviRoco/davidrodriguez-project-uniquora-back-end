@@ -2,11 +2,13 @@ package davidrodriguez.com.uniquora.features.product.shared.entities;
 
 import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEntity;
 import davidrodriguez.com.uniquora.features.product_image.shared.entities.DefaultProductImageEntity;
+import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
+import davidrodriguez.com.uniquora.mockEntities.product.entities.MockProductEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,8 +17,6 @@ public class DefaultProductEntityTest {
     private DefaultBrandEntity mockBrand;
     private DefaultProductImageEntity mockProductImage;
     private ArrayList<DefaultProductImageEntity> mockProductImages;
-    private Date mockCreatedAt;
-    private Date mockUpdatedAt;
 
     @BeforeEach
     public void setUp() {
@@ -24,12 +24,11 @@ public class DefaultProductEntityTest {
                 1L,
                 "Test Brand",
                 "testLogoURL.com",
-                mockCreatedAt,
-                mockUpdatedAt
+                MockDates.getCreatedAt(),
+                MockDates.getUpdatedAt()
         );
+
         mockProductImage = new DefaultProductImageEntity(1L, "testImageURL");
-        mockCreatedAt = new Date();
-        mockUpdatedAt = new Date();
 
         mockProductImages = new ArrayList<>();
         mockProductImages.add(mockProductImage);
@@ -42,8 +41,8 @@ public class DefaultProductEntityTest {
                 2,
                 mockBrand,
                 mockProductImages,
-                mockCreatedAt,
-                mockUpdatedAt
+                MockDates.getCreatedAt(),
+                MockDates.getUpdatedAt()
         );
     }
 
@@ -54,38 +53,37 @@ public class DefaultProductEntityTest {
         assertThat(mockDefaultProductEntity.getDescription()).isEqualTo("Test Product Description");
         assertThat(mockDefaultProductEntity.getPrice()).isEqualTo(100.0);
         assertThat(mockDefaultProductEntity.getStockQuantity()).isEqualTo(2);
-        assertThat(mockDefaultProductEntity.getBrand()).isEqualTo(mockBrand);
-        assertThat(mockDefaultProductEntity.getProductImages().get(0)).isEqualTo(mockProductImage);
-        assertThat(mockDefaultProductEntity.getCreatedAt()).isEqualTo(mockCreatedAt);
-        assertThat(mockDefaultProductEntity.getUpdatedAt()).isEqualTo(mockUpdatedAt);
+        assertThat(mockDefaultProductEntity.getBrand().getId()).isEqualTo(mockBrand.getId());
+        assertThat(mockDefaultProductEntity.getProductImages().get(0).getId()).isEqualTo(mockProductImage.getId());
+        assertThat(mockDefaultProductEntity.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(mockDefaultProductEntity.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
     @Test
     void shouldSetAllAttributes() {
-        DefaultProductEntity mockDefaultProductEntity = getNewDefaultProductEntity();
+        List<DefaultProductEntity> mockDefaultProductEntity = new MockProductEntity().createMockDefaultProductDTOList(1);
 
-        assertThat(mockDefaultProductEntity.getId()).isEqualTo(2L);
-        assertThat(mockDefaultProductEntity.getName()).isEqualTo("Test Product Name 2");
-        assertThat(mockDefaultProductEntity.getDescription()).isEqualTo("Test Product Description");
-        assertThat(mockDefaultProductEntity.getPrice()).isEqualTo(100.0);
-        assertThat(mockDefaultProductEntity.getStockQuantity()).isEqualTo(2);
-        assertThat(mockDefaultProductEntity.getBrand()).isEqualTo(mockBrand);
-        assertThat(mockDefaultProductEntity.getProductImages().get(0)).isEqualTo(mockProductImage);
-        assertThat(mockDefaultProductEntity.getCreatedAt()).isEqualTo(mockCreatedAt);
-        assertThat(mockDefaultProductEntity.getUpdatedAt()).isEqualTo(mockUpdatedAt);
+        DefaultProductEntity mockDefaultProductEntitySet = new DefaultProductEntity();
+        mockDefaultProductEntitySet.setId(1L);
+        mockDefaultProductEntitySet.setName("Test Product 1");
+        mockDefaultProductEntitySet.setDescription("Test Product Description 1");
+        mockDefaultProductEntitySet.setPrice(100.0);
+        mockDefaultProductEntitySet.setStockQuantity(2);
+        mockDefaultProductEntitySet.setBrand(mockBrand);
+        mockDefaultProductEntitySet.setProductImages(mockProductImages);
+        mockDefaultProductEntitySet.setCreatedAt(MockDates.getCreatedAt());
+        mockDefaultProductEntitySet.setUpdatedAt(MockDates.getUpdatedAt());
+
+
+        assertThat(mockDefaultProductEntity.get(0).getId()).isEqualTo(mockDefaultProductEntitySet.getId());
+        assertThat(mockDefaultProductEntity.get(0).getName()).isEqualTo(mockDefaultProductEntitySet.getName());
+        assertThat(mockDefaultProductEntity.get(0).getDescription()).isEqualTo(mockDefaultProductEntitySet.getDescription());
+        assertThat(mockDefaultProductEntity.get(0).getPrice()).isEqualTo(mockDefaultProductEntitySet.getPrice());
+        assertThat(mockDefaultProductEntity.get(0).getStockQuantity()).isEqualTo(mockDefaultProductEntitySet.getStockQuantity());
+        assertThat(mockDefaultProductEntity.get(0).getBrand().getId()).isEqualTo(mockBrand.getId());
+        assertThat(mockDefaultProductEntity.get(0).getProductImages().get(0).getId()).isEqualTo(mockProductImage.getId());
+        assertThat(mockDefaultProductEntity.get(0).getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(mockDefaultProductEntity.get(0).getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
-    private DefaultProductEntity getNewDefaultProductEntity() {
-        DefaultProductEntity mockDefaultProductEntity = new DefaultProductEntity();
-        mockDefaultProductEntity.setId(2L);
-        mockDefaultProductEntity.setName("Test Product Name 2");
-        mockDefaultProductEntity.setDescription("Test Product Description");
-        mockDefaultProductEntity.setPrice(100.0);
-        mockDefaultProductEntity.setStockQuantity(2);
-        mockDefaultProductEntity.setBrand(mockBrand);
-        mockDefaultProductEntity.setProductImages(mockProductImages);
-        mockDefaultProductEntity.setCreatedAt(mockCreatedAt);
-        mockDefaultProductEntity.setUpdatedAt(mockUpdatedAt);
-        return mockDefaultProductEntity;
-    }
 }

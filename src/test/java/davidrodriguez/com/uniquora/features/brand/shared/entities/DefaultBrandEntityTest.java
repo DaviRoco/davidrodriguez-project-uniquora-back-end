@@ -1,10 +1,12 @@
 package davidrodriguez.com.uniquora.features.brand.shared.entities;
 
-import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
+import davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandEntity;
+import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,6 +30,8 @@ public class DefaultBrandEntityTest {
 
     @Test
     void shouldGetAllAttributes() {
+        DefaultBrandEntity mockDefaultBrandEntity = createMockDefaultBrandEntity();
+
         assertThat(mockDefaultBrandEntity.getId()).isEqualTo(1L);
         assertThat(mockDefaultBrandEntity.getName()).isEqualTo("Test Brand");
         assertThat(mockDefaultBrandEntity.getLogo()).isEqualTo("testLogoURL.com");
@@ -37,23 +41,20 @@ public class DefaultBrandEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        DefaultBrandEntity newDefaultBrandEntity = getNewDefaultBrandEntity();
+        List<DefaultBrandEntity> newDefaultBrandEntity = new MockBrandEntity().createMockDefaultBrandEntityList(1);
 
-        assertThat(newDefaultBrandEntity.getId()).isEqualTo(2L);
-        assertThat(newDefaultBrandEntity.getName()).isEqualTo("Test Brand 2");
-        assertThat(newDefaultBrandEntity.getLogo()).isEqualTo("testLogoURL.com");
-        assertThat(newDefaultBrandEntity.getCreatedAt()).isEqualTo(mockCreatedAt);
-        assertThat(newDefaultBrandEntity.getUpdatedAt()).isEqualTo(mockUpdatedAt);
+        DefaultBrandEntity mockDefaultBrandEntitySet = new DefaultBrandEntity();
+        mockDefaultBrandEntitySet.setId(1L);
+        mockDefaultBrandEntitySet.setName("Test Brand 1");
+        mockDefaultBrandEntitySet.setLogo("testLogoURL.com");
+        mockDefaultBrandEntitySet.setCreatedAt(MockDates.getCreatedAt());
+        mockDefaultBrandEntitySet.setUpdatedAt(MockDates.getUpdatedAt());
+
+        assertThat(newDefaultBrandEntity.get(0).getId()).isEqualTo(mockDefaultBrandEntitySet.getId());
+        assertThat(newDefaultBrandEntity.get(0).getName()).isEqualTo(mockDefaultBrandEntitySet.getName());
+        assertThat(newDefaultBrandEntity.get(0).getLogo()).isEqualTo(mockDefaultBrandEntitySet.getLogo());
+        assertThat(newDefaultBrandEntity.get(0).getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(newDefaultBrandEntity.get(0).getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
-    private DefaultBrandEntity getNewDefaultBrandEntity() {
-        DefaultBrandEntity newDefaultBrandEntity = new DefaultBrandEntity();
-        newDefaultBrandEntity.setId(2L);
-        newDefaultBrandEntity.setName("Test Brand 2");
-        newDefaultBrandEntity.setLogo("testLogoURL.com");
-        newDefaultBrandEntity.setCreatedAt(mockCreatedAt);
-        newDefaultBrandEntity.setUpdatedAt(mockUpdatedAt);
-
-        return newDefaultBrandEntity;
-    }
 }

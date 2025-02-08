@@ -1,14 +1,11 @@
 package davidrodriguez.com.uniquora.features.user.shared.mappers;
 
-import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
-import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.features.security.shared.mappers.DefaultPasswordMapper;
 import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
+import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Date;
 
 import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTO;
 import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.createMockDefaultUserEntity;
@@ -39,6 +36,8 @@ public class DefaultUserMapperTest {
         assertThat(mockDefaultUserDTOMapped.getPhoneNumber()).isEqualTo(mockDefaultUserEntity.getPhoneNumber());
         assertThat(mockDefaultUserDTOMapped.getLocation()).isEqualTo(mockDefaultUserEntity.getLocation());
         assertThat(mockDefaultUserDTOMapped.getPassword().getPassword()).isEqualTo(mockDefaultUserEntity.getPassword().getPassword());
+        assertThat(mockDefaultUserDTOMapped.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(mockDefaultUserDTOMapped.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
     @Test
@@ -62,6 +61,9 @@ public class DefaultUserMapperTest {
         assertThat(mockDefaultUserEntityMapped.getEmail()).isEqualTo(mockDefaultUserDTO.getEmail());
         assertThat(mockDefaultUserEntityMapped.getPhoneNumber()).isEqualTo(mockDefaultUserDTO.getPhoneNumber());
         assertThat(mockDefaultUserEntityMapped.getLocation()).isEqualTo(mockDefaultUserDTO.getLocation());
+        assertThat(mockDefaultUserEntityMapped.getPassword().getId()).isEqualTo(mockDefaultUserDTO.getPassword().getId());
+        assertThat(mockDefaultUserEntityMapped.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
+        assertThat(mockDefaultUserEntityMapped.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
     @Test

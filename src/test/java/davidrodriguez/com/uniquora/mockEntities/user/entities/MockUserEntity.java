@@ -2,12 +2,12 @@ package davidrodriguez.com.uniquora.mockEntities.user.entities;
 
 import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
+import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockPasswordEntity;
+import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockDefaultPasswordEntity;
 
 public class MockUserEntity {
     public static DefaultUserEntity createMockDefaultUserEntity() {
@@ -19,13 +19,13 @@ public class MockUserEntity {
                 "+506123456",
                 "Costa Rica",
                 Role.ADMIN,
-                createMockPasswordEntity(),
-                new Date(),
-                new Date()
+                createMockDefaultPasswordEntity(),
+                MockDates.getCreatedAt(),
+                MockDates.getUpdatedAt()
         );
     }
 
-    public static List<DefaultUserEntity> createMockDefaultUserEntityList(int count) {
+    public List<DefaultUserEntity> createMockDefaultUserEntityList(int count) {
         List<DefaultUserEntity> userList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
@@ -37,9 +37,9 @@ public class MockUserEntity {
                     "+123456789",
                     "USA",
                     Role.USER,
-                    createMockPasswordEntity(),
-                    new Date(),
-                    new Date()
+                    createMockDefaultPasswordEntity(),
+                    MockDates.getCreatedAt(),
+                    MockDates.getUpdatedAt()
             ));
         }
 
