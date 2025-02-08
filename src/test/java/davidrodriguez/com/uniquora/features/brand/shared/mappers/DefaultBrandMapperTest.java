@@ -2,24 +2,21 @@ package davidrodriguez.com.uniquora.features.brand.shared.mappers;
 
 import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
 import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEntity;
+import davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO;
+import davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultBrandMapperTest {
     private DefaultBrandMapper mockDefaultBrandMapper;
-    private Date mockCreatedAt;
-    private Date mockUpdatedAt;
 
     @BeforeEach
     void setUp() {
-        mockCreatedAt = new Date();
-        mockUpdatedAt = new Date();
         mockDefaultBrandMapper = new DefaultBrandMapper();
     }
+
     @Test
     void shouldNotMapBrandDTOToBrandWhenBrandIsNull() {
         DefaultBrandEntity mockDefaultBrandEntityMapped = mockDefaultBrandMapper.toBrandEntity(null);
@@ -29,13 +26,7 @@ public class DefaultBrandMapperTest {
 
     @Test
     void shouldMapBrandToBrandDTO() {
-        DefaultBrandEntity mockDefaultBrandEntity = new DefaultBrandEntity(
-                1L,
-                "Test Brand",
-                "testLogoURL.com",
-                mockCreatedAt,
-                mockUpdatedAt
-        );
+        DefaultBrandEntity mockDefaultBrandEntity = MockBrandEntity.getMockDefaultBrandEntity();
 
         DefaultBrandDTO mockDefaultBrandDTOMapped = mockDefaultBrandMapper.toBrandDTO(mockDefaultBrandEntity);
 
@@ -57,13 +48,7 @@ public class DefaultBrandMapperTest {
 
     @Test
     void shouldMapBrandDTOToBrand() {
-        DefaultBrandDTO mockDefaultBrandDTO = new DefaultBrandDTO(
-                1L,
-                "Test Brand",
-                "testLogoURL.com",
-                mockCreatedAt,
-                mockUpdatedAt
-        );
+        DefaultBrandDTO mockDefaultBrandDTO = MockBrandDTO.getMockDefaultBrandDTO();
 
         DefaultBrandEntity mockDefaultBrandEntityMapped = mockDefaultBrandMapper.toBrandEntity(mockDefaultBrandDTO);
 

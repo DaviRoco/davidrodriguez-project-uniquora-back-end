@@ -7,8 +7,8 @@ import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTO;
-import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.createMockDefaultUserEntity;
+import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.getMockDefaultUserDTO;
+import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.getMockDefaultUserEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultUserMapperTest {
@@ -23,7 +23,7 @@ public class DefaultUserMapperTest {
     @Test
     void shouldMapUserToUserDTO() {
 
-        DefaultUserEntity mockDefaultUserEntity = createMockDefaultUserEntity();
+        DefaultUserEntity mockDefaultUserEntity = getMockDefaultUserEntity();
 
         DefaultUserDTO mockDefaultUserDTOMapped = mockDefaultUserMapper.toUserDTO(mockDefaultUserEntity);
 
@@ -49,7 +49,7 @@ public class DefaultUserMapperTest {
 
     @Test
     void shouldMapUserDTOToUser() {
-        DefaultUserDTO mockDefaultUserDTO = createMockDefaultUserDTO();
+        DefaultUserDTO mockDefaultUserDTO = getMockDefaultUserDTO();
 
         DefaultUserEntity mockDefaultUserEntityMapped = mockDefaultUserMapper.toUser(mockDefaultUserDTO);
 

@@ -1,22 +1,11 @@
 package davidrodriguez.com.uniquora.features.brand.shared.dtos;
 
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultBrandDTOTest {
-    private Date mockCreatedAt;
-    private Date mockUpdatedAt;
-
-    @BeforeEach
-    public void setUp() {
-        mockCreatedAt = new Date();
-        mockUpdatedAt = new Date();
-    }
 
     @Test
     void shouldGetAllAttributes() {

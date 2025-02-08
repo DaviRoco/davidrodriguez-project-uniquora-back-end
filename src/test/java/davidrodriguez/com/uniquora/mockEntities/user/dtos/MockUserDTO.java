@@ -4,49 +4,32 @@ import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockDefaultPasswordDTO;
+import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.getMockDefaultPasswordDTO;
 
 public class MockUserDTO {
+    private static DefaultUserDTO instance;
 
-    public static DefaultUserDTO createMockDefaultUserDTO() {
-        return new DefaultUserDTO(
-                1L,
-                "John",
-                "Doe",
-                "test@email.com",
-                "+506123456",
-                "Costa Rica",
-                Role.ADMIN,
-                createMockDefaultPasswordDTO(),
-                MockDates.getCreatedAt(),
-                MockDates.getUpdatedAt()
-        );
+    private MockUserDTO() {
+
     }
 
-    public List<DefaultUserDTO> createMockDefaultUserDTOList(int count) {
-        List<DefaultUserDTO> userList = new ArrayList<>();
-
-        for (int i = 0; i < count; i++) {
-            userList.add(new DefaultUserDTO(
-                    (long) i + 1,
-                    "Jane",
-                    "Smith",
-                    "jane" + (i + 1) + "@email.com",
-                    "+123456789",
-                    "USA",
-                    Role.USER,
-                    createMockDefaultPasswordDTO(),
+    public static DefaultUserDTO getMockDefaultUserDTO() {
+        if (instance == null) {
+            instance = new DefaultUserDTO(
+                    1L,
+                    "John",
+                    "Doe",
+                    "test@email.com",
+                    "+506123456",
+                    "Costa Rica",
+                    Role.ADMIN,
+                    getMockDefaultPasswordDTO(),
                     MockDates.getCreatedAt(),
                     MockDates.getUpdatedAt()
-            ));
+            );
         }
 
-        return userList;
+        return instance;
     }
-
 }
 

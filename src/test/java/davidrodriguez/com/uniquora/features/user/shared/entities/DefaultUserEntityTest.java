@@ -4,6 +4,7 @@ import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPass
 import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity;
+import davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntityList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.createMockDefaultPasswordEntity;
-import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.createMockDefaultUserEntity;
+import static davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity.getMockDefaultUserEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultUserEntityTest {
@@ -24,7 +25,7 @@ public class DefaultUserEntityTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultUserEntity defaultUserEntity = createMockDefaultUserEntity();
+        DefaultUserEntity defaultUserEntity = getMockDefaultUserEntity();
 
         assertThat(defaultUserEntity.getId()).isEqualTo(1L);
         assertThat(defaultUserEntity.getName()).isEqualTo("John");
@@ -40,7 +41,7 @@ public class DefaultUserEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultUserEntity> newDefaultUserEntityList = new MockUserEntity().createMockDefaultUserEntityList(1);
+        List<DefaultUserEntity> newDefaultUserEntityList = new MockUserEntityList().createMockDefaultUserEntityList(1);
 
         DefaultUserEntity mockDefaultUserEntitySet = new DefaultUserEntity();
         mockDefaultUserEntitySet.setId(1L);

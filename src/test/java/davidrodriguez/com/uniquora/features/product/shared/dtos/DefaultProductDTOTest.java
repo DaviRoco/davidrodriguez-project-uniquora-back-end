@@ -4,32 +4,28 @@ import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
 import davidrodriguez.com.uniquora.features.product_image.shared.dtos.DefaultProductImageDTO;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTO;
+import davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTOList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTO.createMockDefaultProductDTO;
+import static davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTO.getMockDefaultProductDTO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultProductDTOTest {
     DefaultBrandDTO mockBrand;
     ArrayList<DefaultProductImageDTO> mockProductImages;
-    private Date mockCreatedAt;
-    private Date mockUpdatedAt;
 
     @BeforeEach
     public void setUp() {
-        mockCreatedAt = new Date();
-        mockUpdatedAt = new Date();
         mockBrand = new DefaultBrandDTO(
                 1L,
                 "Test Brand",
                 "testLogoURL.com",
-                mockCreatedAt,
-                mockUpdatedAt
+                MockDates.getCreatedAt(),
+                MockDates.getUpdatedAt()
         );
         mockProductImages = new ArrayList<>();
         mockProductImages.add(new DefaultProductImageDTO(1L, "testImageURL.com"));
@@ -38,7 +34,7 @@ public class DefaultProductDTOTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultProductDTO mockDefaultProductDTO = createMockDefaultProductDTO();
+        DefaultProductDTO mockDefaultProductDTO = getMockDefaultProductDTO();
 
         assertThat(mockDefaultProductDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultProductDTO.getName()).isEqualTo("Test Product");
@@ -53,7 +49,7 @@ public class DefaultProductDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultProductDTO> newDefaultProductDTO = new MockProductDTO().createMockDefaultProductDTOList(1);
+        List<DefaultProductDTO> newDefaultProductDTO = new MockProductDTOList().createMockDefaultProductDTOList(1);
 
         DefaultProductDTO mockDefaultProductDTOSet = new DefaultProductDTO();
         mockDefaultProductDTOSet.setId(1L);
@@ -63,8 +59,8 @@ public class DefaultProductDTOTest {
         mockDefaultProductDTOSet.setStockQuantity(2);
         mockDefaultProductDTOSet.setBrand(mockBrand);
         mockDefaultProductDTOSet.setProductImages(mockProductImages);
-        mockDefaultProductDTOSet.setCreatedAt(mockCreatedAt);
-        mockDefaultProductDTOSet.setUpdatedAt(mockUpdatedAt);
+        mockDefaultProductDTOSet.setCreatedAt(MockDates.getCreatedAt());
+        mockDefaultProductDTOSet.setUpdatedAt(MockDates.getUpdatedAt());
 
         assertThat(newDefaultProductDTO.get(0).getId()).isEqualTo(mockDefaultProductDTOSet.getId());
         assertThat(newDefaultProductDTO.get(0).getName()).isEqualTo(mockDefaultProductDTOSet.getName());

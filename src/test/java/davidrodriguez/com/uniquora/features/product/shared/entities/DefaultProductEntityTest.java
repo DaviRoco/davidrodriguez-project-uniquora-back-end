@@ -4,6 +4,7 @@ import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEn
 import davidrodriguez.com.uniquora.features.product_image.shared.entities.DefaultProductImageEntity;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.product.entities.MockProductEntity;
+import davidrodriguez.com.uniquora.mockEntities.product.entities.MockProductEntityList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -61,7 +62,7 @@ public class DefaultProductEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultProductEntity> mockDefaultProductEntity = new MockProductEntity().createMockDefaultProductDTOList(1);
+        List<DefaultProductEntity> mockDefaultProductEntity = new MockProductEntityList().createMockDefaultProductEntityList(1);
 
         DefaultProductEntity mockDefaultProductEntitySet = new DefaultProductEntity();
         mockDefaultProductEntitySet.setId(1L);

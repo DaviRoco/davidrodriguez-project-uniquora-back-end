@@ -2,6 +2,7 @@ package davidrodriguez.com.uniquora.features.security.entities;
 
 import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
 import davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity;
+import davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntityList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,18 +22,18 @@ public class DefaultPasswordEntityTest {
         DefaultPasswordEntity mockDefaultPasswordEntity = createMockDefaultPasswordEntity();
 
         assertThat(mockDefaultPasswordEntity.getId()).isEqualTo(1L);
-        assertThat(mockDefaultPasswordEntity.matches("Test Password")).isEqualTo(true);
+        assertThat(mockDefaultPasswordEntity.getPassword()).isEqualTo("Test Password");
     }
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultPasswordEntity> mockDefaultPasswordEntity = new MockPasswordEntity().createMockDefaultPasswordEntityList(1);
+        List<DefaultPasswordEntity> mockDefaultPasswordEntity = new MockPasswordEntityList().createMockDefaultPasswordEntityList(1);
 
         DefaultPasswordEntity newDefaultPasswordEntity = new DefaultPasswordEntity();
         newDefaultPasswordEntity.setId(1L);
-        newDefaultPasswordEntity.setPassword("newPassword");
+        newDefaultPasswordEntity.setPassword("Test Password");
 
         assertThat(newDefaultPasswordEntity.getId()).isEqualTo(mockDefaultPasswordEntity.get(0).getId());
-        assertThat(newDefaultPasswordEntity.matches("Test Password")).isEqualTo(mockDefaultPasswordEntity.get(0).getPassword().matches("Test Password"));
+        assertThat(newDefaultPasswordEntity.getPassword()).isEqualTo(mockDefaultPasswordEntity.get(0).getPassword());
     }
 }

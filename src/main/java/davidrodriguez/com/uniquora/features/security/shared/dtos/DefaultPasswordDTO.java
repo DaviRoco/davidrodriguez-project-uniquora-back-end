@@ -4,15 +4,8 @@ public class DefaultPasswordDTO {
     private Long id;
     private String password;
 
-    public DefaultPasswordDTO() {
-    }
-
     public DefaultPasswordDTO(Long id, String password) {
         this.id = id;
-        this.password = password;
-    }
-
-    public DefaultPasswordDTO(String password) {
         this.password = password;
     }
 

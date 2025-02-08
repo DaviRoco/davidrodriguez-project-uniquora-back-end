@@ -2,18 +2,19 @@ package davidrodriguez.com.uniquora.features.security.dtos;
 
 import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
 import davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO;
+import davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTOList;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockDefaultPasswordDTO;
+import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.getMockDefaultPasswordDTO;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultPasswordDTOTest {
     @Test
     void shouldGetAllAttributes() {
-        DefaultPasswordDTO mockDefaultPasswordDTO = createMockDefaultPasswordDTO();
+        DefaultPasswordDTO mockDefaultPasswordDTO = getMockDefaultPasswordDTO();
 
         assertThat(mockDefaultPasswordDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultPasswordDTO.getPassword()).isEqualTo("Test Password");
@@ -21,9 +22,9 @@ public class DefaultPasswordDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultPasswordDTO> mockDefaultPasswordDTO = new MockPasswordDTO().createMockDefaultPasswordDTOList(1);
+        List<DefaultPasswordDTO> mockDefaultPasswordDTO = new MockPasswordDTOList().createMockDefaultPasswordDTOList(1);
 
-        DefaultPasswordDTO mockDefaultPasswordDTOSet = createMockDefaultPasswordDTO();
+        DefaultPasswordDTO mockDefaultPasswordDTOSet = getMockDefaultPasswordDTO();
         mockDefaultPasswordDTOSet.setId(1L);
         mockDefaultPasswordDTOSet.setPassword("Test Password");
 

@@ -4,6 +4,7 @@ import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
 import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.features.user.shared.repositories.DefaultUserRepository;
 import davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity;
+import davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntityList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockDefaultPasswordDTO;
+import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.getMockDefaultPasswordDTO;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -41,7 +42,7 @@ public class GetAllUsersServiceTest {
 
     @Test
     void shouldReturnAllUsers() {
-        List<DefaultUserEntity> mockDefaultUserEntities = new MockUserEntity().createMockDefaultUserEntityList(3);
+        List<DefaultUserEntity> mockDefaultUserEntities = new MockUserEntityList().createMockDefaultUserEntityList(3);
 
         when(defaultUserRepository.findAll()).thenReturn(mockDefaultUserEntities);
         when(modelMapper.map(any(DefaultUserEntity.class), eq(DefaultUserDTO.class)))
@@ -55,7 +56,7 @@ public class GetAllUsersServiceTest {
                             entity.getPhoneNumber(),
                             entity.getLocation(),
                             entity.getRole(),
-                            createMockDefaultPasswordDTO(),
+                            getMockDefaultPasswordDTO(),
                             entity.getUpdatedAt(),
                             entity.getCreatedAt()
                     );

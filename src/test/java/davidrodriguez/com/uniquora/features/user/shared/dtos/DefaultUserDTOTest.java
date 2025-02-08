@@ -4,14 +4,15 @@ import davidrodriguez.com.uniquora.enumeration.Role;
 import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO;
+import davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTOList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 import java.util.List;
 
-import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.createMockDefaultPasswordDTO;
-import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.createMockDefaultUserDTO;
+import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.getMockDefaultPasswordDTO;
+import static davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO.getMockDefaultUserDTO;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,12 +21,12 @@ public class DefaultUserDTOTest {
 
     @BeforeEach
     public void setUp() {
-        mockPassword = createMockDefaultPasswordDTO();
+        mockPassword = getMockDefaultPasswordDTO();
     }
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultUserDTO mockDefaultUserDTO = createMockDefaultUserDTO();
+        DefaultUserDTO mockDefaultUserDTO = getMockDefaultUserDTO();
 
         assertThat(mockDefaultUserDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultUserDTO.getName()).isEqualTo("John");
@@ -41,7 +42,7 @@ public class DefaultUserDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultUserDTO> newDefaultUserDTOList = new MockUserDTO().createMockDefaultUserDTOList(1);
+        List<DefaultUserDTO> newDefaultUserDTOList = new MockUserDTOList().createMockDefaultUserDTOList(1);
 
         DefaultUserDTO mockDefaultUserDTOSet = new DefaultUserDTO();
         mockDefaultUserDTOSet.setId(1L);
