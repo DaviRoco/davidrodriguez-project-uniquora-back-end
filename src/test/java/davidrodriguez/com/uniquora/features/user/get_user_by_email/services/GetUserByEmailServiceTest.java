@@ -53,9 +53,9 @@ public class GetUserByEmailServiceTest {
 
     @Test
     void shouldNotReturnUserByEmailWhenUserDoesNotExist() {
-        when(getUserByEmailRepository.findByEmail("john@example.com")).thenReturn(Optional.empty());
+        when(getUserByEmailRepository.findByEmail("test@example.com")).thenReturn(Optional.empty());
 
-        Exception exception = assertThrows(RuntimeException.class, () -> getUserByEmailService.getUserByEmail("john@example.com"));
+        Exception exception = assertThrows(RuntimeException.class, () -> getUserByEmailService.getUserByEmail("test@example.com"));
 
         assertEquals("User not found", exception.getMessage());
     }

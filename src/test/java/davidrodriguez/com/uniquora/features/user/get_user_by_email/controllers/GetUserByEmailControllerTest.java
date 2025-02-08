@@ -5,6 +5,7 @@ import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPassword
 import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
 import davidrodriguez.com.uniquora.features.user.get_user_by_email.services.GetUserByEmailService;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
+import davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -28,9 +29,6 @@ public class GetUserByEmailControllerTest {
     @Mock
     private GetUserByEmailService getUserByEmailService;
 
-    @Mock
-    private PasswordEncoder passwordEncoder;
-
     @InjectMocks
     private GetUserByEmailController getUserByEmailController;
 
@@ -40,8 +38,7 @@ public class GetUserByEmailControllerTest {
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(getUserByEmailController).build();
-        DefaultPasswordDTO mockDefaultPasswordDTO = new DefaultPasswordDTO(1L, "test");
-        mockDefaultUserDTO = new DefaultUserDTO(1L, "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockDefaultPasswordDTO, new Date(), new Date());
+        mockDefaultUserDTO = MockUserDTO.getMockDefaultUserDTO();
     }
 
     @Test

@@ -5,6 +5,8 @@ import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPass
 import davidrodriguez.com.uniquora.features.security.shared.repositories.DefaultPasswordRepository;
 import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
 import davidrodriguez.com.uniquora.features.user.shared.repositories.DefaultUserRepository;
+import davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity;
+import davidrodriguez.com.uniquora.mockEntities.user.entities.MockUserEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -26,10 +28,10 @@ public class GetAllUsersRepositoryTest {
 
     @Test
     void shouldFindAllUsers() {
-        DefaultPasswordEntity mockDefaultPasswordEntity = new DefaultPasswordEntity("test");
+        DefaultPasswordEntity mockDefaultPasswordEntity = MockPasswordEntity.getMockDefaultPasswordEntity();
         defaultPasswordRepository.save(mockDefaultPasswordEntity);
 
-        DefaultUserEntity mockDefaultUserEntity = new DefaultUserEntity("John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockDefaultPasswordEntity, new Date(), new Date());
+        DefaultUserEntity mockDefaultUserEntity = MockUserEntity.getMockDefaultUserEntity();
         defaultUserRepository.save(mockDefaultUserEntity);
 
         assertThat(defaultUserRepository.findAll()).hasSize(1);

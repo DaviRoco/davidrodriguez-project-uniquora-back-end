@@ -5,6 +5,8 @@ import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPassword
 import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
 import davidrodriguez.com.uniquora.features.user.get_all_users.services.GetAllUsersService;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
+import davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO;
+import davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTOList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -30,26 +32,19 @@ public class GetAllUsersControllerTest {
     @Mock
     private GetAllUsersService getAllUsersService;
 
-    @Mock
-    private PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private GetAllUsersController getAllUsersController;
-
-    private DefaultUserDTO mockDefaultUserDTO;
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(getAllUsersController).build();
-        DefaultPasswordDTO mockDefaultPasswordDTO = new DefaultPasswordDTO(1L, "test");
-        mockDefaultUserDTO = new DefaultUserDTO(1L, "John", "Doe", "test@email.com", "+506123456", "Costa Rica", Role.ADMIN, mockDefaultPasswordDTO, new Date(), new Date());
     }
 
     @Test
     void shouldReturnAllUsers() throws Exception {
-        List<DefaultUserDTO> mockUsers = new ArrayList<>();
-        mockUsers.add(mockDefaultUserDTO);
+        List<DefaultUserDTO> mockUsers = new MockUserDTOList().createMockDefaultUserDTOList(2);
 
         when(getAllUsersService.getAllUsers()).thenReturn(mockUsers);
 
@@ -58,8 +53,8 @@ public class GetAllUsersControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()").value(mockUsers.size()))
                 .andExpect(jsonPath("$[0].id").value(1L))
-                .andExpect(jsonPath("$[0].name").value("John"))
-                .andExpect(jsonPath("$[0].email").value("test@email.com"));
+                .andExpect(jsonPath("$[0].name").value("Jane"))
+                .andExpect(jsonPath("$[0].email").value("jane1@email.com"));
 
         verify(getAllUsersService, times(1)).getAllUsers();
     }
