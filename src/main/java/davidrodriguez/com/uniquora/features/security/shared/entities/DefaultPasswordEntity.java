@@ -18,10 +18,6 @@ public class DefaultPasswordEntity {
 
     }
 
-    public DefaultPasswordEntity(String password) {
-        this.password = password;
-    }
-
     public DefaultPasswordEntity(Long id, String password) {
         this.id = id;
         this.password = password;
