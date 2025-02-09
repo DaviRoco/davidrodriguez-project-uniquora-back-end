@@ -8,7 +8,6 @@ public class DefaultProductImageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "image_url", nullable = false)

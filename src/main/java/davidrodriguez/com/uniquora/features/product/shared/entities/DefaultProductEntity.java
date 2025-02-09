@@ -4,8 +4,7 @@ import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEn
 import davidrodriguez.com.uniquora.features.product_image.shared.entities.DefaultProductImageEntity;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "products", schema = "public")
@@ -31,9 +30,13 @@ public class DefaultProductEntity {
     @JoinColumn(name = "brand_id", nullable = false)
     private DefaultBrandEntity brand;
 
-    @OneToMany
-    @JoinColumn(name = "product_image_id", nullable = false)
-    private ArrayList<DefaultProductImageEntity> productImages;
+    @ManyToMany
+    @JoinTable(
+            name = "product_images_products",
+            joinColumns = @JoinColumn(name = "products_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_images_id")
+    )
+    private List<DefaultProductImageEntity> productImages = new ArrayList<>();
 
     @Column(name = "created_at", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -46,7 +49,7 @@ public class DefaultProductEntity {
     public DefaultProductEntity() {
     }
 
-    public DefaultProductEntity(Long id, String name, String description, Double price, Integer stockQuantity, DefaultBrandEntity brand, ArrayList<DefaultProductImageEntity> productImages, Date createdAt, Date updatedAt) {
+    public DefaultProductEntity(Long id, String name, String description, Double price, Integer stockQuantity, DefaultBrandEntity brand, List<DefaultProductImageEntity> productImages, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -106,11 +109,11 @@ public class DefaultProductEntity {
         this.brand = brand;
     }
 
-    public ArrayList<DefaultProductImageEntity> getProductImages() {
+    public List<DefaultProductImageEntity> getProductImages() {
         return productImages;
     }
 
-    public void setProductImages(ArrayList<DefaultProductImageEntity> productImages) {
+    public void setProductImages(List<DefaultProductImageEntity> productImages) {
         this.productImages = productImages;
     }
 

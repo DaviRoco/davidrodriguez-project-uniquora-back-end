@@ -3,8 +3,8 @@ package davidrodriguez.com.uniquora.features.product.shared.dtos;
 import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
 import davidrodriguez.com.uniquora.features.product_image.shared.dtos.DefaultProductImageDTO;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DefaultProductDTO {
     private Long id;
@@ -13,14 +13,14 @@ public class DefaultProductDTO {
     private Double price;
     private Integer stockQuantity;
     private DefaultBrandDTO brand;
-    private ArrayList<DefaultProductImageDTO> productImages;
+    private List<DefaultProductImageDTO> productImages;
     private Date createdAt;
     private Date updatedAt;
 
     public DefaultProductDTO() {
     }
 
-    public DefaultProductDTO(Long id, String name, String description, Double price, Integer stockQuantity, DefaultBrandDTO brand, ArrayList<DefaultProductImageDTO> productImages, Date createdAt, Date updatedAt) {
+    public DefaultProductDTO(Long id, String name, String description, Double price, Integer stockQuantity, DefaultBrandDTO brand, List<DefaultProductImageDTO> productImages, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -80,11 +80,11 @@ public class DefaultProductDTO {
         this.brand = brand;
     }
 
-    public ArrayList<DefaultProductImageDTO> getProductImages() {
+    public List<DefaultProductImageDTO> getProductImages() {
         return productImages;
     }
 
-    public void setProductImages(ArrayList<DefaultProductImageDTO> productImages) {
+    public void setProductImages(List<DefaultProductImageDTO> productImages) {
         this.productImages = productImages;
     }
 

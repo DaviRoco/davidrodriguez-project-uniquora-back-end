@@ -5,6 +5,8 @@ import davidrodriguez.com.uniquora.features.product_image.shared.entities.Defaul
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Component
 public class DefaultProductImageMapper {
@@ -31,12 +33,12 @@ public class DefaultProductImageMapper {
         );
     }
 
-    public ArrayList<DefaultProductImageDTO> toProductImageDTOArrayList(ArrayList<DefaultProductImageEntity> defaultProductImageEntities) {
+    public List<DefaultProductImageDTO> toProductImageDTOList(List<DefaultProductImageEntity> defaultProductImageEntities) {
         if (defaultProductImageEntities == null) {
             return null;
         }
 
-        ArrayList<DefaultProductImageDTO> defaultProductImageDTOArrayList = new ArrayList<>();
+        List<DefaultProductImageDTO> defaultProductImageDTOArrayList = new ArrayList<>();
         for (DefaultProductImageEntity defaultProductImageEntity : defaultProductImageEntities) {
             defaultProductImageDTOArrayList.add(toProductImageDTO(defaultProductImageEntity));
         }
@@ -44,12 +46,12 @@ public class DefaultProductImageMapper {
         return defaultProductImageDTOArrayList;
     }
 
-    public ArrayList<DefaultProductImageEntity> toProductImageEntityArrayList(ArrayList<DefaultProductImageDTO> defaultProductImageDTOArrayList) {
+    public List<DefaultProductImageEntity> toProductImageEntityArrayList(List<DefaultProductImageDTO> defaultProductImageDTOArrayList) {
         if (defaultProductImageDTOArrayList == null) {
             return null;
         }
 
-        ArrayList<DefaultProductImageEntity> defaultProductImageEntityArrayList = new ArrayList<>();
+        List<DefaultProductImageEntity> defaultProductImageEntityArrayList = new ArrayList<>();
         for (DefaultProductImageDTO defaultProductImageDTO : defaultProductImageDTOArrayList) {
             defaultProductImageEntityArrayList.add(toProductImageEntity(defaultProductImageDTO));
         }

@@ -5,6 +5,8 @@ import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.product_image.entities.MockProductImageEntity;
 import davidrodriguez.com.uniquora.mockEntities.product_image.entities.MockProductImageEntityList;
 
+import java.util.ArrayList;
+
 import static davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandEntity.getMockDefaultBrandEntity;
 
 public class MockProductEntity {
@@ -30,5 +32,20 @@ public class MockProductEntity {
         }
 
         return instance;
+    }
+
+    public static DefaultProductEntity getMockDefaultProductEntityForRepository() {
+
+        return new DefaultProductEntity(
+                1L,
+                "Test Product",
+                "Test Product Description",
+                100.0,
+                2,
+                getMockDefaultBrandEntity(),
+                new ArrayList<>(),
+                MockDates.getCreatedAt(),
+                MockDates.getUpdatedAt()
+        );
     }
 }

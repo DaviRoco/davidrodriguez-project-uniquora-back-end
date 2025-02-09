@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO.getMockDefaultBrandDTO;
 import static davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTO.getMockDefaultProductDTO;
@@ -18,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultProductDTOTest {
     DefaultBrandDTO mockBrand;
-    ArrayList<DefaultProductImageDTO> mockProductImages;
+    List<DefaultProductImageDTO> mockProductImages;
 
     @BeforeEach
     public void setUp() {

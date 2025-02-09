@@ -62,18 +62,6 @@ public class DefaultUserEntity {
         this.updatedAt = updatedAt;
     }
 
-    public DefaultUserEntity(String name, String lastName, String email, String phoneNumber, String location, Role role, DefaultPasswordEntity password, Date createdAt, Date updatedAt) {
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.location = location;
-        this.role = role;
-        this.password = password;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
     public Long getId() {
         return id;
     }

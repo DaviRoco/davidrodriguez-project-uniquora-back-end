@@ -10,7 +10,7 @@ import davidrodriguez.com.uniquora.features.product_image.shared.entities.Defaul
 import davidrodriguez.com.uniquora.features.product_image.shared.mappers.DefaultProductImageMapper;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class DefaultProductMapper {
@@ -28,7 +28,7 @@ public class DefaultProductMapper {
         }
 
         DefaultBrandDTO mappedBrandDTO = defaultBrandMapper.toBrandDTO(defaultProductEntity.getBrand());
-        ArrayList<DefaultProductImageDTO> mappedProductImageDTO = defaultProductImageMapper.toProductImageDTOArrayList(defaultProductEntity.getProductImages());
+        List<DefaultProductImageDTO> mappedProductImageDTO = defaultProductImageMapper.toProductImageDTOList(defaultProductEntity.getProductImages());
 
         return new DefaultProductDTO(
                 defaultProductEntity.getId(),
@@ -48,7 +48,7 @@ public class DefaultProductMapper {
             return null;
         }
         DefaultBrandEntity mappedBrandEntity = defaultBrandMapper.toBrandEntity(defaultProductDTO.getBrand());
-        ArrayList<DefaultProductImageEntity> mappedProductImageEntity = defaultProductImageMapper.toProductImageEntityArrayList(defaultProductDTO.getProductImages());
+        List<DefaultProductImageEntity> mappedProductImageEntity = defaultProductImageMapper.toProductImageEntityArrayList(defaultProductDTO.getProductImages());
 
         return new DefaultProductEntity(
                 defaultProductDTO.getId(),

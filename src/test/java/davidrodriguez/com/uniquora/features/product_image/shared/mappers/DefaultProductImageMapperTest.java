@@ -60,14 +60,14 @@ public class DefaultProductImageMapperTest {
 
     @Test
     void shouldNotMapProductImageListToProductImageDTOListWhenProductImageListIsNull() {
-        ArrayList<DefaultProductImageDTO> mockDefaultProductImageDTOList = mockDefaultProductImageMapper.toProductImageDTOArrayList(null);
+        List<DefaultProductImageDTO> mockDefaultProductImageDTOList = mockDefaultProductImageMapper.toProductImageDTOList(null);
 
         assertThat(mockDefaultProductImageDTOList).isNull();
     }
 
     @Test
     void shouldNotMapProductImageDTOListToProductImageListWhenProductImageDTOListIsNull() {
-        ArrayList<DefaultProductImageEntity> mockDefaultProductImageEntityList = mockDefaultProductImageMapper.toProductImageEntityArrayList(null);
+        List<DefaultProductImageEntity> mockDefaultProductImageEntityList = mockDefaultProductImageMapper.toProductImageEntityArrayList(null);
 
         assertThat(mockDefaultProductImageEntityList).isNull();
     }
