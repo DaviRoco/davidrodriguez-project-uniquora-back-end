@@ -23,4 +23,14 @@ public class MockBrandEntity {
 
         return instance;
     }
+
+    public static DefaultBrandEntity createNewMockDefaultBrandEntity() {
+        return new DefaultBrandEntity(
+                1L,
+                "Test Brand",
+                "testLogoURL.com",
+                MockDates.getCreatedAt(),
+                MockDates.getUpdatedAt()
+        );
+    }
 }

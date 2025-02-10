@@ -1,11 +1,21 @@
 package davidrodriguez.com.uniquora.features.brand.shared.dtos;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.util.Date;
 
 public class DefaultBrandDTO {
     private Long id;
+
+    @NotBlank(message = "Brand name is required")
+    @Size(min = 2, max = 50, message = "Brand name must be between 2 and 50 characters")
     private String name;
+
+    @NotBlank(message = "Logo URL is required")
+    @Size(min = 2, max = 50, message = "Logo URL must be between 2 and 50 characters")
     private String logo;
+
     private Date createdAt;
     private Date updatedAt;
 

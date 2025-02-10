@@ -23,4 +23,14 @@ public class MockBrandDTO {
 
         return instance;
     }
+
+    public static DefaultBrandDTO createNewMockDefaultBrandDTO() {
+        return new DefaultBrandDTO(
+                1L,
+                "Test Brand",
+                "testLogoURL.com",
+                MockDates.getCreatedAt(),
+                MockDates.getUpdatedAt()
+        );
+    }
 }
