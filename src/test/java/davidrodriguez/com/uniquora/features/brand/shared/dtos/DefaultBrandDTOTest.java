@@ -20,6 +20,7 @@ public class DefaultBrandDTOTest {
         assertThat(mockDefaultBrandDTO.getLogo()).isEqualTo("testLogoURL.com");
         assertThat(mockDefaultBrandDTO.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
         assertThat(mockDefaultBrandDTO.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
+        assertThat(mockDefaultBrandDTO.isActive()).isEqualTo(true);
     }
 
     @Test
@@ -32,12 +33,14 @@ public class DefaultBrandDTOTest {
         mockDefaultBrandDTOSet.setLogo("testLogoURL.com");
         mockDefaultBrandDTOSet.setCreatedAt(MockDates.getCreatedAt());
         mockDefaultBrandDTOSet.setUpdatedAt(MockDates.getUpdatedAt());
+        mockDefaultBrandDTOSet.setActive(true);
 
         assertThat(newDefaultBrandDTO.get(0).getId()).isEqualTo(mockDefaultBrandDTOSet.getId());
         assertThat(newDefaultBrandDTO.get(0).getName()).isEqualTo(mockDefaultBrandDTOSet.getName());
         assertThat(newDefaultBrandDTO.get(0).getLogo()).isEqualTo(mockDefaultBrandDTOSet.getLogo());
         assertThat(newDefaultBrandDTO.get(0).getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
         assertThat(newDefaultBrandDTO.get(0).getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
+        assertThat(newDefaultBrandDTO.get(0).isActive()).isEqualTo(mockDefaultBrandDTOSet.isActive());
     }
 
 }

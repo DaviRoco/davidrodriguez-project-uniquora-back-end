@@ -17,7 +17,8 @@ public class MockBrandEntity {
                     "Test Brand",
                     "testLogoURL.com",
                     MockDates.getCreatedAt(),
-                    MockDates.getUpdatedAt()
+                    MockDates.getUpdatedAt(),
+                    true
             );
         }
 
@@ -30,7 +31,8 @@ public class MockBrandEntity {
                 "Test Brand",
                 "testLogoURL.com",
                 MockDates.getCreatedAt(),
-                MockDates.getUpdatedAt()
+                MockDates.getUpdatedAt(),
+                true
         );
     }
 }

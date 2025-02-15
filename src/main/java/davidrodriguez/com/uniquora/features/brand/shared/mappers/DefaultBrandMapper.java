@@ -16,7 +16,8 @@ public class DefaultBrandMapper {
                 defaultBrandEntity.getName(),
                 defaultBrandEntity.getLogo(),
                 defaultBrandEntity.getCreatedAt(),
-                defaultBrandEntity.getUpdatedAt()
+                defaultBrandEntity.getUpdatedAt(),
+                defaultBrandEntity.isActive()
         );
     }
 
@@ -30,7 +31,8 @@ public class DefaultBrandMapper {
                 defaultBrandDTO.getName(),
                 defaultBrandDTO.getLogo(),
                 defaultBrandDTO.getCreatedAt(),
-                defaultBrandDTO.getUpdatedAt()
+                defaultBrandDTO.getUpdatedAt(),
+                defaultBrandDTO.isActive()
         );
     }
 }

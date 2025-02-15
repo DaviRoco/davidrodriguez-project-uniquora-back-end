@@ -18,16 +18,18 @@ public class DefaultBrandDTO {
 
     private Date createdAt;
     private Date updatedAt;
+    private Boolean active;
 
     public DefaultBrandDTO() {
     }
 
-    public DefaultBrandDTO(Long id, String name, String logo, Date createdAt, Date updatedAt) {
+    public DefaultBrandDTO(Long id, String name, String logo, Date createdAt, Date updatedAt, Boolean active) {
         this.id = id;
         this.name = name;
         this.logo = logo;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.active = active;
     }
 
     public Long getId() {
@@ -68,5 +70,13 @@ public class DefaultBrandDTO {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Boolean isActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

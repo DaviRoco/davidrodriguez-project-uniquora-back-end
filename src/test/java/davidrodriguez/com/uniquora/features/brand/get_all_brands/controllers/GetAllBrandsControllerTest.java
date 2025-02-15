@@ -48,7 +48,8 @@ public class GetAllBrandsControllerTest {
                 .andExpect(jsonPath("$[0].name").value(mockBrands.get(0).getName()))
                 .andExpect(jsonPath("$[0].logo").value(mockBrands.get(0).getLogo()))
                 .andExpect(jsonPath("$[0].createdAt").value(mockBrands.get(0).getCreatedAt()))
-                .andExpect(jsonPath("$[0].updatedAt").value(mockBrands.get(0).getUpdatedAt()));
+                .andExpect(jsonPath("$[0].updatedAt").value(mockBrands.get(0).getUpdatedAt()))
+                .andExpect(jsonPath("$[0].active").value(mockBrands.get(0).isActive()));
 
         verify(getAllBrandsService, times(1)).getAllBrands();
     }

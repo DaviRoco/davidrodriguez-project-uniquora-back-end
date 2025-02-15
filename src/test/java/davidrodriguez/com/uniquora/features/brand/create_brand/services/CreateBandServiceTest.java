@@ -63,6 +63,7 @@ public class CreateBandServiceTest {
         assertEquals(expectedDTO.getLogo(), result.getLogo());
         assertThat(result.getCreatedAt()).isNotNull();
         assertThat(result.getUpdatedAt()).isNotNull();
+        assertThat(result.isActive()).isNotNull();
     }
 
     @Test
@@ -95,5 +96,6 @@ public class CreateBandServiceTest {
         assertEquals(expectedDTO.getLogo(), result.getLogo());
         assertThat(result.getCreatedAt()).isNotNull();
         assertThat(result.getUpdatedAt()).isNotNull();
+        assertThat(result.isActive()).isNotNull();
     }
 }

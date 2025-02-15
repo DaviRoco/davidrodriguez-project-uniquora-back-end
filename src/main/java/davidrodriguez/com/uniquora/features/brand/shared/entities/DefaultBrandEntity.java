@@ -25,15 +25,19 @@ public class DefaultBrandEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
+    @Column(name = "active")
+    private boolean active;
+
     public DefaultBrandEntity() {
     }
 
-    public DefaultBrandEntity(Long id, String name, String logo, Date createdAt, Date updatedAt) {
+    public DefaultBrandEntity(Long id, String name, String logo, Date createdAt, Date updatedAt, boolean active) {
         this.id = id;
         this.name = name;
         this.logo = logo;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.active = active;
     }
 
     public Long getId() {
@@ -74,6 +78,14 @@ public class DefaultBrandEntity {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
 

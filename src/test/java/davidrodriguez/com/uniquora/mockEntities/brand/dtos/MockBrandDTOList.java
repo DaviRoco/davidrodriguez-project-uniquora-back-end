@@ -17,7 +17,8 @@ public class MockBrandDTOList {
                     "Test Brand",
                     "testLogoURL.com",
                     MockDates.getCreatedAt(),
-                    MockDates.getUpdatedAt()
+                    MockDates.getUpdatedAt(),
+                    true
             ));
         }
 

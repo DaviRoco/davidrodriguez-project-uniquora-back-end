@@ -48,7 +48,8 @@ public class GetAllBrandsServiceTest {
                             entity.getName(),
                             entity.getLogo(),
                             entity.getCreatedAt(),
-                            entity.getUpdatedAt()
+                            entity.getUpdatedAt(),
+                            entity.isActive()
                     );
                 });
         List<DefaultBrandDTO> defaultBrandDTOList = getAllBrandsService.getAllBrands();

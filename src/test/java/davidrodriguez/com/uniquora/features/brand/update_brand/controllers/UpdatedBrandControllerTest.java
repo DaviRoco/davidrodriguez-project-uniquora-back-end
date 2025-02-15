@@ -51,7 +51,8 @@ public class UpdatedBrandControllerTest {
                 .andExpect(jsonPath("$.name").value(mockBrand.getName()))
                 .andExpect(jsonPath("$.logo").value(mockBrand.getLogo()))
                 .andExpect(jsonPath("$.createdAt").exists())
-                .andExpect(jsonPath("$.updatedAt").exists());
+                .andExpect(jsonPath("$.updatedAt").exists())
+                .andExpect(jsonPath("$.active").exists());
 
         verify(updateBrandService, times(1)).updateBrand(any(DefaultBrandDTO.class));
     }

@@ -38,6 +38,7 @@ public class DefaultBrandMapperTest {
         assertThat(mockDefaultBrandDTOMapped.getLogo()).isEqualTo(mockDefaultBrandEntity.getLogo());
         assertThat(mockDefaultBrandDTOMapped.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
         assertThat(mockDefaultBrandDTOMapped.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
+        assertThat(mockDefaultBrandDTOMapped.isActive()).isEqualTo(mockDefaultBrandEntity.isActive());
     }
 
     @Test
@@ -60,5 +61,6 @@ public class DefaultBrandMapperTest {
         assertThat(mockDefaultBrandEntityMapped.getLogo()).isEqualTo(mockDefaultBrandDTO.getLogo());
         assertThat(mockDefaultBrandEntityMapped.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
         assertThat(mockDefaultBrandEntityMapped.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
+        assertThat(mockDefaultBrandEntityMapped.isActive()).isEqualTo(mockDefaultBrandDTO.isActive());
     }
 }
