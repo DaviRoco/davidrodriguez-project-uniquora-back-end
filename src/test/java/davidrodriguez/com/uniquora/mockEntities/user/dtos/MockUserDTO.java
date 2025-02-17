@@ -1,6 +1,6 @@
 package davidrodriguez.com.uniquora.mockEntities.user.dtos;
 
-import davidrodriguez.com.uniquora.enumeration.Role;
+import davidrodriguez.com.uniquora.enumerations.Role;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 
