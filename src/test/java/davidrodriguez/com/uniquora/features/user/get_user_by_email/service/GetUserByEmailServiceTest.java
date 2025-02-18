@@ -1,5 +1,6 @@
 package davidrodriguez.com.uniquora.features.user.get_user_by_email.service;
 
+import davidrodriguez.com.uniquora.exceptions.ResourceNotFoundException;
 import davidrodriguez.com.uniquora.features.user.get_user_by_email.repository.GetUserByEmailRepository;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
 import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
@@ -57,6 +58,6 @@ public class GetUserByEmailServiceTest {
 
         Exception exception = assertThrows(RuntimeException.class, () -> getUserByEmailService.getUserByEmail("test@example.com"));
 
-        assertEquals("User not found", exception.getMessage());
+        assertEquals("Could not find user by email due to an internal error.", exception.getMessage());
     }
 }

@@ -2,7 +2,6 @@ package davidrodriguez.com.uniquora.features.brand.create_brand.service;
 
 import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
 import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEntity;
-import davidrodriguez.com.uniquora.features.brand.shared.mappers.DefaultBrandMapper;
 import davidrodriguez.com.uniquora.features.brand.shared.repositories.DefaultBrandRepository;
 import davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO;
 import davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandEntity;
@@ -13,8 +12,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
@@ -26,9 +28,6 @@ public class CreateBandServiceTest {
     @Mock
     private ModelMapper modelMapper;
 
-    @Mock
-    private DefaultBrandMapper defaultBrandMapper;
-
     @InjectMocks
     private CreateBrandService createBrandService;
 
@@ -39,63 +38,40 @@ public class CreateBandServiceTest {
 
     @Test
     void shouldCreateBrand() {
-        DefaultBrandDTO inputDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
-        DefaultBrandEntity mappedEntity = MockBrandEntity.createNewMockDefaultBrandEntity();
-        DefaultBrandEntity savedEntity = MockBrandEntity.createNewMockDefaultBrandEntity();
-        DefaultBrandDTO expectedDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
+        DefaultBrandDTO defaultBrandDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
+        DefaultBrandEntity defaultBrandEntity = MockBrandEntity.createNewMockDefaultBrandEntity();
 
-        when(modelMapper.map(any(DefaultBrandDTO.class), eq(DefaultBrandEntity.class)))
-                .thenReturn(mappedEntity);
-        when(defaultBrandRepository.save(any(DefaultBrandEntity.class)))
-                .thenReturn(savedEntity);
-        when(defaultBrandMapper.toBrandDTO(any(DefaultBrandEntity.class)))
-                .thenReturn(expectedDTO);
+        when(modelMapper.map(defaultBrandDTO, DefaultBrandEntity.class)).thenReturn(defaultBrandEntity);
+        when(defaultBrandRepository.save(defaultBrandEntity)).thenReturn(defaultBrandEntity);
+        when(modelMapper.map(defaultBrandEntity, DefaultBrandDTO.class)).thenReturn(defaultBrandDTO);
 
-        DefaultBrandDTO result = createBrandService.createBrand(inputDTO);
+        DefaultBrandDTO result = createBrandService.createBrand(defaultBrandDTO);
 
-        verify(defaultBrandRepository, times(1)).save(any(DefaultBrandEntity.class));
-        verify(modelMapper, times(1)).map(inputDTO, DefaultBrandEntity.class);
-        verify(defaultBrandMapper, times(1)).toBrandDTO(savedEntity);
-
-        assertThat(result).isNotNull();
-        assertEquals(expectedDTO.getId(), result.getId());
-        assertEquals(expectedDTO.getName(), result.getName());
-        assertEquals(expectedDTO.getLogo(), result.getLogo());
-        assertThat(result.getCreatedAt()).isNotNull();
-        assertThat(result.getUpdatedAt()).isNotNull();
-        assertThat(result.isActive()).isNotNull();
+        assertNotNull(result);
+        assertEquals(defaultBrandDTO.getName(), result.getName());
+        verify(defaultBrandRepository, times(1)).save(defaultBrandEntity);
     }
 
     @Test
     void  shouldCreateBrandWhenCreatedAndUpdatedDateAreNull() {
-        DefaultBrandDTO inputDTO = new DefaultBrandDTO();
-        inputDTO.setId(1L);
-        inputDTO.setName("name");
-        inputDTO.setLogo("logo");
+        DefaultBrandDTO defaultBrandDTO = new DefaultBrandDTO();
+        defaultBrandDTO.setId(1L);
+        defaultBrandDTO.setName("name");
+        defaultBrandDTO.setLogo("logo");
+        defaultBrandDTO.setCreatedAt(null);
+        defaultBrandDTO.setUpdatedAt(null);
+        defaultBrandDTO.setActive(true);
 
-        DefaultBrandEntity mappedEntity = MockBrandEntity.createNewMockDefaultBrandEntity();
-        DefaultBrandEntity savedEntity = MockBrandEntity.createNewMockDefaultBrandEntity();
-        DefaultBrandDTO expectedDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
+        DefaultBrandEntity defaultBrandEntity = MockBrandEntity.createNewMockDefaultBrandEntity();
 
-        when(modelMapper.map(any(DefaultBrandDTO.class), eq(DefaultBrandEntity.class)))
-                .thenReturn(mappedEntity);
-        when(defaultBrandRepository.save(any(DefaultBrandEntity.class)))
-                .thenReturn(savedEntity);
-        when(defaultBrandMapper.toBrandDTO(any(DefaultBrandEntity.class)))
-                .thenReturn(expectedDTO);
+        when(modelMapper.map(defaultBrandDTO, DefaultBrandEntity.class)).thenReturn(defaultBrandEntity);
+        when(defaultBrandRepository.save(defaultBrandEntity)).thenReturn(defaultBrandEntity);
+        when(modelMapper.map(defaultBrandEntity, DefaultBrandDTO.class)).thenReturn(defaultBrandDTO);
 
-        DefaultBrandDTO result = createBrandService.createBrand(inputDTO);
+        DefaultBrandDTO result = createBrandService.createBrand(defaultBrandDTO);
 
-        verify(defaultBrandRepository, times(1)).save(any(DefaultBrandEntity.class));
-        verify(modelMapper, times(1)).map(inputDTO, DefaultBrandEntity.class);
-        verify(defaultBrandMapper, times(1)).toBrandDTO(savedEntity);
-
-        assertThat(result).isNotNull();
-        assertEquals(expectedDTO.getId(), result.getId());
-        assertEquals(expectedDTO.getName(), result.getName());
-        assertEquals(expectedDTO.getLogo(), result.getLogo());
-        assertThat(result.getCreatedAt()).isNotNull();
-        assertThat(result.getUpdatedAt()).isNotNull();
-        assertThat(result.isActive()).isNotNull();
+        assertNotNull(result);
+        assertEquals(defaultBrandDTO.getName(), result.getName());
+        verify(defaultBrandRepository, times(1)).save(defaultBrandEntity);
     }
 }

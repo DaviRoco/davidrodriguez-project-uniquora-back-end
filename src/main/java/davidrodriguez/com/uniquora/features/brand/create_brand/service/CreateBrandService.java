@@ -24,19 +24,17 @@ public class CreateBrandService {
         }
 
         try {
-            DefaultBrandEntity inputBrandEntity = modelMapper.map(defaultBrandDTO, DefaultBrandEntity.class);
+            DefaultBrandEntity brandEntity = modelMapper.map(defaultBrandDTO, DefaultBrandEntity.class);
 
-            if (defaultBrandDTO.getCreatedAt() == null){
-                inputBrandEntity.setCreatedAt(new Date());
-            }
+            brandEntity.setCreatedAt(
+                    java.util.Optional.ofNullable(brandEntity.getCreatedAt()).orElse(new Date())
+            );
 
-            if (defaultBrandDTO.getUpdatedAt() == null){
-                inputBrandEntity.setUpdatedAt(new Date());
-            }
+            brandEntity.setUpdatedAt(new Date());
 
-            DefaultBrandEntity createdBrandEntity = defaultBrandRepository.save(inputBrandEntity);
+            DefaultBrandEntity savedEntity = defaultBrandRepository.save(brandEntity);
 
-            return modelMapper.map(createdBrandEntity, DefaultBrandDTO.class);
+            return modelMapper.map(savedEntity, DefaultBrandDTO.class);
         } catch (Exception exception) {
             throw new RuntimeException("Could not create brand due to an internal error.");
         }

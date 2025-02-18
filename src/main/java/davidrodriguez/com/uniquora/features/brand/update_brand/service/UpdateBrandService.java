@@ -28,6 +28,9 @@ public class UpdateBrandService {
             DefaultBrandEntity existingBrandEntity = defaultBrandRepository.findById(defaultBrandDTO.getId())
                     .orElseThrow(() -> new ResourceNotFoundException("Brand with ID " + defaultBrandDTO.getId() + " not found"));
 
+            existingBrandEntity.setName(defaultBrandDTO.getName());
+            existingBrandEntity.setLogo(defaultBrandDTO.getLogo());
+            existingBrandEntity.setActive(defaultBrandDTO.isActive());
             existingBrandEntity.setUpdatedAt(new Date());
 
             DefaultBrandEntity updatedBrandEntity = defaultBrandRepository.save(existingBrandEntity);
