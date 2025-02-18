@@ -25,7 +25,7 @@ public class GetUserByEmailService {
 
         try {
             DefaultUserEntity existingBrandEntity = getUserByEmailRepository.findByEmail(email)
-                    .orElseThrow(() -> new ResourceNotFoundException(" User with email " + email + " not found"));
+                    .orElseThrow(() -> new ResourceNotFoundException("User with email " + email + " not found"));
 
             return modelMapper.map(existingBrandEntity, DefaultUserDTO.class);
         } catch (Exception exception) {
