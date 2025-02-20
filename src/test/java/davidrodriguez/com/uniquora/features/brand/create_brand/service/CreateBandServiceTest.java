@@ -15,8 +15,7 @@ import org.modelmapper.ModelMapper;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
@@ -74,4 +73,20 @@ public class CreateBandServiceTest {
         assertEquals(defaultBrandDTO.getName(), result.getName());
         verify(defaultBrandRepository, times(1)).save(defaultBrandEntity);
     }
+
+    @Test
+    void shouldThrowExceptionWhenBrandIsNull() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> createBrandService.createBrand(null));
+
+        assertEquals("Brand data cannot be null", exception.getMessage());
+    }
+
+    @Test
+    void shouldThrowException() {
+        DefaultBrandDTO inputDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
+        Exception exception = assertThrows(RuntimeException.class, () -> createBrandService.createBrand(inputDTO));
+
+        assertEquals("Could not create brand due to an internal error.", exception.getMessage());
+    }
+
 }

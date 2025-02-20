@@ -49,4 +49,12 @@ public class GetAllProductImagesControllerTest {
 
         verify(getAllProductImagesService, times(1)).getAllProductImages();
     }
+
+    @Test
+    void shouldNotReturnProductImagesWhenInternalServerError() throws Exception {
+        when(getAllProductImagesService.getAllProductImages()).thenThrow(new RuntimeException("Could not get all product images due to an internal error."));
+        mockMvc.perform(get("/api/product-image")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
+    }
 }

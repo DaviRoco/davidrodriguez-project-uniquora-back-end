@@ -1,5 +1,6 @@
 package davidrodriguez.com.uniquora.features.brand.update_brand.service;
 
+import davidrodriguez.com.uniquora.exceptions.ResourceNotFoundException;
 import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
 import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEntity;
 import davidrodriguez.com.uniquora.features.brand.shared.repositories.DefaultBrandRepository;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
@@ -61,5 +63,33 @@ public class UpdatedBrandServiceTest {
         assertThat(result.getCreatedAt()).isNotNull();
         assertThat(result.getUpdatedAt()).isNotNull();
         assertThat(result.isActive()).isNotNull();
+    }
+
+    @Test
+    void shouldThrowExceptionWhenBrandNotFound() {
+        DefaultBrandDTO inputDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
+
+        when(defaultBrandRepository.findById(inputDTO.getId()))
+                .thenReturn(Optional.empty());
+
+        Exception exception = assertThrows(RuntimeException.class, () -> updateBrandService.updateBrand(inputDTO));
+
+        assertEquals("Could not update brand due to an internal error.", exception.getMessage());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenBrandIsNull() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> updateBrandService.updateBrand(null));
+
+        assertEquals("Brand data cannot be null", exception.getMessage());
+    }
+
+
+    @Test
+    void shouldThrowException() {
+        DefaultBrandDTO inputDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
+        Exception exception = assertThrows(RuntimeException.class, () -> updateBrandService.updateBrand(inputDTO));
+
+        assertEquals("Could not update brand due to an internal error.", exception.getMessage());
     }
 }

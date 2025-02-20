@@ -20,7 +20,7 @@ public class GetUserByEmailService {
 
     public DefaultUserDTO getUserByEmail(String email) {
         if (email == null) {
-            throw new ResourceNotFoundException("User email cannot be null");
+            throw new IllegalArgumentException("User email cannot be null");
         }
 
         try {

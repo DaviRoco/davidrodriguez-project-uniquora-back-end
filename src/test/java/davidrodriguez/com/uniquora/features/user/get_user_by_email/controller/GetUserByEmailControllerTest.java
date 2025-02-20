@@ -1,8 +1,10 @@
 package davidrodriguez.com.uniquora.features.user.get_user_by_email.controller;
 
 import davidrodriguez.com.uniquora.exceptions.ResourceNotFoundException;
+import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
 import davidrodriguez.com.uniquora.features.user.get_user_by_email.service.GetUserByEmailService;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
+import davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO;
 import davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -52,10 +55,18 @@ public class GetUserByEmailControllerTest {
 
     @Test
     void shouldNotReturnUserByEmailWhenUserNotFound() throws Exception {
-        when(getUserByEmailService.getUserByEmail("test@email.com")).thenThrow(new ResourceNotFoundException(" User with email test@email.com not found"));
+        when(getUserByEmailService.getUserByEmail("test@email.com")).thenThrow(new ResourceNotFoundException("User with email test@email.com not found"));
         mockMvc.perform(get("/api/user/{email}", mockDefaultUserDTO.getEmail())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
 
     }
+    @Test
+    void shouldNotReturnBrandWhenInternalServerError() throws Exception {
+        when(getUserByEmailService.getUserByEmail("test@email.com")).thenThrow(new RuntimeException("Could not update brand due to an internal error."));
+        mockMvc.perform(get("/api/user/{email}", mockDefaultUserDTO.getEmail())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
+    }
+
 }

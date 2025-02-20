@@ -18,6 +18,7 @@ import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswor
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
@@ -68,5 +69,14 @@ public class GetAllUsersServiceTest {
                 .isNotEmpty()
                 .extracting(DefaultUserDTO::getId)
                 .containsExactly(1L, 2L, 3L);
+    }
+
+    @Test
+    void shouldThrowException() {
+        when(defaultUserRepository.findAll()).thenThrow(new RuntimeException("Database error"));
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () ->  getAllUsersService.getAllUsers());
+
+        assertEquals("Could not get all users due to an internal error.", exception.getMessage());
     }
 }

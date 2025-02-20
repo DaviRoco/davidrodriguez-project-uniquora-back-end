@@ -53,4 +53,12 @@ public class GetAllBrandsControllerTest {
 
         verify(getAllBrandsService, times(1)).getAllBrands();
     }
+
+    @Test
+    void shouldNotReturnBrandsWhenInternalServerError() throws Exception {
+        when(getAllBrandsService.getAllBrands()).thenThrow(new RuntimeException("Could not get all brands due to an internal error."));
+        mockMvc.perform(get("/api/brand")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
+    }
 }

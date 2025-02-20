@@ -1,6 +1,7 @@
 package davidrodriguez.com.uniquora.features.brand.update_brand.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import davidrodriguez.com.uniquora.exceptions.ResourceNotFoundException;
 import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
 import davidrodriguez.com.uniquora.features.brand.update_brand.service.UpdateBrandService;
 import davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO;
@@ -55,5 +56,25 @@ public class UpdatedBrandControllerTest {
                 .andExpect(jsonPath("$.active").exists());
 
         verify(updateBrandService, times(1)).updateBrand(any(DefaultBrandDTO.class));
+    }
+
+    @Test
+    void shouldNotReturnBrandWhenBrandNotFound() throws Exception {
+        DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
+        when(updateBrandService.updateBrand(any(DefaultBrandDTO.class))).thenThrow(new ResourceNotFoundException("Brand with ID" + inputBrand.getId() + " not found"));
+        mockMvc.perform(put("/api/brand")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(inputBrand)))
+                        .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void shouldNotReturnBrandWhenInternalServerError() throws Exception {
+        DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
+        when(updateBrandService.updateBrand(any(DefaultBrandDTO.class))).thenThrow(new RuntimeException("Could not update brand due to an internal error."));
+        mockMvc.perform(put("/api/brand")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(inputBrand)))
+                .andExpect(status().isInternalServerError());
     }
 }

@@ -56,4 +56,12 @@ public class GetAllProductsControllerTest {
 
         verify(getAllProductsService, times(1)).getAllProducts();
     }
+
+    @Test
+    void shouldNotReturnProductsWhenInternalServerError() throws Exception {
+        when(getAllProductsService.getAllProducts()).thenThrow(new RuntimeException("Could not get all products due to an internal error."));
+        mockMvc.perform(get("/api/product")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
+    }
 }

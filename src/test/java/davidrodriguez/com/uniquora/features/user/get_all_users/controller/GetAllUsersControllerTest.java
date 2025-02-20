@@ -16,6 +16,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -50,6 +51,14 @@ public class GetAllUsersControllerTest {
                 .andExpect(jsonPath("$[0].email").value("jane1@email.com"));
 
         verify(getAllUsersService, times(1)).getAllUsers();
+    }
+
+    @Test
+    void shouldNotReturnUsersWhenInternalServerError() throws Exception {
+        when(getAllUsersService.getAllUsers()).thenThrow(new RuntimeException("Could not get all users due to an internal error."));
+        mockMvc.perform(get("/api/user")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
     }
 
 }

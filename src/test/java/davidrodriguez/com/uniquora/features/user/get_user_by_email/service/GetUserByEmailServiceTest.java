@@ -60,4 +60,12 @@ public class GetUserByEmailServiceTest {
 
         assertEquals("Could not find user by email due to an internal error.", exception.getMessage());
     }
+
+    @Test
+    void shouldThrowExceptionWhenUserIsNull() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> getUserByEmailService.getUserByEmail(null));
+
+        assertEquals("User email cannot be null", exception.getMessage());
+    }
+
 }
