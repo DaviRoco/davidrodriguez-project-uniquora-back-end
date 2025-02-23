@@ -24,10 +24,10 @@ public class GetUserByEmailService {
         }
 
         try {
-            DefaultUserEntity existingBrandEntity = getUserByEmailRepository.findByEmail(email)
+            DefaultUserEntity existingUserEntity = getUserByEmailRepository.findByEmail(email)
                     .orElseThrow(() -> new ResourceNotFoundException("User with email " + email + " not found"));
 
-            return modelMapper.map(existingBrandEntity, DefaultUserDTO.class);
+            return modelMapper.map(existingUserEntity, DefaultUserDTO.class);
         } catch (Exception exception) {
             throw new RuntimeException("Could not find user by email due to an internal error.");
         }

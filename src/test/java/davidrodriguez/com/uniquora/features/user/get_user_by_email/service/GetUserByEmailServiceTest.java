@@ -23,7 +23,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 
-@Service
+
 public class GetUserByEmailServiceTest {
     @Mock
     private GetUserByEmailRepository getUserByEmailRepository;
@@ -45,16 +45,16 @@ public class GetUserByEmailServiceTest {
 
         when(modelMapper.map(any(DefaultUserEntity.class), eq(DefaultUserDTO.class))).thenAnswer(invocation -> getMockDefaultUserDTO());
         when(getUserByEmailRepository.findByEmail(mockDefaultUserEntity.getEmail())).thenReturn(Optional.of(mockDefaultUserEntity));
-        DefaultUserDTO defaultUserDTO = getUserByEmailService.getUserByEmail(mockDefaultUserEntity.getEmail());
+        DefaultUserDTO result = getUserByEmailService.getUserByEmail(mockDefaultUserEntity.getEmail());
 
-        assertEquals(mockDefaultUserEntity.getId(), defaultUserDTO.getId());
-        assertEquals(mockDefaultUserEntity.getName(), defaultUserDTO.getName());
-        assertEquals(mockDefaultUserEntity.getEmail(), defaultUserDTO.getEmail());
+        assertEquals(mockDefaultUserEntity.getId(), result.getId());
+        assertEquals(mockDefaultUserEntity.getName(), result.getName());
+        assertEquals(mockDefaultUserEntity.getEmail(), result.getEmail());
     }
 
     @Test
     void shouldNotReturnUserByEmailWhenUserDoesNotExist() {
-        when(getUserByEmailRepository.findByEmail("test@example.com")).thenReturn(Optional.empty());
+        when(getUserByEmailRepository.findByEmail(any(String.class))).thenReturn(Optional.empty());
 
         Exception exception = assertThrows(RuntimeException.class, () -> getUserByEmailService.getUserByEmail("test@example.com"));
 

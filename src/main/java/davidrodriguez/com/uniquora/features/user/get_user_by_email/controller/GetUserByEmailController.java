@@ -26,9 +26,9 @@ public class GetUserByEmailController {
             return ResponseEntity.ok(foundUser);
         }  catch (ResourceNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-        } catch (Exception exception) {
+        } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(exception.getMessage());
+                    .body(ex.getMessage());
         }
     }
 }
