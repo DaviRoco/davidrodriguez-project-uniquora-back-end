@@ -1,6 +1,5 @@
 package davidrodriguez.com.uniquora.features.brand.shared.entities;
 
-import davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandEntity;
 import davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandEntityList;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import org.junit.jupiter.api.Test;
