@@ -21,7 +21,7 @@ public class DefaultCartEntityTest {
         assertThat(entity.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
 
-    @Test|
+    @Test
     void shouldSetAllAttributes() {
         List<DefaultCartEntity> entityList = new MockCartEntityList().createMockDefaultCartEntityList(1);
 
