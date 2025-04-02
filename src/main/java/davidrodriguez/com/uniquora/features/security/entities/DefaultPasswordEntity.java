@@ -1,4 +1,4 @@
-package davidrodriguez.com.uniquora.features.security.shared.entities;
+package davidrodriguez.com.uniquora.features.security.entities;
 
 import jakarta.persistence.*;
 

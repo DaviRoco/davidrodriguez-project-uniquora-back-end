@@ -1,6 +1,6 @@
 package davidrodriguez.com.uniquora.features.user.shared.dtos;
 
-import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
+import davidrodriguez.com.uniquora.features.security.dtos.DefaultPasswordDTO;
 import davidrodriguez.com.uniquora.enumerations.Role;
 import lombok.Data;
 

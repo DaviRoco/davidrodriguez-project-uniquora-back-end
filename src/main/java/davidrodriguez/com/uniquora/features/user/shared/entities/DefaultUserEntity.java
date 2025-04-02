@@ -1,7 +1,7 @@
 package davidrodriguez.com.uniquora.features.user.shared.entities;
 
 import davidrodriguez.com.uniquora.enumerations.Role;
-import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
+import davidrodriguez.com.uniquora.features.security.entities.DefaultPasswordEntity;
 import jakarta.persistence.*;
 
 import java.util.Date;

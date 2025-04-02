@@ -1,8 +1,7 @@
-package davidrodriguez.com.uniquora.features.security.shared.mappers;
+package davidrodriguez.com.uniquora.features.security.mappers;
 
-import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
-import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import davidrodriguez.com.uniquora.features.security.dtos.DefaultPasswordDTO;
+import davidrodriguez.com.uniquora.features.security.entities.DefaultPasswordEntity;
 import org.springframework.stereotype.Component;
 
 @Component

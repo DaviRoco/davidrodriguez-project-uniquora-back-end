@@ -1,6 +1,5 @@
 package davidrodriguez.com.uniquora.features.security.entities;
 
-import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
 import davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntityList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

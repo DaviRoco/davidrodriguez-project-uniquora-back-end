@@ -1,12 +1,9 @@
 package davidrodriguez.com.uniquora.features.security.mappers;
 
-import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
-import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
-import davidrodriguez.com.uniquora.features.security.shared.mappers.DefaultPasswordMapper;
-import davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO;
+import davidrodriguez.com.uniquora.features.security.dtos.DefaultPasswordDTO;
+import davidrodriguez.com.uniquora.features.security.entities.DefaultPasswordEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO.getMockDefaultPasswordDTO;
 import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPasswordEntity.getMockDefaultPasswordEntity;

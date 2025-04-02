@@ -1,6 +1,6 @@
 package davidrodriguez.com.uniquora.mockEntities.security.dtos;
 
-import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
+import davidrodriguez.com.uniquora.features.security.dtos.DefaultPasswordDTO;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,5 @@
 package davidrodriguez.com.uniquora.features.security.dtos;
 
-import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
-import davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTO;
 import davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswordDTOList;
 import org.junit.jupiter.api.Test;
 

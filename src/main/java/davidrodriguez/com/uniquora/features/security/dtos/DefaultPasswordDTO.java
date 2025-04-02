@@ -1,4 +1,4 @@
-package davidrodriguez.com.uniquora.features.security.shared.dtos;
+package davidrodriguez.com.uniquora.features.security.dtos;
 
 public class DefaultPasswordDTO {
     private Long id;

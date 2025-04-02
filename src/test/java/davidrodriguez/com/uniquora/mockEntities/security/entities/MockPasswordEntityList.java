@@ -1,6 +1,6 @@
 package davidrodriguez.com.uniquora.mockEntities.security.entities;
 
-import davidrodriguez.com.uniquora.features.security.shared.entities.DefaultPasswordEntity;
+import davidrodriguez.com.uniquora.features.security.entities.DefaultPasswordEntity;
 
 import java.util.ArrayList;
 import java.util.List;

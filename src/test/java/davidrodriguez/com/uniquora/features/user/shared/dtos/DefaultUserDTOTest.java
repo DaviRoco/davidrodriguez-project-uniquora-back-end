@@ -1,7 +1,7 @@
 package davidrodriguez.com.uniquora.features.user.shared.dtos;
 
 import davidrodriguez.com.uniquora.enumerations.Role;
-import davidrodriguez.com.uniquora.features.security.shared.dtos.DefaultPasswordDTO;
+import davidrodriguez.com.uniquora.features.security.dtos.DefaultPasswordDTO;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.user.dtos.MockUserDTOList;
 import org.junit.jupiter.api.BeforeEach;
