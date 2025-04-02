@@ -4,6 +4,7 @@ import davidrodriguez.com.uniquora.features.product.shared.dtos.DefaultProductDT
 import davidrodriguez.com.uniquora.features.product.shared.entities.DefaultProductEntity;
 import davidrodriguez.com.uniquora.features.product.shared.repositories.DefaultProductRepository;
 import davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO;
+import davidrodriguez.com.uniquora.mockEntities.category.dtos.MockCategoryDTOList;
 import davidrodriguez.com.uniquora.mockEntities.product.entities.MockProductEntityList;
 import davidrodriguez.com.uniquora.mockEntities.product_image.dtos.MockProductImageDTOList;
 import org.junit.jupiter.api.BeforeEach;
@@ -53,6 +54,7 @@ public class GetAllProductsServiceTest {
                             entity.getStockQuantity(),
                             MockBrandDTO.getMockDefaultBrandDTO(),
                             new MockProductImageDTOList().createMockDefaultProductImageDTOList(3),
+                            new MockCategoryDTOList().createMockDefaultCategoryDTOList(3),
                             entity.getCreatedAt(),
                             entity.getUpdatedAt()
                     );

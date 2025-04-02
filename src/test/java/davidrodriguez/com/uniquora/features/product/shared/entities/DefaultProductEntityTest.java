@@ -1,8 +1,10 @@
 package davidrodriguez.com.uniquora.features.product.shared.entities;
 
 import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEntity;
+import davidrodriguez.com.uniquora.features.category.shared.entities.DefaultCategoryEntity;
 import davidrodriguez.com.uniquora.features.product_image.shared.entities.DefaultProductImageEntity;
 import davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandEntity;
+import davidrodriguez.com.uniquora.mockEntities.category.entities.MockCategoryEntityList;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.product.entities.MockProductEntity;
 import davidrodriguez.com.uniquora.mockEntities.product.entities.MockProductEntityList;
@@ -17,11 +19,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultProductEntityTest {
-    //TODO: FIX
     private DefaultProductEntity mockDefaultProductEntity;
     private DefaultBrandEntity mockBrand;
     private DefaultProductImageEntity mockProductImage;
     private ArrayList<DefaultProductImageEntity> mockProductImages;
+    private ArrayList<DefaultCategoryEntity> mockCategories;
 
     @BeforeEach
     public void setUp() {
@@ -30,6 +32,7 @@ public class DefaultProductEntityTest {
         mockProductImage = MockProductImageEntity.getMockDefaultProductImageEntity();
 
         mockProductImages = new MockProductImageEntityList().createMockDefaultProductImageEntityList(1);
+        mockCategories = new MockCategoryEntityList().createMockDefaultCategoryEntityList(1);
 
         mockDefaultProductEntity = new DefaultProductEntity(
                 1L,
@@ -39,6 +42,7 @@ public class DefaultProductEntityTest {
                 2,
                 mockBrand,
                 mockProductImages,
+                mockCategories,
                 MockDates.getCreatedAt(),
                 MockDates.getUpdatedAt()
         );
@@ -53,6 +57,7 @@ public class DefaultProductEntityTest {
         assertThat(mockDefaultProductEntity.getStockQuantity()).isEqualTo(2);
         assertThat(mockDefaultProductEntity.getBrand().getId()).isEqualTo(mockBrand.getId());
         assertThat(mockDefaultProductEntity.getProductImages().get(0).getId()).isEqualTo(mockProductImage.getId());
+        assertThat(mockDefaultProductEntity.getCategories().get(0).getId()).isEqualTo(mockCategories.get(0).getId());
         assertThat(mockDefaultProductEntity.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
         assertThat(mockDefaultProductEntity.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
@@ -69,6 +74,7 @@ public class DefaultProductEntityTest {
         mockDefaultProductEntitySet.setStockQuantity(2);
         mockDefaultProductEntitySet.setBrand(mockBrand);
         mockDefaultProductEntitySet.setProductImages(mockProductImages);
+        mockDefaultProductEntitySet.setCategories(mockCategories);
         mockDefaultProductEntitySet.setCreatedAt(MockDates.getCreatedAt());
         mockDefaultProductEntitySet.setUpdatedAt(MockDates.getUpdatedAt());
 
@@ -80,6 +86,7 @@ public class DefaultProductEntityTest {
         assertThat(mockDefaultProductEntity.get(0).getStockQuantity()).isEqualTo(mockDefaultProductEntitySet.getStockQuantity());
         assertThat(mockDefaultProductEntity.get(0).getBrand().getId()).isEqualTo(mockBrand.getId());
         assertThat(mockDefaultProductEntity.get(0).getProductImages().get(0).getId()).isEqualTo(mockProductImage.getId());
+        assertThat(mockDefaultProductEntity.get(0).getCategories().get(0).getId()).isEqualTo(mockCategories.get(0).getId());
         assertThat(mockDefaultProductEntity.get(0).getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
         assertThat(mockDefaultProductEntity.get(0).getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }

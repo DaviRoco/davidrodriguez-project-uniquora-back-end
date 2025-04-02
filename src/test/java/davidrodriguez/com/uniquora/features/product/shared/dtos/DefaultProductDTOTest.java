@@ -1,7 +1,9 @@
 package davidrodriguez.com.uniquora.features.product.shared.dtos;
 
 import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
+import davidrodriguez.com.uniquora.features.category.shared.dtos.DefaultCategoryDTO;
 import davidrodriguez.com.uniquora.features.product_image.shared.dtos.DefaultProductImageDTO;
+import davidrodriguez.com.uniquora.mockEntities.category.dtos.MockCategoryDTOList;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTO;
 import davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTOList;
@@ -20,11 +22,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DefaultProductDTOTest {
     DefaultBrandDTO mockBrand;
     List<DefaultProductImageDTO> mockProductImages;
+    List<DefaultCategoryDTO> mockCategories;
 
     @BeforeEach
     public void setUp() {
         mockBrand = getMockDefaultBrandDTO();
         mockProductImages = new MockProductImageDTOList().createMockDefaultProductImageDTOList(2);
+        mockCategories = new MockCategoryDTOList().createMockDefaultCategoryDTOList(2);
     }
 
     @Test
@@ -38,6 +42,7 @@ public class DefaultProductDTOTest {
         assertThat(mockDefaultProductDTO.getStockQuantity()).isEqualTo(2);
         assertThat(mockDefaultProductDTO.getBrand().getId()).isEqualTo(mockBrand.getId());
         assertThat(mockDefaultProductDTO.getProductImages().get(0).getId()).isEqualTo(mockProductImages.get(0).getId());
+        assertThat(mockDefaultProductDTO.getCategories().get(0).getId()).isEqualTo(mockCategories.get(0).getId());
         assertThat(mockDefaultProductDTO.getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
         assertThat(mockDefaultProductDTO.getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }
@@ -54,6 +59,7 @@ public class DefaultProductDTOTest {
         mockDefaultProductDTOSet.setStockQuantity(2);
         mockDefaultProductDTOSet.setBrand(mockBrand);
         mockDefaultProductDTOSet.setProductImages(mockProductImages);
+        mockDefaultProductDTOSet.setCategories(mockCategories);
         mockDefaultProductDTOSet.setCreatedAt(MockDates.getCreatedAt());
         mockDefaultProductDTOSet.setUpdatedAt(MockDates.getUpdatedAt());
 
@@ -64,6 +70,7 @@ public class DefaultProductDTOTest {
         assertThat(newDefaultProductDTO.get(0).getStockQuantity()).isEqualTo(mockDefaultProductDTOSet.getStockQuantity());
         assertThat(newDefaultProductDTO.get(0).getBrand().getId()).isEqualTo(mockBrand.getId());
         assertThat(newDefaultProductDTO.get(0).getProductImages().get(0).getId()).isEqualTo(mockProductImages.get(0).getId());
+        assertThat(newDefaultProductDTO.get(0).getCategories().get(0).getId()).isEqualTo(mockCategories.get(0).getId());
         assertThat(newDefaultProductDTO.get(0).getCreatedAt()).isEqualTo(MockDates.getCreatedAt());
         assertThat(newDefaultProductDTO.get(0).getUpdatedAt()).isEqualTo(MockDates.getUpdatedAt());
     }

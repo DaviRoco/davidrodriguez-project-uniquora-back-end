@@ -8,8 +8,8 @@ import java.util.List;
 
 public class MockCategoryEntityList {
 
-    public List<DefaultCategoryEntity> createMockDefaultCategoryEntityList(int count) {
-        List<DefaultCategoryEntity> categoryEntityList = new ArrayList<>();
+    public ArrayList<DefaultCategoryEntity> createMockDefaultCategoryEntityList(int count) {
+        ArrayList<DefaultCategoryEntity> categoryEntityList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             categoryEntityList.add(new DefaultCategoryEntity(

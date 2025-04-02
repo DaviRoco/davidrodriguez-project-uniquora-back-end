@@ -1,6 +1,7 @@
 package davidrodriguez.com.uniquora.mockEntities.product.dtos;
 
 import davidrodriguez.com.uniquora.features.product.shared.dtos.DefaultProductDTO;
+import davidrodriguez.com.uniquora.mockEntities.category.dtos.MockCategoryDTOList;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.product_image.dtos.MockProductImageDTOList;
 
@@ -23,6 +24,7 @@ public class MockProductDTO {
                     2,
                     getMockDefaultBrandDTO(),
                     new MockProductImageDTOList().createMockDefaultProductImageDTOList(2),
+                    new MockCategoryDTOList().createMockDefaultCategoryDTOList(2),
                     MockDates.getCreatedAt(),
                     MockDates.getUpdatedAt()
             );

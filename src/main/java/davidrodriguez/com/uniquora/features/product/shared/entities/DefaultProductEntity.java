@@ -1,6 +1,7 @@
 package davidrodriguez.com.uniquora.features.product.shared.entities;
 
 import davidrodriguez.com.uniquora.features.brand.shared.entities.DefaultBrandEntity;
+import davidrodriguez.com.uniquora.features.category.shared.entities.DefaultCategoryEntity;
 import davidrodriguez.com.uniquora.features.product_image.shared.entities.DefaultProductImageEntity;
 import jakarta.persistence.*;
 
@@ -38,6 +39,14 @@ public class DefaultProductEntity {
     )
     private List<DefaultProductImageEntity> productImages = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "categories_products",
+            joinColumns = @JoinColumn(name = "products_id"),
+            inverseJoinColumns = @JoinColumn(name = "categories_id")
+    )
+    private List<DefaultCategoryEntity> categories = new ArrayList<>();
+
     @Column(name = "created_at", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -49,7 +58,7 @@ public class DefaultProductEntity {
     public DefaultProductEntity() {
     }
 
-    public DefaultProductEntity(Long id, String name, String description, Double price, Integer stockQuantity, DefaultBrandEntity brand, List<DefaultProductImageEntity> productImages, Date createdAt, Date updatedAt) {
+    public DefaultProductEntity(Long id, String name, String description, Double price, Integer stockQuantity, DefaultBrandEntity brand, List<DefaultProductImageEntity> productImages, List<DefaultCategoryEntity> categories, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -57,6 +66,7 @@ public class DefaultProductEntity {
         this.stockQuantity = stockQuantity;
         this.brand = brand;
         this.productImages = productImages;
+        this.categories = categories;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -115,6 +125,14 @@ public class DefaultProductEntity {
 
     public void setProductImages(List<DefaultProductImageEntity> productImages) {
         this.productImages = productImages;
+    }
+
+    public List<DefaultCategoryEntity> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<DefaultCategoryEntity> categories) {
+        this.categories = categories;
     }
 
     public Date getCreatedAt() {

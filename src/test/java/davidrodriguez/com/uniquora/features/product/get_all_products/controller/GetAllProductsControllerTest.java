@@ -51,6 +51,7 @@ public class GetAllProductsControllerTest {
                 .andExpect(jsonPath("$[0].stockQuantity").value(mockProducts.get(0).getStockQuantity()))
                 .andExpect(jsonPath("$[0].brand.id").value(mockProducts.get(0).getBrand().getId()))
                 .andExpect(jsonPath("$[0].productImages.size()").value(mockProducts.get(0).getProductImages().size()))
+                .andExpect(jsonPath("$[0].categories.size()").value(mockProducts.get(0).getCategories().size()))
                 .andExpect(jsonPath("$[0].createdAt").value(mockProducts.get(0).getCreatedAt()))
                 .andExpect(jsonPath("$[0].updatedAt").value(mockProducts.get(0).getUpdatedAt()));
 
