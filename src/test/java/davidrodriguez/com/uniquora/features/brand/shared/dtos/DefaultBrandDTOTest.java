@@ -13,7 +13,7 @@ public class DefaultBrandDTOTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultBrandDTO mockDefaultBrandDTO = getMockDefaultBrandDTO();
+        final DefaultBrandDTO mockDefaultBrandDTO = getMockDefaultBrandDTO();
 
         assertThat(mockDefaultBrandDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultBrandDTO.getName()).isEqualTo("Test Brand");
@@ -25,9 +25,9 @@ public class DefaultBrandDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultBrandDTO> newDefaultBrandDTO = new MockBrandDTOList().createMockDefaultBrandDTOList(1);
+        final List<DefaultBrandDTO> newDefaultBrandDTO = new MockBrandDTOList().createMockDefaultBrandDTOList(1);
 
-        DefaultBrandDTO mockDefaultBrandDTOSet = new DefaultBrandDTO();
+        final DefaultBrandDTO mockDefaultBrandDTOSet = new DefaultBrandDTO();
         mockDefaultBrandDTOSet.setId(1L);
         mockDefaultBrandDTOSet.setName("Test Brand");
         mockDefaultBrandDTOSet.setLogo("testLogoURL.com");

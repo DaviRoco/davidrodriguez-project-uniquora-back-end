@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MockCategoryDTOList {
     public List<DefaultCategoryDTO> createMockDefaultCategoryDTOList(int count) {
-        List<DefaultCategoryDTO> categoryDTOList = new ArrayList<DefaultCategoryDTO>();
+        final List<DefaultCategoryDTO> categoryDTOList = new ArrayList<DefaultCategoryDTO>();
 
         for (int i = 0; i < count; i++) {
             categoryDTOList.add(new DefaultCategoryDTO(

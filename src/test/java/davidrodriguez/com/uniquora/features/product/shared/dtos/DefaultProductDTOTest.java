@@ -5,15 +5,12 @@ import davidrodriguez.com.uniquora.features.category.shared.dtos.DefaultCategory
 import davidrodriguez.com.uniquora.features.product_image.shared.dtos.DefaultProductImageDTO;
 import davidrodriguez.com.uniquora.mockEntities.category.dtos.MockCategoryDTOList;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
-import davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTO;
 import davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTOList;
 import davidrodriguez.com.uniquora.mockEntities.product_image.dtos.MockProductImageDTOList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import static davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO.getMockDefaultBrandDTO;
 import static davidrodriguez.com.uniquora.mockEntities.product.dtos.MockProductDTO.getMockDefaultProductDTO;
@@ -33,7 +30,7 @@ public class DefaultProductDTOTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultProductDTO mockDefaultProductDTO = getMockDefaultProductDTO();
+        final DefaultProductDTO mockDefaultProductDTO = getMockDefaultProductDTO();
 
         assertThat(mockDefaultProductDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultProductDTO.getName()).isEqualTo("Test Product");
@@ -49,9 +46,9 @@ public class DefaultProductDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultProductDTO> newDefaultProductDTO = new MockProductDTOList().createMockDefaultProductDTOList(1);
+        final List<DefaultProductDTO> newDefaultProductDTO = new MockProductDTOList().createMockDefaultProductDTOList(1);
 
-        DefaultProductDTO mockDefaultProductDTOSet = new DefaultProductDTO();
+        final DefaultProductDTO mockDefaultProductDTOSet = new DefaultProductDTO();
         mockDefaultProductDTOSet.setId(1L);
         mockDefaultProductDTOSet.setName("Test Product 1");
         mockDefaultProductDTOSet.setDescription("Test Product Description 1");

@@ -12,7 +12,7 @@ import static davidrodriguez.com.uniquora.mockEntities.security.entities.MockPas
 public class MockUserEntityList {
 
     public List<DefaultUserEntity> createMockDefaultUserEntityList(int count) {
-        List<DefaultUserEntity> userList = new ArrayList<>();
+        final List<DefaultUserEntity> userList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             userList.add(new DefaultUserEntity(

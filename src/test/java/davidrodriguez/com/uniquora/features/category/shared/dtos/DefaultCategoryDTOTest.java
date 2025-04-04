@@ -13,7 +13,7 @@ public class DefaultCategoryDTOTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultCategoryDTO mockDefaultCategoryDTO = getMockDefaultCategoryDTO();
+        final DefaultCategoryDTO mockDefaultCategoryDTO = getMockDefaultCategoryDTO();
 
         assertThat(mockDefaultCategoryDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultCategoryDTO.getName()).isEqualTo("Test Name");
@@ -23,9 +23,9 @@ public class DefaultCategoryDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultCategoryDTO> newDefaultCategoryDTO = new MockCategoryDTOList().createMockDefaultCategoryDTOList(1);
+        final List<DefaultCategoryDTO> newDefaultCategoryDTO = new MockCategoryDTOList().createMockDefaultCategoryDTOList(1);
 
-        DefaultCategoryDTO mockDefaultCategoryDTOSet = new DefaultCategoryDTO();
+        final DefaultCategoryDTO mockDefaultCategoryDTOSet = new DefaultCategoryDTO();
         mockDefaultCategoryDTOSet.setId(1L);
         mockDefaultCategoryDTOSet.setName("Test Name 1");
         mockDefaultCategoryDTOSet.setCreatedAt(MockDates.getCreatedAt());

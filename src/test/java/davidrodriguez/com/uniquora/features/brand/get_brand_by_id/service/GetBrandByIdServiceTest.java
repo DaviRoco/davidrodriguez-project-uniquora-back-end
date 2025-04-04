@@ -37,11 +37,11 @@ public class GetBrandByIdServiceTest {
 
     @Test
     void shouldReturnBrandByIDWhenBrandExists() {
-        DefaultBrandEntity mockDefaultBrandEntity = MockBrandEntity.getMockDefaultBrandEntity();
+        final DefaultBrandEntity mockDefaultBrandEntity = MockBrandEntity.getMockDefaultBrandEntity();
 
         when(modelMapper.map(any(DefaultBrandEntity.class), eq(DefaultBrandDTO.class))).thenAnswer(invocation -> MockBrandDTO.getMockDefaultBrandDTO());
         when(getBrandByIdRepository.findBrandById(mockDefaultBrandEntity.getId())).thenReturn(Optional.of(mockDefaultBrandEntity));
-        DefaultBrandDTO result = getBrandByIdService.getBrandById(mockDefaultBrandEntity.getId());
+        final DefaultBrandDTO result = getBrandByIdService.getBrandById(mockDefaultBrandEntity.getId());
 
         assertEquals(mockDefaultBrandEntity.getId(), result.getId());
         assertEquals(mockDefaultBrandEntity.getName(), result.getName());
@@ -52,14 +52,14 @@ public class GetBrandByIdServiceTest {
     void shouldNotReturnBrandByIDWhenBrandDoesNotExist() {
         when(getBrandByIdRepository.findBrandById(any(Long.class))).thenReturn(Optional.empty());
 
-        Exception exception = assertThrows(RuntimeException.class, () -> getBrandByIdService.getBrandById(1L));
+        final Exception exception = assertThrows(RuntimeException.class, () -> getBrandByIdService.getBrandById(1L));
 
         assertEquals("Could not find brand by ID due to an internal error.", exception.getMessage());
     }
 
     @Test
     void shouldThrowExceptionWhenBrandIsNull() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> getBrandByIdService.getBrandById(null));
+        final Exception exception = assertThrows(IllegalArgumentException.class, () -> getBrandByIdService.getBrandById(null));
 
         assertEquals("Brand ID cannot be null.", exception.getMessage());
     }

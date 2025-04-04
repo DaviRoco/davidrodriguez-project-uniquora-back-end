@@ -13,7 +13,7 @@ public class DefaultOrderDTOTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultOrderDTO dto = getMockDefaultOrderDTO();
+        final DefaultOrderDTO dto = getMockDefaultOrderDTO();
 
         assertThat(dto.getId()).isEqualTo(1L);
         assertThat(dto.getUserId()).isEqualTo(10L);
@@ -25,9 +25,9 @@ public class DefaultOrderDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultOrderDTO> mockList = new MockOrderDTOList().createMockDefaultOrderDTOList(1);
+        final List<DefaultOrderDTO> mockList = new MockOrderDTOList().createMockDefaultOrderDTOList(1);
 
-        DefaultOrderDTO dto = new DefaultOrderDTO();
+        final DefaultOrderDTO dto = new DefaultOrderDTO();
         dto.setId(1L);
         dto.setUserId(10L);
         dto.setStatus("IN_PROGRESS");

@@ -12,7 +12,7 @@ public class DefaultOrderItemDTOTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultOrderItemDTO dto = getMockDefaultOrderItemDTO();
+        final DefaultOrderItemDTO dto = getMockDefaultOrderItemDTO();
 
         assertThat(dto.getId()).isEqualTo(1L);
         assertThat(dto.getOrderId()).isEqualTo(100L);
@@ -22,9 +22,9 @@ public class DefaultOrderItemDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultOrderItemDTO> list = new MockOrderItemDTOList().createMockDefaultOrderItemDTOList(1);
+        final List<DefaultOrderItemDTO> list = new MockOrderItemDTOList().createMockDefaultOrderItemDTOList(1);
 
-        DefaultOrderItemDTO dto = new DefaultOrderItemDTO();
+        final DefaultOrderItemDTO dto = new DefaultOrderItemDTO();
         dto.setId(1L);
         dto.setOrderId(100L);
         dto.setProductId(200L);

@@ -13,7 +13,7 @@ public class DefaultCartDTOTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultCartDTO dto = getMockDefaultCartDTO();
+        final DefaultCartDTO dto = getMockDefaultCartDTO();
 
         assertThat(dto.getId()).isEqualTo(1L);
         assertThat(dto.getUserId()).isEqualTo(100L);
@@ -23,9 +23,9 @@ public class DefaultCartDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultCartDTO> dtoList = new MockCartDTOList().createMockDefaultCartDTOList(1);
+        final List<DefaultCartDTO> dtoList = new MockCartDTOList().createMockDefaultCartDTOList(1);
 
-        DefaultCartDTO dto = new DefaultCartDTO();
+        final DefaultCartDTO dto = new DefaultCartDTO();
         dto.setId(1L);
         dto.setUserId(100L);
         dto.setCreatedAt(MockDates.getCreatedAt());

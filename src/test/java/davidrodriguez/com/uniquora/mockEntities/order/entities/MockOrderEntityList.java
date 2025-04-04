@@ -10,7 +10,7 @@ import java.util.List;
 public class MockOrderEntityList {
 
     public List<DefaultOrderEntity> createMockDefaultOrderEntityList(int count) {
-        List<DefaultOrderEntity> orderEntityList = new ArrayList<>();
+        final List<DefaultOrderEntity> orderEntityList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             orderEntityList.add(new DefaultOrderEntity(

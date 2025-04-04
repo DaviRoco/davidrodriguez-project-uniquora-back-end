@@ -1,10 +1,8 @@
 package davidrodriguez.com.uniquora.features.product_image.get_all_product_images.service;
 
-import davidrodriguez.com.uniquora.features.brand.shared.dtos.DefaultBrandDTO;
 import davidrodriguez.com.uniquora.features.product_image.shared.dtos.DefaultProductImageDTO;
 import davidrodriguez.com.uniquora.features.product_image.shared.entities.DefaultProductImageEntity;
 import davidrodriguez.com.uniquora.features.product_image.shared.repositories.DefaultProductImageRepository;
-import davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO;
 import davidrodriguez.com.uniquora.mockEntities.product_image.entities.MockProductImageEntityList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,19 +37,19 @@ public class GetAllProductImagesServiceTest {
 
     @Test
     void shouldReturnAllProductImages() {
-        List<DefaultProductImageEntity> mockDefaultProductImageEntities = new MockProductImageEntityList().createMockDefaultProductImageEntityList(3);
+        final List<DefaultProductImageEntity> mockDefaultProductImageEntities = new MockProductImageEntityList().createMockDefaultProductImageEntityList(3);
 
         when(defaultProductImageRepository.findAll()).thenReturn(mockDefaultProductImageEntities);
         when(modelMapper.map(any(DefaultProductImageEntity.class), eq(DefaultProductImageDTO.class)))
                 .thenAnswer(invocation -> {
-                    DefaultProductImageEntity entity = invocation.getArgument(0);
+                    final DefaultProductImageEntity entity = invocation.getArgument(0);
                     return new DefaultProductImageDTO(
                             entity.getId(),
                             entity.getImageUrl()
                     );
                 });
 
-        List<DefaultProductImageDTO> defaultProductImageDTOList = getAllProductImagesService.getAllProductImages();
+        final List<DefaultProductImageDTO> defaultProductImageDTOList = getAllProductImagesService.getAllProductImages();
 
         assertThat(mockDefaultProductImageEntities.size()).isEqualTo(defaultProductImageDTOList.size());
         assertThat(defaultProductImageDTOList.size()).isEqualTo(3);
@@ -65,7 +63,7 @@ public class GetAllProductImagesServiceTest {
     void shouldThrowException() {
         when(defaultProductImageRepository.findAll()).thenThrow(new RuntimeException("Database error"));
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> getAllProductImagesService.getAllProductImages());
+        final RuntimeException exception = assertThrows(RuntimeException.class, () -> getAllProductImagesService.getAllProductImages());
 
         assertEquals("Could not get all product images due to an internal error.", exception.getMessage());
     }

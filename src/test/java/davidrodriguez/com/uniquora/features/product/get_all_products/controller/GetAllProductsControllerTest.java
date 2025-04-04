@@ -36,7 +36,7 @@ public class GetAllProductsControllerTest {
 
     @Test
     void shouldReturnAllProducts() throws Exception {
-        List<DefaultProductDTO> mockProducts = new MockProductDTOList().createMockDefaultProductDTOList(1);
+        final List<DefaultProductDTO> mockProducts = new MockProductDTOList().createMockDefaultProductDTOList(1);
 
         when(getAllProductsService.getAllProducts()).thenReturn(mockProducts);
 

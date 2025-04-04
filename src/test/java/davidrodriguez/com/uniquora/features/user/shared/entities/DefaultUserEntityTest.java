@@ -24,7 +24,7 @@ public class DefaultUserEntityTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultUserEntity defaultUserEntity = getMockDefaultUserEntity();
+        final DefaultUserEntity defaultUserEntity = getMockDefaultUserEntity();
 
         assertThat(defaultUserEntity.getId()).isEqualTo(1L);
         assertThat(defaultUserEntity.getName()).isEqualTo("John");
@@ -40,9 +40,9 @@ public class DefaultUserEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultUserEntity> newDefaultUserEntityList = new MockUserEntityList().createMockDefaultUserEntityList(1);
+        final List<DefaultUserEntity> newDefaultUserEntityList = new MockUserEntityList().createMockDefaultUserEntityList(1);
 
-        DefaultUserEntity mockDefaultUserEntitySet = new DefaultUserEntity();
+        final DefaultUserEntity mockDefaultUserEntitySet = new DefaultUserEntity();
         mockDefaultUserEntitySet.setId(1L);
         mockDefaultUserEntitySet.setName("Jane");
         mockDefaultUserEntitySet.setLastName("Smith");

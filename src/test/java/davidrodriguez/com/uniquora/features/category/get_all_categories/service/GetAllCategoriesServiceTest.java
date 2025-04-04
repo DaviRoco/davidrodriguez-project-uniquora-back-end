@@ -38,12 +38,12 @@ public class GetAllCategoriesServiceTest {
 
     @Test
     void shouldReturnAllCategories() {
-        List<DefaultCategoryEntity> mockDefaultCategoryEntities = new MockCategoryEntityList().createMockDefaultCategoryEntityList(3);
+        final List<DefaultCategoryEntity> mockDefaultCategoryEntities = new MockCategoryEntityList().createMockDefaultCategoryEntityList(3);
 
         when(defaultCategoryRepository.findAll()).thenReturn(mockDefaultCategoryEntities);
         when(modelMapper.map(any(DefaultCategoryEntity.class), eq(DefaultCategoryDTO.class)))
                 .thenAnswer(invocation -> {
-                    DefaultCategoryEntity entity = invocation.getArgument(0);
+                    final DefaultCategoryEntity entity = invocation.getArgument(0);
                     return new DefaultCategoryDTO(
                             entity.getId(),
                             entity.getName(),
@@ -52,7 +52,7 @@ public class GetAllCategoriesServiceTest {
                     );
                 });
 
-        List<DefaultCategoryDTO> defaultCategoryDTOList = getAllCategoriesService.getAllCategories();
+        final List<DefaultCategoryDTO> defaultCategoryDTOList = getAllCategoriesService.getAllCategories();
 
         assertEquals(mockDefaultCategoryEntities.size(), defaultCategoryDTOList.size());
         assertThat(defaultCategoryDTOList)
@@ -65,7 +65,7 @@ public class GetAllCategoriesServiceTest {
     void shouldThrowException() {
         when(defaultCategoryRepository.findAll()).thenThrow(new RuntimeException("Database error"));
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> getAllCategoriesService.getAllCategories());
+        final RuntimeException exception = assertThrows(RuntimeException.class, () -> getAllCategoriesService.getAllCategories());
 
         assertEquals("Could not get all categories due to an internal error.", exception.getMessage());
     }

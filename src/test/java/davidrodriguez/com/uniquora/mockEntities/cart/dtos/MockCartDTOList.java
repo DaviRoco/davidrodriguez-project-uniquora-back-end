@@ -9,7 +9,7 @@ import java.util.List;
 public class MockCartDTOList {
 
     public List<DefaultCartDTO> createMockDefaultCartDTOList(int count) {
-        List<DefaultCartDTO> cartDTOList = new ArrayList<>();
+        final List<DefaultCartDTO> cartDTOList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             cartDTOList.add(new DefaultCartDTO(

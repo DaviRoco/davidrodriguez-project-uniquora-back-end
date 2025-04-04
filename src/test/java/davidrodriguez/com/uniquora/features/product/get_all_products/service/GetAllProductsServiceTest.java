@@ -40,12 +40,12 @@ public class GetAllProductsServiceTest {
 
     @Test
     void shouldReturnAllProducts() {
-        List<DefaultProductEntity> mockDefaultProductEntities = new MockProductEntityList().createMockDefaultProductEntityList(3);
+        final List<DefaultProductEntity> mockDefaultProductEntities = new MockProductEntityList().createMockDefaultProductEntityList(3);
 
         when(defaultProductRepository.findAll()).thenReturn(mockDefaultProductEntities);
         when(modelMapper.map(any(DefaultProductEntity.class), eq(DefaultProductDTO.class)))
                 .thenAnswer(invocation -> {
-                    DefaultProductEntity entity = invocation.getArgument(0);
+                    final DefaultProductEntity entity = invocation.getArgument(0);
                     return new DefaultProductDTO(
                             entity.getId(),
                             entity.getName(),
@@ -59,7 +59,7 @@ public class GetAllProductsServiceTest {
                             entity.getUpdatedAt()
                     );
                 });
-        List<DefaultProductDTO> defaultProductDTOList = getAllProductsService.getAllProducts();
+        final List<DefaultProductDTO> defaultProductDTOList = getAllProductsService.getAllProducts();
 
         assertEquals(mockDefaultProductEntities.size(), defaultProductDTOList.size());
         assertThat(defaultProductDTOList)
@@ -72,7 +72,7 @@ public class GetAllProductsServiceTest {
     void shouldThrowException() {
         when(defaultProductRepository.findAll()).thenThrow(new RuntimeException("Database error"));
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () ->  getAllProductsService.getAllProducts());
+        final RuntimeException exception = assertThrows(RuntimeException.class, () ->  getAllProductsService.getAllProducts());
 
         assertEquals("Could not get all products due to an internal error.", exception.getMessage());
     }

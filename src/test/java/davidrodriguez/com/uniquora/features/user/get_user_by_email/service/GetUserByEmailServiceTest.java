@@ -1,6 +1,5 @@
 package davidrodriguez.com.uniquora.features.user.get_user_by_email.service;
 
-import davidrodriguez.com.uniquora.exceptions.ResourceNotFoundException;
 import davidrodriguez.com.uniquora.features.user.get_user_by_email.repository.GetUserByEmailRepository;
 import davidrodriguez.com.uniquora.features.user.shared.dtos.DefaultUserDTO;
 import davidrodriguez.com.uniquora.features.user.shared.entities.DefaultUserEntity;
@@ -10,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
@@ -41,11 +39,11 @@ public class GetUserByEmailServiceTest {
 
     @Test
     void shouldReturnUserByEmailWhenUserExists() {
-        DefaultUserEntity mockDefaultUserEntity = getMockDefaultUserEntity();
+        final DefaultUserEntity mockDefaultUserEntity = getMockDefaultUserEntity();
 
         when(modelMapper.map(any(DefaultUserEntity.class), eq(DefaultUserDTO.class))).thenAnswer(invocation -> getMockDefaultUserDTO());
         when(getUserByEmailRepository.findByEmail(mockDefaultUserEntity.getEmail())).thenReturn(Optional.of(mockDefaultUserEntity));
-        DefaultUserDTO result = getUserByEmailService.getUserByEmail(mockDefaultUserEntity.getEmail());
+        final DefaultUserDTO result = getUserByEmailService.getUserByEmail(mockDefaultUserEntity.getEmail());
 
         assertEquals(mockDefaultUserEntity.getId(), result.getId());
         assertEquals(mockDefaultUserEntity.getName(), result.getName());
@@ -56,14 +54,14 @@ public class GetUserByEmailServiceTest {
     void shouldNotReturnUserByEmailWhenUserDoesNotExist() {
         when(getUserByEmailRepository.findByEmail(any(String.class))).thenReturn(Optional.empty());
 
-        Exception exception = assertThrows(RuntimeException.class, () -> getUserByEmailService.getUserByEmail("test@example.com"));
+        final Exception exception = assertThrows(RuntimeException.class, () -> getUserByEmailService.getUserByEmail("test@example.com"));
 
         assertEquals("Could not find user by email due to an internal error.", exception.getMessage());
     }
 
     @Test
     void shouldThrowExceptionWhenUserIsNull() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> getUserByEmailService.getUserByEmail(null));
+        final Exception exception = assertThrows(IllegalArgumentException.class, () -> getUserByEmailService.getUserByEmail(null));
 
         assertEquals("User email cannot be null", exception.getMessage());
     }

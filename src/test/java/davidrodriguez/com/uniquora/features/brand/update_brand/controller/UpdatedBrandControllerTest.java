@@ -39,8 +39,8 @@ public class UpdatedBrandControllerTest {
 
     @Test
     void shouldUpdateBrand() throws Exception {
-        DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
-        DefaultBrandDTO mockBrand = MockBrandDTO.getMockDefaultBrandDTO();
+        final DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
+        final DefaultBrandDTO mockBrand = MockBrandDTO.getMockDefaultBrandDTO();
 
         when(updateBrandService.updateBrand(any(DefaultBrandDTO.class))).thenReturn(mockBrand);
 
@@ -60,7 +60,7 @@ public class UpdatedBrandControllerTest {
 
     @Test
     void shouldNotReturnBrandWhenBrandNotFound() throws Exception {
-        DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
+        final DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
         when(updateBrandService.updateBrand(any(DefaultBrandDTO.class))).thenThrow(new ResourceNotFoundException("Brand with ID" + inputBrand.getId() + " not found"));
         mockMvc.perform(put("/api/brand")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -70,7 +70,7 @@ public class UpdatedBrandControllerTest {
 
     @Test
     void shouldNotReturnBrandWhenInternalServerError() throws Exception {
-        DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
+        final DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
         when(updateBrandService.updateBrand(any(DefaultBrandDTO.class))).thenThrow(new RuntimeException("Could not update brand due to an internal error."));
         mockMvc.perform(put("/api/brand")
                         .contentType(MediaType.APPLICATION_JSON)

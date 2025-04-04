@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MockPasswordDTOList {
     public List<DefaultPasswordDTO> createMockDefaultPasswordDTOList(int count) {
-        List<DefaultPasswordDTO> passwordList = new ArrayList<>();
+        final List<DefaultPasswordDTO> passwordList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             passwordList.add(new DefaultPasswordDTO(
