@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = "davidrodriguez.com.uniquora")
 public class UniquoraApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UniquoraApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(UniquoraApplication.class, args);
+    }
 
 }
