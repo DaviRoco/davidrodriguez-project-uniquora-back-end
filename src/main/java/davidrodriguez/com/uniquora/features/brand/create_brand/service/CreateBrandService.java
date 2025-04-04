@@ -24,7 +24,7 @@ public class CreateBrandService {
         }
 
         try {
-            DefaultBrandEntity brandEntity = modelMapper.map(defaultBrandDTO, DefaultBrandEntity.class);
+            final DefaultBrandEntity brandEntity = modelMapper.map(defaultBrandDTO, DefaultBrandEntity.class);
 
             brandEntity.setCreatedAt(
                     java.util.Optional.ofNullable(brandEntity.getCreatedAt()).orElse(new Date())
@@ -32,7 +32,7 @@ public class CreateBrandService {
 
             brandEntity.setUpdatedAt(new Date());
 
-            DefaultBrandEntity savedEntity = defaultBrandRepository.save(brandEntity);
+            final DefaultBrandEntity savedEntity = defaultBrandRepository.save(brandEntity);
 
             return modelMapper.map(savedEntity, DefaultBrandDTO.class);
         } catch (Exception exception) {

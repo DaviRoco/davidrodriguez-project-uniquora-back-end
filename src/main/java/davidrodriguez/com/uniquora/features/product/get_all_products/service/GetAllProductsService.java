@@ -21,7 +21,7 @@ public class GetAllProductsService {
 
     public List<DefaultProductDTO> getAllProducts() {
         try {
-            List<DefaultProductEntity> defaultProductEntities = defaultProductRepository.findAll();
+            final List<DefaultProductEntity> defaultProductEntities = defaultProductRepository.findAll();
             return defaultProductEntities.stream()
                     .map(product -> modelMapper.map(product, DefaultProductDTO.class))
                     .collect(Collectors.toList());

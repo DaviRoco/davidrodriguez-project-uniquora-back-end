@@ -23,13 +23,13 @@ public class DeleteBrandService {
         }
 
         try {
-            DefaultBrandEntity existingBrandEntity = defaultBrandRepository.findById(id)
+            final DefaultBrandEntity existingBrandEntity = defaultBrandRepository.findById(id)
                     .orElseThrow(() -> new ResourceNotFoundException("Brand with ID " + id + " not found"));
 
             if (existingBrandEntity.isActive()) {
                 existingBrandEntity.setActive(false);
 
-                DefaultBrandEntity updatedBrandEntity = defaultBrandRepository.save(existingBrandEntity);
+                final DefaultBrandEntity updatedBrandEntity = defaultBrandRepository.save(existingBrandEntity);
 
                 return modelMapper.map(updatedBrandEntity, DefaultBrandDTO.class);
             }

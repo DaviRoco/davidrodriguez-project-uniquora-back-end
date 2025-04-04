@@ -21,7 +21,7 @@ public class GetAllBrandsService {
 
     public List<DefaultBrandDTO> getAllBrands() {
         try {
-            List<DefaultBrandEntity> defaultBrandEntities = defaultBrandRepository.findAll();
+            final List<DefaultBrandEntity> defaultBrandEntities = defaultBrandRepository.findAll();
             return defaultBrandEntities.stream()
                     .map(brand -> modelMapper.map(brand, DefaultBrandDTO.class))
                     .collect(Collectors.toList());
