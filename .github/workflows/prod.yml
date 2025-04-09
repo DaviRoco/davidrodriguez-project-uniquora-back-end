@@ -51,9 +51,14 @@ jobs:
           role-to-assume: arn:aws:iam::282616780783:role/uniquora-lambda-access
           aws-region: us-east-1
 
-      - name: Deploy to AWS Lambda
+      - name: Upload JAR to S3
+        run: |
+          aws s3 cp $JAR_NAME s3://uniquora-jar-bucket/uniquora-lambda.jar
+
+      - name: Deploy Lambda from S3
         run: |
           aws lambda update-function-code \
-            --function-name Uniquora-Backend \
-            --zip-file fileb://$JAR_NAME \
-            --region us-east-1
+          --function-name Uniquora-Backend \
+          --s3-bucket uniquora-jar-bucket \
+          --s3-key uniquora-lambda.jar \
+          --region us-east-1
