@@ -1,9 +1,12 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.5'
     id 'io.spring.dependency-management' version '1.1.6'
     id 'jacoco'
     id 'checkstyle'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'davidrodriguez.com'
@@ -38,6 +41,8 @@ dependencies {
     implementation 'org.modelmapper:modelmapper:3.2.0'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.amazonaws:aws-lambda-java-core:1.2.3'
+    implementation 'com.amazonaws.serverless:aws-serverless-java-container-springboot3:2.0.2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'com.h2database:h2'
@@ -45,6 +50,13 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+}
+
+tasks.register('lambdaPackage', ShadowJar) {
+    archiveClassifier.set('lambda')
+    manifest {
+        attributes 'Main-Class': 'davidrodriguez.com.uniquora.configurations.LambdaHandler'
+    }
 }
 
 checkstyle {
