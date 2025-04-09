@@ -54,10 +54,13 @@ dependencies {
 
 tasks.register('lambdaPackage', ShadowJar) {
     archiveClassifier.set('lambda')
+    from sourceSets.main.output
+    configurations = [project.configurations.runtimeClasspath]
     manifest {
-        attributes 'Main-Class': 'davidrodriguez.com.uniquora.configurations.LambdaHandler'
+        attributes 'Main-Class': 'davidrodriguez.com.uniquora.LambdaHandler'
     }
 }
+
 
 checkstyle {
     toolVersion = '10.12.3'
