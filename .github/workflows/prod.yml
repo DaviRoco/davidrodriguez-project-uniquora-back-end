@@ -3,8 +3,6 @@ name: CI & Deploy to AWS Lambda - Production
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 permissions:
   id-token: write     # 🔐 Needed for OIDC
