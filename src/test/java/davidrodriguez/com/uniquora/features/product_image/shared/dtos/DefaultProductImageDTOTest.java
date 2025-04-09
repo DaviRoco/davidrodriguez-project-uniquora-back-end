@@ -12,7 +12,7 @@ public class DefaultProductImageDTOTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultProductImageDTO mockDefaultProductImageDTO = getMockDefaultProductImageDTO();
+        final DefaultProductImageDTO mockDefaultProductImageDTO = getMockDefaultProductImageDTO();
 
         assertThat(mockDefaultProductImageDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultProductImageDTO.getImageUrl()).isEqualTo("testProductImage.com");
@@ -20,9 +20,9 @@ public class DefaultProductImageDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultProductImageDTO> newDefaultProductImageDTO = new MockProductImageDTOList().createMockDefaultProductImageDTOList(1);
+        final List<DefaultProductImageDTO> newDefaultProductImageDTO = new MockProductImageDTOList().createMockDefaultProductImageDTOList(1);
 
-        DefaultProductImageDTO mockDefaultProductImageDTOSet = new DefaultProductImageDTO();
+        final DefaultProductImageDTO mockDefaultProductImageDTOSet = new DefaultProductImageDTO();
         mockDefaultProductImageDTOSet.setId(1L);
         mockDefaultProductImageDTOSet.setImageUrl("testProductImage.com");
 

@@ -22,7 +22,7 @@ public class GetBrandByIdController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getBrandById(@PathVariable Long id) {
         try {
-            DefaultBrandDTO foundBrand = getBrandByIdService.getBrandById(id);
+            final DefaultBrandDTO foundBrand = getBrandByIdService.getBrandById(id);
             return ResponseEntity.ok(foundBrand);
         } catch (ResourceNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());

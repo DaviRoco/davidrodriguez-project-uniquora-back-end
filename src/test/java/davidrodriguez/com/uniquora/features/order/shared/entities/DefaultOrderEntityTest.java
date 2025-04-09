@@ -13,7 +13,7 @@ public class DefaultOrderEntityTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultOrderEntity entity = getMockDefaultOrderEntity();
+        final DefaultOrderEntity entity = getMockDefaultOrderEntity();
 
         assertThat(entity.getId()).isEqualTo(1L);
         assertThat(entity.getUserId()).isEqualTo(10L);
@@ -25,9 +25,9 @@ public class DefaultOrderEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultOrderEntity> mockList = new MockOrderEntityList().createMockDefaultOrderEntityList(1);
+        final List<DefaultOrderEntity> mockList = new MockOrderEntityList().createMockDefaultOrderEntityList(1);
 
-        DefaultOrderEntity entity = new DefaultOrderEntity();
+        final DefaultOrderEntity entity = new DefaultOrderEntity();
         entity.setId(1L);
         entity.setUserId(10L);
         entity.setStatus("IN_PROGRESS");

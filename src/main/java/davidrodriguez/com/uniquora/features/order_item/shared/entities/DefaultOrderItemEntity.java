@@ -2,8 +2,6 @@ package davidrodriguez.com.uniquora.features.order_item.shared.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
-
 @Entity
 @Table(name = "order_items", schema = "public")
 public class DefaultOrderItemEntity {

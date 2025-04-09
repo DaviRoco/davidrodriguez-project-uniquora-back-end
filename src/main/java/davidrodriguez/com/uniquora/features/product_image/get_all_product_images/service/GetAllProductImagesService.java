@@ -21,7 +21,7 @@ public class GetAllProductImagesService {
 
     public List<DefaultProductImageDTO> getAllProductImages() {
         try {
-            List<DefaultProductImageEntity> defaultProductImageEntities = defaultProductImageRepository.findAll();
+            final List<DefaultProductImageEntity> defaultProductImageEntities = defaultProductImageRepository.findAll();
             return defaultProductImageEntities.stream()
                     .map(productImage -> modelMapper.map(productImage, DefaultProductImageDTO.class))
                     .collect(Collectors.toList());

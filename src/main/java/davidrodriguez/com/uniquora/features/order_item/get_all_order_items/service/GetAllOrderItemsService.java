@@ -22,7 +22,7 @@ public class GetAllOrderItemsService {
 
     public List<DefaultOrderItemDTO> getAllOrderItems() {
         try {
-            List<DefaultOrderItemEntity> entities = defaultOrderItemRepository.findAll();
+            final List<DefaultOrderItemEntity> entities = defaultOrderItemRepository.findAll();
             return entities.stream()
                     .map(orderItem -> modelMapper.map(orderItem, DefaultOrderItemDTO.class))
                     .collect(Collectors.toList());

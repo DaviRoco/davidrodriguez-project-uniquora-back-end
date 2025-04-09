@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MockCartItemDTOList {
     public List<DefaultCartItemDTO> createMockDefaultCartItemDTOList(int count) {
-        List<DefaultCartItemDTO> list = new ArrayList<>();
+        final List<DefaultCartItemDTO> list = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             list.add(new DefaultCartItemDTO(
                     (long) i + 1,

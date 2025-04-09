@@ -37,13 +37,13 @@ public class GetAllBrandsServiceTest {
 
     @Test
     void shouldReturnAllBrands() {
-        List<DefaultBrandEntity> mockDefaultBrandEntities = new MockBrandEntityList().createMockDefaultBrandEntityList(3);
+        final List<DefaultBrandEntity> mockDefaultBrandEntities = new MockBrandEntityList().createMockDefaultBrandEntityList(3);
 
 
         when(defaultBrandRepository.findAll()).thenReturn(mockDefaultBrandEntities);
         when(modelMapper.map(any(DefaultBrandEntity.class), eq(DefaultBrandDTO.class)))
                 .thenAnswer(invocation -> {
-                    DefaultBrandEntity entity = invocation.getArgument(0);
+                    final DefaultBrandEntity entity = invocation.getArgument(0);
                     return new DefaultBrandDTO(
                             entity.getId(),
                             entity.getName(),
@@ -53,7 +53,7 @@ public class GetAllBrandsServiceTest {
                             entity.isActive()
                     );
                 });
-        List<DefaultBrandDTO> defaultBrandDTOList = getAllBrandsService.getAllBrands();
+        final List<DefaultBrandDTO> defaultBrandDTOList = getAllBrandsService.getAllBrands();
 
         assertEquals(mockDefaultBrandEntities.size(), defaultBrandDTOList.size());
         assertThat(defaultBrandDTOList)
@@ -66,7 +66,7 @@ public class GetAllBrandsServiceTest {
     void shouldThrowException() {
         when(defaultBrandRepository.findAll()).thenThrow(new RuntimeException("Database error"));
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () ->  getAllBrandsService.getAllBrands());
+        final RuntimeException exception = assertThrows(RuntimeException.class, () ->  getAllBrandsService.getAllBrands());
 
         assertEquals("Could not get all brands due to an internal error.", exception.getMessage());
     }

@@ -22,7 +22,7 @@ public class GetUserByEmailController {
     @GetMapping("/{email}")
     public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
         try {
-            DefaultUserDTO foundUser = getUserByEmailService.getUserByEmail(email);
+            final DefaultUserDTO foundUser = getUserByEmailService.getUserByEmail(email);
             return ResponseEntity.ok(foundUser);
         }  catch (ResourceNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());

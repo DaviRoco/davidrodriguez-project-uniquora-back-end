@@ -9,7 +9,7 @@ import java.util.List;
 public class MockCartEntityList {
 
     public List<DefaultCartEntity> createMockDefaultCartEntityList(int count) {
-        List<DefaultCartEntity> cartEntityList = new ArrayList<>();
+        final List<DefaultCartEntity> cartEntityList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             cartEntityList.add(new DefaultCartEntity(

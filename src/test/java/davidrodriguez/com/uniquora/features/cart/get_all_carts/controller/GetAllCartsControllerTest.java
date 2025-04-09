@@ -37,7 +37,7 @@ public class GetAllCartsControllerTest {
 
     @Test
     void shouldReturnAllCarts() throws Exception {
-        List<DefaultCartDTO> mockCarts = new MockCartDTOList().createMockDefaultCartDTOList(1);
+        final List<DefaultCartDTO> mockCarts = new MockCartDTOList().createMockDefaultCartDTOList(1);
 
         when(getAllCartsService.getAllCarts()).thenReturn(mockCarts);
 

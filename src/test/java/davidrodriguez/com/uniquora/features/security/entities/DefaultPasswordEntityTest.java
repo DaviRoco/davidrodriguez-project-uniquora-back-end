@@ -17,7 +17,7 @@ public class DefaultPasswordEntityTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultPasswordEntity mockDefaultPasswordEntity = getMockDefaultPasswordEntity();
+        final DefaultPasswordEntity mockDefaultPasswordEntity = getMockDefaultPasswordEntity();
 
         assertThat(mockDefaultPasswordEntity.getId()).isEqualTo(1L);
         assertThat(mockDefaultPasswordEntity.getPassword()).isEqualTo("Test Password");
@@ -25,9 +25,9 @@ public class DefaultPasswordEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultPasswordEntity> mockDefaultPasswordEntity = new MockPasswordEntityList().createMockDefaultPasswordEntityList(1);
+        final List<DefaultPasswordEntity> mockDefaultPasswordEntity = new MockPasswordEntityList().createMockDefaultPasswordEntityList(1);
 
-        DefaultPasswordEntity newDefaultPasswordEntity = new DefaultPasswordEntity();
+        final DefaultPasswordEntity newDefaultPasswordEntity = new DefaultPasswordEntity();
         newDefaultPasswordEntity.setId(1L);
         newDefaultPasswordEntity.setPassword("Test Password");
 

@@ -12,7 +12,7 @@ import static davidrodriguez.com.uniquora.mockEntities.security.dtos.MockPasswor
 public class MockUserDTOList {
 
     public List<DefaultUserDTO> createMockDefaultUserDTOList(int count) {
-        List<DefaultUserDTO> userList = new ArrayList<>();
+        final List<DefaultUserDTO> userList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             userList.add(new DefaultUserDTO(

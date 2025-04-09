@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class MockProductImageEntityList {
     public ArrayList<DefaultProductImageEntity> createMockDefaultProductImageEntityList(int count) {
-        ArrayList<DefaultProductImageEntity> productImageEntityList = new ArrayList<>();
+        final ArrayList<DefaultProductImageEntity> productImageEntityList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             productImageEntityList.add(new DefaultProductImageEntity(

@@ -4,12 +4,11 @@ import davidrodriguez.com.uniquora.features.category.shared.entities.DefaultCate
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MockCategoryEntityList {
 
     public ArrayList<DefaultCategoryEntity> createMockDefaultCategoryEntityList(int count) {
-        ArrayList<DefaultCategoryEntity> categoryEntityList = new ArrayList<>();
+        final ArrayList<DefaultCategoryEntity> categoryEntityList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             categoryEntityList.add(new DefaultCategoryEntity(

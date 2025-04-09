@@ -13,7 +13,7 @@ public class DefaultBrandEntityTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultBrandEntity mockDefaultBrandEntity = getMockDefaultBrandEntity();
+        final DefaultBrandEntity mockDefaultBrandEntity = getMockDefaultBrandEntity();
 
         assertThat(mockDefaultBrandEntity.getId()).isEqualTo(1L);
         assertThat(mockDefaultBrandEntity.getName()).isEqualTo("Test Brand");
@@ -25,9 +25,9 @@ public class DefaultBrandEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultBrandEntity> newDefaultBrandEntity = new MockBrandEntityList().createMockDefaultBrandEntityList(1);
+        final List<DefaultBrandEntity> newDefaultBrandEntity = new MockBrandEntityList().createMockDefaultBrandEntityList(1);
 
-        DefaultBrandEntity mockDefaultBrandEntitySet = new DefaultBrandEntity();
+        final DefaultBrandEntity mockDefaultBrandEntitySet = new DefaultBrandEntity();
         mockDefaultBrandEntitySet.setId(1L);
         mockDefaultBrandEntitySet.setName("Test Brand");
         mockDefaultBrandEntitySet.setLogo("testLogoURL.com");

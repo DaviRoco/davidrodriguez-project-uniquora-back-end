@@ -21,7 +21,7 @@ public class GetAllCategoriesService {
 
     public List<DefaultCategoryDTO> getAllCategories() {
         try {
-            List<DefaultCategoryEntity> defaultCategoryEntities = defaultCategoryRepository.findAll();
+            final List<DefaultCategoryEntity> defaultCategoryEntities = defaultCategoryRepository.findAll();
             return defaultCategoryEntities.stream()
                     .map(category -> modelMapper.map(category, DefaultCategoryDTO.class))
                     .collect(Collectors.toList());

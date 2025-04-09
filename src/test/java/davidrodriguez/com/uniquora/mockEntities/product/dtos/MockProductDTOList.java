@@ -3,7 +3,6 @@ package davidrodriguez.com.uniquora.mockEntities.product.dtos;
 import davidrodriguez.com.uniquora.features.product.shared.dtos.DefaultProductDTO;
 import davidrodriguez.com.uniquora.mockEntities.category.dtos.MockCategoryDTOList;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
-import davidrodriguez.com.uniquora.mockEntities.product_image.dtos.MockProductImageDTO;
 import davidrodriguez.com.uniquora.mockEntities.product_image.dtos.MockProductImageDTOList;
 
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ import static davidrodriguez.com.uniquora.mockEntities.brand.dtos.MockBrandDTO.g
 public class MockProductDTOList {
 
     public List<DefaultProductDTO> createMockDefaultProductDTOList(int count) {
-        List<DefaultProductDTO> productDTOList = new ArrayList<>();
+        final List<DefaultProductDTO> productDTOList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             productDTOList.add(new DefaultProductDTO(

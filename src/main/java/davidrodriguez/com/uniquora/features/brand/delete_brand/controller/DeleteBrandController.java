@@ -22,7 +22,7 @@ public class DeleteBrandController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBrand(@PathVariable Long id) {
         try {
-            DefaultBrandDTO deletedBrand = deleteBrandService.deleteBrand(id);
+            final DefaultBrandDTO deletedBrand = deleteBrandService.deleteBrand(id);
             return ResponseEntity.ok(deletedBrand);
         } catch (ResourceNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());

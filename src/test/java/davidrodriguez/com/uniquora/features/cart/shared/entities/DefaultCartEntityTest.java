@@ -13,7 +13,7 @@ public class DefaultCartEntityTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultCartEntity entity = getMockDefaultCartEntity();
+        final DefaultCartEntity entity = getMockDefaultCartEntity();
 
         assertThat(entity.getId()).isEqualTo(1L);
         assertThat(entity.getUserId()).isEqualTo(100L);
@@ -23,9 +23,9 @@ public class DefaultCartEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultCartEntity> entityList = new MockCartEntityList().createMockDefaultCartEntityList(1);
+        final List<DefaultCartEntity> entityList = new MockCartEntityList().createMockDefaultCartEntityList(1);
 
-        DefaultCartEntity entity = new DefaultCartEntity();
+        final DefaultCartEntity entity = new DefaultCartEntity();
         entity.setId(1L);
         entity.setUserId(100L);
         entity.setCreatedAt(MockDates.getCreatedAt());

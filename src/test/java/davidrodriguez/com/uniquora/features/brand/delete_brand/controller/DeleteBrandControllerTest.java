@@ -35,7 +35,7 @@ public class DeleteBrandControllerTest {
 
     @Test
     void shouldDeleteBrand() throws Exception {
-        DefaultBrandDTO mockBrand = MockBrandDTO.getMockDefaultBrandDTO();
+        final DefaultBrandDTO mockBrand = MockBrandDTO.getMockDefaultBrandDTO();
 
         when(deleteBrandService.deleteBrand(mockBrand.getId())).thenReturn(mockBrand);
 
@@ -54,7 +54,7 @@ public class DeleteBrandControllerTest {
 
     @Test
     void shouldThrowResourceNotFoundExceptionBrand() throws Exception {
-        DefaultBrandDTO mockBrand = MockBrandDTO.getMockDefaultBrandDTO();
+        final DefaultBrandDTO mockBrand = MockBrandDTO.getMockDefaultBrandDTO();
         when(deleteBrandService.deleteBrand(mockBrand.getId())).thenThrow(new ResourceNotFoundException("Brand with ID 1 not found"));
         mockMvc.perform(delete("/api/brand/{id}", mockBrand.getId())
                 .contentType(MediaType.APPLICATION_JSON))
@@ -63,7 +63,7 @@ public class DeleteBrandControllerTest {
 
     @Test
     void shouldThrowGeneralExceptionBrand() throws Exception {
-        DefaultBrandDTO mockBrand = MockBrandDTO.getMockDefaultBrandDTO();
+        final DefaultBrandDTO mockBrand = MockBrandDTO.getMockDefaultBrandDTO();
         when(deleteBrandService.deleteBrand(mockBrand.getId())).thenThrow(new RuntimeException("Could not delete brand due to an internal error."));
         mockMvc.perform(delete("/api/brand/{id}", mockBrand.getId())
                         .contentType(MediaType.APPLICATION_JSON))

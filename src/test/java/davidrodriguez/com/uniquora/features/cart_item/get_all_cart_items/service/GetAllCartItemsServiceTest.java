@@ -38,12 +38,12 @@ public class GetAllCartItemsServiceTest {
 
     @Test
     void shouldReturnAllCartItems() {
-        List<DefaultCartItemEntity> mockEntities = new MockCartItemEntityList().createMockDefaultCartItemEntityList(3);
+        final List<DefaultCartItemEntity> mockEntities = new MockCartItemEntityList().createMockDefaultCartItemEntityList(3);
 
         when(defaultCartItemRepository.findAll()).thenReturn(mockEntities);
         when(modelMapper.map(any(DefaultCartItemEntity.class), eq(DefaultCartItemDTO.class)))
                 .thenAnswer(invocation -> {
-                    DefaultCartItemEntity entity = invocation.getArgument(0);
+                    final DefaultCartItemEntity entity = invocation.getArgument(0);
                     return new DefaultCartItemDTO(
                             entity.getId(),
                             entity.getCartsId(),
@@ -54,7 +54,7 @@ public class GetAllCartItemsServiceTest {
                     );
                 });
 
-        List<DefaultCartItemDTO> result = getAllCartItemsService.getAllCartItems();
+        final List<DefaultCartItemDTO> result = getAllCartItemsService.getAllCartItems();
 
         assertEquals(mockEntities.size(), result.size());
         assertThat(result)
@@ -67,7 +67,7 @@ public class GetAllCartItemsServiceTest {
     void shouldThrowException() {
         when(defaultCartItemRepository.findAll()).thenThrow(new RuntimeException("Database error"));
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> getAllCartItemsService.getAllCartItems());
+        final RuntimeException exception = assertThrows(RuntimeException.class, () -> getAllCartItemsService.getAllCartItems());
 
         assertEquals("Could not get all cart items due to an internal error.", exception.getMessage());
     }

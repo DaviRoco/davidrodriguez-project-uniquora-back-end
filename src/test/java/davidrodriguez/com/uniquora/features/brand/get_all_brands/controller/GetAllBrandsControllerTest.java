@@ -36,7 +36,7 @@ public class GetAllBrandsControllerTest {
 
     @Test
     void shouldReturnAllBrands() throws Exception {
-        List<DefaultBrandDTO> mockBrands = new MockBrandDTOList().createMockDefaultBrandDTOList(1);
+        final List<DefaultBrandDTO> mockBrands = new MockBrandDTOList().createMockDefaultBrandDTOList(1);
 
         when(getAllBrandsService.getAllBrands()).thenReturn(mockBrands);
 

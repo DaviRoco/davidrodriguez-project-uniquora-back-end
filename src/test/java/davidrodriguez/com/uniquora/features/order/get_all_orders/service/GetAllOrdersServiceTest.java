@@ -38,12 +38,12 @@ public class GetAllOrdersServiceTest {
 
     @Test
     void shouldReturnAllOrders() {
-        List<DefaultOrderEntity> mockEntities = new MockOrderEntityList().createMockDefaultOrderEntityList(3);
+        final List<DefaultOrderEntity> mockEntities = new MockOrderEntityList().createMockDefaultOrderEntityList(3);
 
         when(defaultOrderRepository.findAll()).thenReturn(mockEntities);
         when(modelMapper.map(any(DefaultOrderEntity.class), eq(DefaultOrderDTO.class)))
                 .thenAnswer(invocation -> {
-                    DefaultOrderEntity entity = invocation.getArgument(0);
+                    final DefaultOrderEntity entity = invocation.getArgument(0);
                     return new DefaultOrderDTO(
                             entity.getId(),
                             entity.getUserId(),
@@ -54,7 +54,7 @@ public class GetAllOrdersServiceTest {
                     );
                 });
 
-        List<DefaultOrderDTO> result = getAllOrdersService.getAllOrders();
+        final List<DefaultOrderDTO> result = getAllOrdersService.getAllOrders();
 
         assertEquals(mockEntities.size(), result.size());
         assertThat(result)
@@ -67,7 +67,7 @@ public class GetAllOrdersServiceTest {
     void shouldThrowException() {
         when(defaultOrderRepository.findAll()).thenThrow(new RuntimeException("Database error"));
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> getAllOrdersService.getAllOrders());
+        final RuntimeException exception = assertThrows(RuntimeException.class, () -> getAllOrdersService.getAllOrders());
 
         assertEquals("Could not get all orders due to an internal error.", exception.getMessage());
     }

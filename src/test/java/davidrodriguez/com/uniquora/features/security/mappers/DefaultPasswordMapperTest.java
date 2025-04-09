@@ -19,16 +19,16 @@ public class DefaultPasswordMapperTest {
 
     @Test
     void shouldNotMapPasswordDTOToPasswordWhenPasswordIsNull() {
-        DefaultPasswordEntity mockDefaultPasswordEntity = mockDefaultPasswordMapper.toPasswordEntity(null);
+        final DefaultPasswordEntity mockDefaultPasswordEntity = mockDefaultPasswordMapper.toPasswordEntity(null);
 
         assertThat(mockDefaultPasswordEntity).isNull();
     }
 
     @Test
     void shouldMapPasswordToPasswordDTO() {
-        DefaultPasswordEntity mockDefaultPasswordEntity = getMockDefaultPasswordEntity();
+        final DefaultPasswordEntity mockDefaultPasswordEntity = getMockDefaultPasswordEntity();
 
-        DefaultPasswordDTO mockDefaultPasswordDTO = mockDefaultPasswordMapper.toPasswordDTO(mockDefaultPasswordEntity);
+        final DefaultPasswordDTO mockDefaultPasswordDTO = mockDefaultPasswordMapper.toPasswordDTO(mockDefaultPasswordEntity);
 
         assertThat(mockDefaultPasswordDTO).isNotNull()
                 .extracting(DefaultPasswordDTO::getId)
@@ -38,16 +38,16 @@ public class DefaultPasswordMapperTest {
 
     @Test
     void shouldNotMapPasswordToPasswordDTOWhenPasswordDTOIsNull() {
-        DefaultPasswordDTO mockDefaultPasswordDTO = mockDefaultPasswordMapper.toPasswordDTO(null);
+        final DefaultPasswordDTO mockDefaultPasswordDTO = mockDefaultPasswordMapper.toPasswordDTO(null);
 
         assertThat(mockDefaultPasswordDTO).isNull();
     }
 
     @Test
     void shouldMapPasswordDTOToPassword() {
-        DefaultPasswordDTO mockDefaultPasswordDTO = getMockDefaultPasswordDTO();
+        final DefaultPasswordDTO mockDefaultPasswordDTO = getMockDefaultPasswordDTO();
 
-        DefaultPasswordEntity mockDefaultPasswordEntityMapped = mockDefaultPasswordMapper.toPasswordEntity(mockDefaultPasswordDTO);
+        final DefaultPasswordEntity mockDefaultPasswordEntityMapped = mockDefaultPasswordMapper.toPasswordEntity(mockDefaultPasswordDTO);
 
         assertThat(mockDefaultPasswordEntityMapped).isNotNull()
                 .extracting(DefaultPasswordEntity::getId)

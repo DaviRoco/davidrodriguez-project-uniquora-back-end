@@ -21,7 +21,7 @@ public class GetAllCartsService {
 
     public List<DefaultCartDTO> getAllCarts() {
         try {
-            List<DefaultCartEntity> defaultCartEntities = defaultCartRepository.findAll();
+            final List<DefaultCartEntity> defaultCartEntities = defaultCartRepository.findAll();
             return defaultCartEntities.stream()
                     .map(cart -> modelMapper.map(cart, DefaultCartDTO.class))
                     .collect(Collectors.toList());

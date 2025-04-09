@@ -25,7 +25,7 @@ public class UpdateBrandService {
         }
 
         try {
-            DefaultBrandEntity existingBrandEntity = defaultBrandRepository.findById(defaultBrandDTO.getId())
+            final DefaultBrandEntity existingBrandEntity = defaultBrandRepository.findById(defaultBrandDTO.getId())
                     .orElseThrow(() -> new ResourceNotFoundException("Brand with ID " + defaultBrandDTO.getId() + " not found"));
 
             existingBrandEntity.setName(defaultBrandDTO.getName());
@@ -33,7 +33,7 @@ public class UpdateBrandService {
             existingBrandEntity.setActive(defaultBrandDTO.isActive());
             existingBrandEntity.setUpdatedAt(new Date());
 
-            DefaultBrandEntity updatedBrandEntity = defaultBrandRepository.save(existingBrandEntity);
+            final DefaultBrandEntity updatedBrandEntity = defaultBrandRepository.save(existingBrandEntity);
 
             return modelMapper.map(updatedBrandEntity, DefaultBrandDTO.class);
         } catch (Exception exception) {

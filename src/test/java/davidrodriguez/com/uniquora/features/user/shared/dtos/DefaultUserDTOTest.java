@@ -25,7 +25,7 @@ public class DefaultUserDTOTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultUserDTO mockDefaultUserDTO = getMockDefaultUserDTO();
+        final DefaultUserDTO mockDefaultUserDTO = getMockDefaultUserDTO();
 
         assertThat(mockDefaultUserDTO.getId()).isEqualTo(1L);
         assertThat(mockDefaultUserDTO.getName()).isEqualTo("John");
@@ -41,9 +41,9 @@ public class DefaultUserDTOTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultUserDTO> newDefaultUserDTOList = new MockUserDTOList().createMockDefaultUserDTOList(1);
+        final List<DefaultUserDTO> newDefaultUserDTOList = new MockUserDTOList().createMockDefaultUserDTOList(1);
 
-        DefaultUserDTO mockDefaultUserDTOSet = new DefaultUserDTO();
+        final DefaultUserDTO mockDefaultUserDTOSet = new DefaultUserDTO();
         mockDefaultUserDTOSet.setId(1L);
         mockDefaultUserDTOSet.setName("Jane");
         mockDefaultUserDTOSet.setLastName("Smith");

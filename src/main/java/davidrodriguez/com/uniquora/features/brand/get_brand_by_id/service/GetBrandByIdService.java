@@ -23,7 +23,7 @@ public class GetBrandByIdService {
         }
 
         try {
-            DefaultBrandEntity existingBrandEntity = getBrandByIdRepository.findBrandById(id)
+            final DefaultBrandEntity existingBrandEntity = getBrandByIdRepository.findBrandById(id)
                     .orElseThrow(() -> new ResourceNotFoundException("Brand with ID " + id + " not found"));
 
             return modelMapper.map(existingBrandEntity, DefaultBrandDTO.class);

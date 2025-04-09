@@ -12,12 +12,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 
-import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 public class CreateBandServiceTest {
@@ -37,14 +32,14 @@ public class CreateBandServiceTest {
 
     @Test
     void shouldCreateBrand() {
-        DefaultBrandDTO defaultBrandDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
-        DefaultBrandEntity defaultBrandEntity = MockBrandEntity.createNewMockDefaultBrandEntity();
+        final DefaultBrandDTO defaultBrandDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
+        final DefaultBrandEntity defaultBrandEntity = MockBrandEntity.createNewMockDefaultBrandEntity();
 
         when(modelMapper.map(defaultBrandDTO, DefaultBrandEntity.class)).thenReturn(defaultBrandEntity);
         when(defaultBrandRepository.save(defaultBrandEntity)).thenReturn(defaultBrandEntity);
         when(modelMapper.map(defaultBrandEntity, DefaultBrandDTO.class)).thenReturn(defaultBrandDTO);
 
-        DefaultBrandDTO result = createBrandService.createBrand(defaultBrandDTO);
+        final DefaultBrandDTO result = createBrandService.createBrand(defaultBrandDTO);
 
         assertNotNull(result);
         assertEquals(defaultBrandDTO.getName(), result.getName());
@@ -53,7 +48,7 @@ public class CreateBandServiceTest {
 
     @Test
     void  shouldCreateBrandWhenCreatedAndUpdatedDateAreNull() {
-        DefaultBrandDTO defaultBrandDTO = new DefaultBrandDTO();
+        final DefaultBrandDTO defaultBrandDTO = new DefaultBrandDTO();
         defaultBrandDTO.setId(1L);
         defaultBrandDTO.setName("name");
         defaultBrandDTO.setLogo("logo");
@@ -61,13 +56,13 @@ public class CreateBandServiceTest {
         defaultBrandDTO.setUpdatedAt(null);
         defaultBrandDTO.setActive(true);
 
-        DefaultBrandEntity defaultBrandEntity = MockBrandEntity.createNewMockDefaultBrandEntity();
+        final DefaultBrandEntity defaultBrandEntity = MockBrandEntity.createNewMockDefaultBrandEntity();
 
         when(modelMapper.map(defaultBrandDTO, DefaultBrandEntity.class)).thenReturn(defaultBrandEntity);
         when(defaultBrandRepository.save(defaultBrandEntity)).thenReturn(defaultBrandEntity);
         when(modelMapper.map(defaultBrandEntity, DefaultBrandDTO.class)).thenReturn(defaultBrandDTO);
 
-        DefaultBrandDTO result = createBrandService.createBrand(defaultBrandDTO);
+        final DefaultBrandDTO result = createBrandService.createBrand(defaultBrandDTO);
 
         assertNotNull(result);
         assertEquals(defaultBrandDTO.getName(), result.getName());
@@ -76,15 +71,15 @@ public class CreateBandServiceTest {
 
     @Test
     void shouldThrowExceptionWhenBrandIsNull() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> createBrandService.createBrand(null));
+        final Exception exception = assertThrows(IllegalArgumentException.class, () -> createBrandService.createBrand(null));
 
         assertEquals("Brand data cannot be null", exception.getMessage());
     }
 
     @Test
     void shouldThrowException() {
-        DefaultBrandDTO inputDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
-        Exception exception = assertThrows(RuntimeException.class, () -> createBrandService.createBrand(inputDTO));
+        final DefaultBrandDTO inputDTO = MockBrandDTO.createNewMockDefaultBrandDTO();
+        final Exception exception = assertThrows(RuntimeException.class, () -> createBrandService.createBrand(inputDTO));
 
         assertEquals("Could not create brand due to an internal error.", exception.getMessage());
     }

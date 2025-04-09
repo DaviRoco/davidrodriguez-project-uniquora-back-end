@@ -12,7 +12,7 @@ import static davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandE
 
 public class MockProductEntityList {
     public List<DefaultProductEntity> createMockDefaultProductEntityList(int count) {
-        List<DefaultProductEntity> productEntityList = new ArrayList<>();
+        final List<DefaultProductEntity> productEntityList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             productEntityList.add(new DefaultProductEntity(

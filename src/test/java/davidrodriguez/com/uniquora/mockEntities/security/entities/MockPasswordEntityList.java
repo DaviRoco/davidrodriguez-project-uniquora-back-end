@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MockPasswordEntityList {
     public List<DefaultPasswordEntity> createMockDefaultPasswordEntityList(int count) {
-        List<DefaultPasswordEntity> passwordList = new ArrayList<>();
+        final List<DefaultPasswordEntity> passwordList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             passwordList.add(new DefaultPasswordEntity(

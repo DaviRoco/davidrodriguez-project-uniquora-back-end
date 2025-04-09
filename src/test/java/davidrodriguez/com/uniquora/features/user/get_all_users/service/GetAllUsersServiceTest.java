@@ -42,12 +42,12 @@ public class GetAllUsersServiceTest {
 
     @Test
     void shouldReturnAllUsers() {
-        List<DefaultUserEntity> mockDefaultUserEntities = new MockUserEntityList().createMockDefaultUserEntityList(3);
+        final List<DefaultUserEntity> mockDefaultUserEntities = new MockUserEntityList().createMockDefaultUserEntityList(3);
 
         when(defaultUserRepository.findAll()).thenReturn(mockDefaultUserEntities);
         when(modelMapper.map(any(DefaultUserEntity.class), eq(DefaultUserDTO.class)))
                 .thenAnswer(invocation -> {
-                    DefaultUserEntity entity = invocation.getArgument(0);
+                    final DefaultUserEntity entity = invocation.getArgument(0);
                     return new DefaultUserDTO(
                             entity.getId(),
                             entity.getName(),
@@ -62,7 +62,7 @@ public class GetAllUsersServiceTest {
                     );
                 });
 
-        List<DefaultUserDTO> defaultUserDTOList = getAllUsersService.getAllUsers();
+        final List<DefaultUserDTO> defaultUserDTOList = getAllUsersService.getAllUsers();
 
         assertEquals(mockDefaultUserEntities.size(), defaultUserDTOList.size());
         assertThat(defaultUserDTOList)
@@ -75,7 +75,7 @@ public class GetAllUsersServiceTest {
     void shouldThrowException() {
         when(defaultUserRepository.findAll()).thenThrow(new RuntimeException("Database error"));
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () ->  getAllUsersService.getAllUsers());
+        final RuntimeException exception = assertThrows(RuntimeException.class, () ->  getAllUsersService.getAllUsers());
 
         assertEquals("Could not get all users due to an internal error.", exception.getMessage());
     }

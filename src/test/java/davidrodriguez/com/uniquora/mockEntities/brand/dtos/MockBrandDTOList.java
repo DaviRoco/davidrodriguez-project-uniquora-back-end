@@ -9,7 +9,7 @@ import java.util.List;
 public class MockBrandDTOList {
 
     public List<DefaultBrandDTO> createMockDefaultBrandDTOList(int count) {
-        List<DefaultBrandDTO> brandDTOList = new ArrayList<>();
+        final List<DefaultBrandDTO> brandDTOList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             brandDTOList.add(new DefaultBrandDTO(

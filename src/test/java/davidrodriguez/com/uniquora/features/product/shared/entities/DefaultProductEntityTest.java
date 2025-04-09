@@ -6,7 +6,6 @@ import davidrodriguez.com.uniquora.features.product_image.shared.entities.Defaul
 import davidrodriguez.com.uniquora.mockEntities.brand.entities.MockBrandEntity;
 import davidrodriguez.com.uniquora.mockEntities.category.entities.MockCategoryEntityList;
 import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
-import davidrodriguez.com.uniquora.mockEntities.product.entities.MockProductEntity;
 import davidrodriguez.com.uniquora.mockEntities.product.entities.MockProductEntityList;
 import davidrodriguez.com.uniquora.mockEntities.product_image.entities.MockProductImageEntity;
 import davidrodriguez.com.uniquora.mockEntities.product_image.entities.MockProductImageEntityList;
@@ -64,9 +63,9 @@ public class DefaultProductEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultProductEntity> mockDefaultProductEntity = new MockProductEntityList().createMockDefaultProductEntityList(1);
+        final List<DefaultProductEntity> mockDefaultProductEntity = new MockProductEntityList().createMockDefaultProductEntityList(1);
 
-        DefaultProductEntity mockDefaultProductEntitySet = new DefaultProductEntity();
+        final DefaultProductEntity mockDefaultProductEntitySet = new DefaultProductEntity();
         mockDefaultProductEntitySet.setId(1L);
         mockDefaultProductEntitySet.setName("Test Product 1");
         mockDefaultProductEntitySet.setDescription("Test Product Description 1");

@@ -8,7 +8,7 @@ import java.util.List;
 public class MockOrderItemDTOList {
 
     public List<DefaultOrderItemDTO> createMockDefaultOrderItemDTOList(int count) {
-        List<DefaultOrderItemDTO> list = new ArrayList<>();
+        final List<DefaultOrderItemDTO> list = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             list.add(new DefaultOrderItemDTO(

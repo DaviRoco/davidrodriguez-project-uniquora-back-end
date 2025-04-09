@@ -21,7 +21,7 @@ public class GetAllOrdersService {
 
     public List<DefaultOrderDTO> getAllOrders() {
         try {
-            List<DefaultOrderEntity> defaultOrderEntities = defaultOrderRepository.findAll();
+            final List<DefaultOrderEntity> defaultOrderEntities = defaultOrderRepository.findAll();
             return defaultOrderEntities.stream()
                     .map(order -> modelMapper.map(order, DefaultOrderDTO.class))
                     .collect(Collectors.toList());

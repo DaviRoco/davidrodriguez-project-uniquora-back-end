@@ -9,7 +9,7 @@ import java.util.List;
 public class MockBrandEntityList {
 
     public List<DefaultBrandEntity> createMockDefaultBrandEntityList(int count) {
-        List<DefaultBrandEntity> brandEntityList = new ArrayList<>();
+        final List<DefaultBrandEntity> brandEntityList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             brandEntityList.add(new DefaultBrandEntity(

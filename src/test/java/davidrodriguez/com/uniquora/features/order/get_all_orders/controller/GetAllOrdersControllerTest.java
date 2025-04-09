@@ -37,7 +37,7 @@ public class GetAllOrdersControllerTest {
 
     @Test
     void shouldReturnAllOrders() throws Exception {
-        List<DefaultOrderDTO> mockOrders = new MockOrderDTOList().createMockDefaultOrderDTOList(1);
+        final List<DefaultOrderDTO> mockOrders = new MockOrderDTOList().createMockDefaultOrderDTOList(1);
 
         when(getAllOrdersService.getAllOrders()).thenReturn(mockOrders);
 

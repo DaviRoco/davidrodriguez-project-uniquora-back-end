@@ -1,6 +1,5 @@
 package davidrodriguez.com.uniquora.features.order_item.shared.entities;
 
-import davidrodriguez.com.uniquora.mockEntities.date.MockDates;
 import davidrodriguez.com.uniquora.mockEntities.order_item.entities.MockOrderItemEntityList;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,7 @@ public class DefaultOrderItemEntityTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultOrderItemEntity entity = getMockDefaultOrderItemEntity();
+        final DefaultOrderItemEntity entity = getMockDefaultOrderItemEntity();
 
         assertThat(entity.getId()).isEqualTo(1L);
         assertThat(entity.getOrderId()).isEqualTo(100L);
@@ -23,9 +22,9 @@ public class DefaultOrderItemEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultOrderItemEntity> list = new MockOrderItemEntityList().createMockDefaultOrderItemEntityList(1);
+        final List<DefaultOrderItemEntity> list = new MockOrderItemEntityList().createMockDefaultOrderItemEntityList(1);
 
-        DefaultOrderItemEntity entity = new DefaultOrderItemEntity();
+        final DefaultOrderItemEntity entity = new DefaultOrderItemEntity();
         entity.setId(1L);
         entity.setOrderId(100L);
         entity.setProductId(200L);

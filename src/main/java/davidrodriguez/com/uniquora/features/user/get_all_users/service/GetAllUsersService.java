@@ -21,7 +21,7 @@ public class GetAllUsersService {
 
     public List<DefaultUserDTO> getAllUsers() {
         try {
-            List<DefaultUserEntity> defaultUserEntities = defaultUserRepository.findAll();
+            final List<DefaultUserEntity> defaultUserEntities = defaultUserRepository.findAll();
             return defaultUserEntities.stream()
                     .map(user -> modelMapper.map(user, DefaultUserDTO.class))
                     .collect(Collectors.toList());

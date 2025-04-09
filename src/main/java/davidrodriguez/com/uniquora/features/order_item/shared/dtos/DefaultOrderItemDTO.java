@@ -1,7 +1,5 @@
 package davidrodriguez.com.uniquora.features.order_item.shared.dtos;
 
-import java.util.Date;
-
 public class DefaultOrderItemDTO {
     private Long id;
     private Long orderId;

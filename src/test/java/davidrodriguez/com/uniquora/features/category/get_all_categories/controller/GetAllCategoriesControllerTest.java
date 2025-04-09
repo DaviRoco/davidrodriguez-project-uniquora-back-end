@@ -37,7 +37,7 @@ public class GetAllCategoriesControllerTest {
 
     @Test
     void shouldReturnAllCategories() throws Exception {
-        List<DefaultCategoryDTO> mockCategories = new MockCategoryDTOList().createMockDefaultCategoryDTOList(1);
+        final List<DefaultCategoryDTO> mockCategories = new MockCategoryDTOList().createMockDefaultCategoryDTOList(1);
 
         when(getAllCategoriesService.getAllCategories()).thenReturn(mockCategories);
 

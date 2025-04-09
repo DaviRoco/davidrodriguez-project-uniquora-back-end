@@ -22,7 +22,7 @@ public class CreateBrandController {
     @PostMapping
     public ResponseEntity<?> createBrand(@Valid @RequestBody DefaultBrandDTO defaultBrandDTO) {
         try {
-            DefaultBrandDTO createdBrand = createBrandService.createBrand(defaultBrandDTO);
+            final DefaultBrandDTO createdBrand = createBrandService.createBrand(defaultBrandDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdBrand);
         } catch (Exception exception) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

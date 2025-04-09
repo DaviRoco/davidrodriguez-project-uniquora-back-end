@@ -36,7 +36,7 @@ public class GetAllProductImagesControllerTest {
 
     @Test
     void shouldReturnAllProductImages() throws Exception {
-        List<DefaultProductImageDTO> mockProductImages = new MockProductImageDTOList().createMockDefaultProductImageDTOList(1);
+        final List<DefaultProductImageDTO> mockProductImages = new MockProductImageDTOList().createMockDefaultProductImageDTOList(1);
 
         when(getAllProductImagesService.getAllProductImages()).thenReturn(mockProductImages);
 

@@ -13,7 +13,7 @@ public class DefaultCategoryEntityTest {
 
     @Test
     void shouldGetAllAttributes() {
-        DefaultCategoryEntity mockDefaultCategoryEntity = getMockDefaultCategoryEntity();
+        final DefaultCategoryEntity mockDefaultCategoryEntity = getMockDefaultCategoryEntity();
 
         assertThat(mockDefaultCategoryEntity.getId()).isEqualTo(1L);
         assertThat(mockDefaultCategoryEntity.getName()).isEqualTo("Test Name");
@@ -23,9 +23,9 @@ public class DefaultCategoryEntityTest {
 
     @Test
     void shouldSetAllAttributes() {
-        List<DefaultCategoryEntity> newDefaultCategoryEntity = new MockCategoryEntityList().createMockDefaultCategoryEntityList(1);
+        final List<DefaultCategoryEntity> newDefaultCategoryEntity = new MockCategoryEntityList().createMockDefaultCategoryEntityList(1);
 
-        DefaultCategoryEntity mockDefaultCategoryEntitySet = new DefaultCategoryEntity();
+        final DefaultCategoryEntity mockDefaultCategoryEntitySet = new DefaultCategoryEntity();
         mockDefaultCategoryEntitySet.setId(1L);
         mockDefaultCategoryEntitySet.setName("Test Name");
         mockDefaultCategoryEntitySet.setCreatedAt(MockDates.getCreatedAt());

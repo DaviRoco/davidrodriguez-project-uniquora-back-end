@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -38,8 +37,8 @@ public class CreateBrandControllerTest {
 
     @Test
     void shouldCreateBrand() throws Exception {
-        DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
-        DefaultBrandDTO mockBrand = MockBrandDTO.getMockDefaultBrandDTO();
+        final DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
+        final DefaultBrandDTO mockBrand = MockBrandDTO.getMockDefaultBrandDTO();
 
         when(createBrandService.createBrand(any(DefaultBrandDTO.class))).thenReturn(mockBrand);
 
@@ -59,7 +58,7 @@ public class CreateBrandControllerTest {
 
     @Test
     void shouldNotReturnBrandWhenInternalServerError() throws Exception {
-        DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
+        final DefaultBrandDTO inputBrand = MockBrandDTO.createNewMockDefaultBrandDTO();
         when(createBrandService.createBrand(any(DefaultBrandDTO.class))).thenThrow(new RuntimeException("Could not create brand due to an internal error."));
         mockMvc.perform(post("/api/brand")
                         .contentType(MediaType.APPLICATION_JSON)
