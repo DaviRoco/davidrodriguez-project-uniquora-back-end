@@ -37,7 +37,6 @@ public class DefaultUserEntity {
     @JoinColumn(name = "password_id", nullable = false)
     private DefaultPasswordEntity password;
 
-
     @Column(name = "created_at", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
